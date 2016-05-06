@@ -23,6 +23,8 @@
 \tableofcontents
 
 \chapter{Uvod}
+\section{Motivacija}
+%Literatura: http://mob.hr/samsung-galaxy-s4-skrivene-mogucnosti-senzori-i-octa-5-benchmark/
 Pametni mobilni uređaji postaju neizostavan dodatak svakog modernog čovjeka.\\
 Većina pametnih mobilnih uređaja u sebi sadrži sljedeće senzore:
 \begin{description}
@@ -43,6 +45,14 @@ Kako količina podataka postaje sve veća, dolazimo do pojma \emph{Velika količ
 U okviru ovog rada biti će proučene mogućnosti ove tehnologije, razrađeno nekoliko konkretnih primjera obrade podataka te ostvarena programska rješenja koja obavljaju tu obradu koristeći \emph{Apache Spark}.
 
 Svi primjeri će biti napisani u programskom jeziku \emph{Java}.
+
+\section{Instalacija}
+\emph{Apache Spark} je pisan u programskom jeziku \emph{Scala} i izvršava se na \emph{Javinom virtualnom stroju} \engl{Java Virtual Machine} (JVM). Instalacija na osobno računalo je prilično jednostavna, a u ovdje će biti prikazana instalacija na operacijskom sustavu \emph{Ubuntu 15.10}. \\
+Za početak je potrebno imati instaliranu Javu, a je li Java instalirana na računalu se može provjeriti tako što se u naredbenom retku unese sljedeća naredba: \texttt{java -version}. Kao rezultat bi trebali dobiti trenutno instaliranu verziju Jave. Ukoliko Java nije instalirana, potrebno ju je najprije instalirati. Taj dio neće biti objašnjen ovdje.
+
+Jednom kada imamo instaliranu Javu, sve što treba napraviti je otići na službene stranice: \url{https://spark.apache.org/downloads.html}, odabrati najnoviju verziju (Za vrijeme pisanja ovog rada to je verzija \emph{1.6.1 (Mar 09 2016}), izabrati odgovarajući paket te pokrenuti dohvaćanje odgovarajuće \emph{.tgz} arhive. Najjednostavnije je odabrati neki \emph{pre-built} paket, primjerice \emph{Pre-built for Hadoop 2.6 and later} te će daljnji koraci instalacije biti napisani pod pretpostavkom da je korisnik dohvatio tu verziiju paketa. Ukoliko korisnik želi, moguće je instalirati i \emph{Source code} varijantu paketa, ali taj postupak instalacije ovdje nije opisan. 
+
+Nakon što smo dohvatili odgovarajuću arhivu, potrebno ju je raspakirati. Raspakiranje arhive moguće je napraviti preko naredbe \texttt{tar -xvf spark-1.6.1-bin-hadoop2.6.tgz}. Nakon toga, dobra je praksa premjestiti instalaciju u neki prikladniji direktorij.
 
 \chapter{Zaključak}
 Zaključak.
