@@ -1,0 +1,67 @@
+\documentclass[times, utf8, zavrsni]{fer}
+\usepackage{booktabs}
+
+\begin{document}
+
+% TODO: Navedite broj rada.
+\thesisnumber{1337}
+
+% TODO: Navedite naslov rada.
+\title{Obrada podataka tehnologijom Apache Spark}
+
+% TODO: Navedite vaše ime i prezime.
+\author{Martin Matak}
+
+\maketitle
+
+% Ispis stranice s napomenom o umetanju izvornika rada. Uklonite naredbu \izvornik ako želite izbaciti tu stranicu.
+\izvornik{Na ovoj stranici se nalazi izvornik.}
+
+% Dodavanje zahvale ili prazne stranice. Ako ne želite dodati zahvalu, naredbu ostavite radi prazne stranice.
+\zahvala{Zahvala - TODO \ldots :)}
+
+\tableofcontents
+
+\chapter{Uvod}
+Pametni mobilni uređaji postaju neizostavan dodatak svakog modernog čovjeka.\\
+Većina pametnih mobilnih uređaja u sebi sadrži sljedeće senzore:
+\begin{description}
+	\item[akcelerometar] - elektromehanička komponenta koja mjeri sile ubrzanja;
+	\item[barometar] - mehanički senzor za mjerenje atmosferskog pritiska (na trenutnoj lokaciji uređaja);
+	\item[senzor svjetlosti] - mjeri intenzitet, tj. jačinu svjetlosti i uglavnom se nalazi s prednje strane uređaja, iznad ekrana;
+	\item[senzor blizine] - u stanju prepoznati situacije kada mu neki objekt stoji u blizini - ovo omogućava automatske pozive prilikom primicanja telefona licu uz zaključavanje telefona da bi onemogućili slučajno prekidanje poziva uhom ili slično;
+	\item[senzor gestikulacije] - prepoznaje kretnje ruke tako što detektira infracrvene zrake koje se reflektiraju - omogućuje nam djelomično upravljanje telefonom bez doticanja ekrana;
+	\item[žiroskop] - uređaj koji se koristi za navigaciju i merenje kutne brzine;
+	\item[geomagnetski senzor] - mjeri okolno geomagnetsko polje za sve tri fizičke osi i u biti služi kao kompas na mobilnim uređajima i 
+	\item[\emph{Hall Sensor}] - magnetski senzor zadužen za prepoznavanje je li  maska telefona zatvorena ili otvorena.
+\end{description}
+Pretpostavimo da je mobilni uređaj spojen na internet i da svakih nekoliko sekundi pošalje vrijednost koju u tom trenutku mjeri pojedini senzor. U samo jednom danu može se skupiti dosta podataka. A što kada to ne bi radili za jedan uređaj nego za sve izdane modele nekog uređaja? Količina podataka bi jako brzo narasla.
+
+Kako količina podataka postaje sve veća, dolazimo do pojma \emph{Velika količina podataka} \engl{Big Data}. U današnje vrijeme imamo više podataka u digitalnom obliku nego što smo ikada imali. Jedan od zanimljivijih izazova je kako ih efektivno obraditi i zaključiti nešto iz toga. Kako od te velike količine podataka doći do nekih pametnih zaključaka iz kojih ćemo nešto novo naučiti.
+
+\emph{Apache Spark} je otvorena \engl{open source} tehnologija koja omogućava pisanje programa za obradu podataka u tri programskih jezika: \emph{Java}, \emph{Python}, \emph{Scala}; a nudi i mogućnost interaktivnog rada. \\
+U okviru ovog rada biti će proučene mogućnosti ove tehnologije, razrađeno nekoliko konkretnih primjera obrade podataka te ostvarena programska rješenja koja obavljaju tu obradu koristeći \emph{Apache Spark}.
+
+Svi primjeri će biti napisani u programskom jeziku \emph{Java}.
+
+\chapter{Zaključak}
+Zaključak.
+
+\bibliography{literatura}
+\bibliographystyle{fer}
+
+\begin{sazetak}
+Sažetak na hrvatskom jeziku.
+
+\kljucnerijeci{Ključne riječi, odvojene zarezima.}
+\end{sazetak}
+
+% TODO: Navedite naslov na engleskom jeziku.
+\engtitle{Title}
+\begin{abstract}
+Abstract.
+
+\keywords{Keywords.}
+\end{abstract}
+
+\end{document}
