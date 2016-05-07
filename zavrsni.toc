@@ -3,5 +3,12 @@
 \contentsline {section}{\numberline {1.2}Instalacija i izvorni kodovi}{2}
 \contentsline {subsection}{\numberline {1.2.1}Instalacija}{2}
 \contentsline {subsection}{\numberline {1.2.2}Izvorni kodovi}{3}
-\contentsline {section}{\numberline {1.3}Kratki pregled}{4}
-\contentsline {chapter}{\numberline {2}Zaklju\IeC {\v c}ak}{5}
+\contentsline {section}{\numberline {1.3}Osnovni gradivni elementi}{5}
+\contentsline {section}{\numberline {1.4}Kratki pregled}{5}
+\contentsline {chapter}{\numberline {2}Prvi programi}{7}
+\contentsline {section}{\numberline {2.1}Postavljanje temelja}{7}
+\contentsline {subsection}{\numberline {2.1.1}Osnovni elementi aplikacije}{7}
+\contentsline {subsection}{\numberline {2.1.2}Programiranje u Javi}{7}
+\contentsline {section}{\numberline {2.2}Programiranje s RDD-ovima}{8}
+\contentsline {chapter}{\numberline {3}Zaklju\IeC {\v c}ak}{9}
+\contentsline {chapter}{Dodatak \numberline {A}Postavljanje datoteke pom.xml}{10}

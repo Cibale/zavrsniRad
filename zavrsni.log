@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  6 MAY 2016 18:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  7 MAY 2016 22:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -288,7 +288,10 @@ Type  H <return>  for immediate help.
                                                   
 l.299 \ProcessOptions*
                       
-? 
+Valid options are: shorthands=, KeepShorthandsActive,
+activeacute, activegrave, noconfigs, safe=, main=, math=
+headfoot=, strings=, config=, hyphenmap=, or a language name.
+
 
 ! Package babel Error: You haven't specified a language option.
 
@@ -298,7 +301,10 @@ Type  H <return>  for immediate help.
                                                   
 l.332 ...ry to proceed from here, type x to quit.}
                                                   
-? 
+You need to specify a language, either as a global option
+or as an optional argument to the \usepackage command;
+You shouldn't try to proceed from here, type x to quit.
+
 ) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
@@ -462,11 +468,21 @@ LaTeX Info: Redefining \cite on input line 694.
 ! Undefined control sequence.
 l.117 \addto
             \captionscroatian{%
-? 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 ! Undefined control sequence.
 l.117 \addto\captionscroatian
                              {%
-? 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 \listindentation=\dimen130
 ) (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
@@ -536,22 +552,46 @@ Package: stringenc 2011/12/02 v1.10 Convert strings between diff. encodings (HO
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdfescape.sty
 Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 )))
+(/usr/share/texlive/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count119
+\c@@ppsavesec=\count120
+\c@@ppsaveapp=\count121
+)
+
+! LaTeX Error: Option clash for package appendix.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 \renewcommand
+                 {\figurename}{Slika}
+The package appendix has already been loaded with options:
+  [titletoc]
+There has now been an attempt to load it with options
+  [page]
+Adding the global options:
+  titletoc,page
+to your \documentclass declaration may fix this.
+Try typing  <return>  to proceed.
+
 (./zavrsni.aux)
 \openout1 = `zavrsni.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 5.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 9.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
@@ -591,16 +631,16 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count119
+\scratchcounter=\count122
 \scratchdimen=\dimen148
 \scratchbox=\box31
-\nofMPsegments=\count120
-\nofMParguments=\count121
+\nofMPsegments=\count123
+\nofMParguments=\count124
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count122
+\MPscratchCnt=\count125
 \MPscratchDim=\dimen149
-\MPnumerator=\count123
-\makeMPintoPDFobject=\count124
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
 \everyMPtoPDFconversion=\toks27
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -636,33 +676,33 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count125
-LaTeX Font Info:    Try loading font information for T1+phv on input line 16.
+\c@lstlisting=\count128
+LaTeX Font Info:    Try loading font information for T1+phv on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 16.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 16.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 16.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 16.
-LaTeX Font Info:    Try loading font information for U+msa on input line 16.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 20.
+LaTeX Font Info:    Try loading font information for U+msa on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 16.
+LaTeX Font Info:    Try loading font information for U+msb on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 19.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 23.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
@@ -679,17 +719,17 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 27.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 31.
 
-Overfull \hbox (1.40163pt too wide) in paragraph at lines 33--34
+Overfull \hbox (1.40163pt too wide) in paragraph at lines 37--38
 []\T1/ptm/m/n/12 - mehani£ki sen-zor za mjerenje at-mos-fer-skog pri-tiska (na 
 trenut-noj lokaciji
  []
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 39.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 43.
 
-Overfull \hbox (10.22174pt too wide) in paragraph at lines 39--40
+Overfull \hbox (10.22174pt too wide) in paragraph at lines 43--44
 []\T1/ptm/m/n/12 - mag-net-ski sen-zor zaduºen za pre-poz-na-vanje je li maska 
 tele-fona zatvorena
  []
@@ -697,7 +737,7 @@ tele-fona zatvorena
 [1
 
 ]
-Overfull \hbox (4.43343pt too wide) in paragraph at lines 56--57
+Overfull \hbox (4.43343pt too wide) in paragraph at lines 60--61
 \T1/ptm/m/n/12 stran-ice: $\T1/pcr/m/n/12 https : / / spark . apache . org / do
 wnloads . html$\T1/ptm/m/n/12 , odabrati na-jnoviju
  []
@@ -708,43 +748,82 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) [2]
-Overfull \hbox (41.03964pt too wide) in paragraph at lines 64--65
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (12.23935pt too wide) in paragraph at lines 74--75
+Overfull \hbox (12.23935pt too wide) in paragraph at lines 78--79
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[3] [4]
-Chapter 2.
-No file zavrsni.bbl.
-[5
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
-] [6] (./zavrsni.aux) ) 
+ []
+
+
+Overfull \hbox (77.04001pt too wide) in paragraph at lines 111--112
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[4] <img/spark-stack.png, id=38, 304.9794pt x 143.5764pt>
+File: img/spark-stack.png Graphic file (type png)
+
+<use img/spark-stack.png>
+Package pdftex.def Info: img/spark-stack.png used on input line 128.
+(pdftex.def)             Requested size: 284.52756pt x 133.95186pt.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 129.
+
+Overfull \hbox (3.61002pt too wide) in paragraph at lines 135--136
+[]\T1/ptm/m/n/12 - omogu¢uje rad s bilo kakvim struk-turi-ranim po-datcima, pri
+m-jerice JSON.
+ []
+
+[5 <./img/spark-stack.png>] [6]
+Chapter 2.
+<img/cluster-overview.png, id=47, 598.235pt x 287.0725pt>
+File: img/cluster-overview.png Graphic file (type png)
+
+<use img/cluster-overview.png>
+Package pdftex.def Info: img/cluster-overview.png used on input line 153.
+(pdftex.def)             Requested size: 284.52756pt x 136.53606pt.
+ [7
+
+ <./img/cluster-overview.png>] [8]
+Chapter 3.
+No file zavrsni.bbl.
+[9
+
+]
+Dodatak A.
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+) [10
+
+] [11]
+(./zavrsni.aux) ) 
 Here is how much of TeX's memory you used:
- 7466 strings out of 494957
- 103034 string characters out of 6180029
- 201956 words of memory out of 5000000
- 10547 multiletter control sequences out of 15000+600000
- 56655 words of font info for 77 fonts, out of 8000000 for 9000
+ 7681 strings out of 494957
+ 106138 string characters out of 6180029
+ 203350 words of memory out of 5000000
+ 10748 multiletter control sequences out of 15000+600000
+ 65028 words of font info for 83 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 43i,6n,51p,714b,1113s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.e
-nc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
-/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/urw/times/utmri8a.pfb>
-Output written on zavrsni.pdf (10 pages, 114784 bytes).
+ 43i,6n,51p,891b,1163s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8
+a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on zavrsni.pdf (15 pages, 171510 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 99 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
