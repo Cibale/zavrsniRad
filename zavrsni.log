@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  8 MAY 2016 19:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  9 MAY 2016 00:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -583,7 +583,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.10 \renewcommand\bibtoc
+l.11 \renewcommand\bibtoc
                          {Literatura}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -601,7 +601,7 @@ See the natbib package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.39 ...mand\NAT@force@numbers{}\NAT@force@numbers
+l.47 ...mand\NAT@force@numbers{}\NAT@force@numbers
                                                   
 Check the bibliography entries for non-compliant syntax,
 or select author-year BibTeX style, e.g. plainnat
@@ -609,19 +609,19 @@ or select author-year BibTeX style, e.g. plainnat
 )
 \openout1 = `zavrsni.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 33.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
@@ -707,32 +707,32 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count128
-LaTeX Font Info:    Try loading font information for T1+phv on input line 43.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 44.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 43.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 44.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 43.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 44.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 43.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 44.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 43.
-LaTeX Font Info:    Try loading font information for U+msa on input line 43.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 44.
+LaTeX Font Info:    Try loading font information for U+msa on input line 44.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 43.
+LaTeX Font Info:    Try loading font information for U+msb on input line 44.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 46.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
@@ -749,17 +749,17 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 54.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 55.
 
-Overfull \hbox (1.40163pt too wide) in paragraph at lines 60--61
+Overfull \hbox (1.40163pt too wide) in paragraph at lines 61--62
 []\T1/ptm/m/n/12 - mehani£ki sen-zor za mjerenje at-mos-fer-skog pri-tiska (na 
 trenut-noj lokaciji
  []
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 66.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 67.
 
-Overfull \hbox (10.22174pt too wide) in paragraph at lines 66--67
+Overfull \hbox (10.22174pt too wide) in paragraph at lines 67--68
 []\T1/ptm/m/n/12 - mag-net-ski sen-zor zaduºen za pre-poz-na-vanje je li maska 
 tele-fona zatvorena
  []
@@ -767,7 +767,7 @@ tele-fona zatvorena
 [1
 
 ]
-Overfull \hbox (4.43343pt too wide) in paragraph at lines 83--84
+Overfull \hbox (4.43343pt too wide) in paragraph at lines 84--85
 \T1/ptm/m/n/12 stran-ice: $\T1/pcr/m/n/12 https : / / spark . apache . org / do
 wnloads . html$\T1/ptm/m/n/12 , odabrati na-jnoviju
  []
@@ -778,23 +778,23 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) [2]
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
 
 [3]
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <6> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 135.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 136.
  [4] <img/spark-stack.png, id=38, 304.9794pt x 143.5764pt>
 File: img/spark-stack.png Graphic file (type png)
 
 <use img/spark-stack.png>
-Package pdftex.def Info: img/spark-stack.png used on input line 151.
+Package pdftex.def Info: img/spark-stack.png used on input line 152.
 (pdftex.def)             Requested size: 284.52756pt x 133.95186pt.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 152.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 153.
 
-Overfull \hbox (3.61002pt too wide) in paragraph at lines 158--159
+Overfull \hbox (3.61002pt too wide) in paragraph at lines 159--160
 []\T1/ptm/m/n/12 - omogu¢uje rad s bilo kakvim struk-turi-ranim po-datcima, pri
 m-jerice JSON.
  []
@@ -805,60 +805,66 @@ Chapter 2.
 File: img/cluster-overview.png Graphic file (type png)
 
 <use img/cluster-overview.png>
-Package pdftex.def Info: img/cluster-overview.png used on input line 176.
+Package pdftex.def Info: img/cluster-overview.png used on input line 177.
 (pdftex.def)             Requested size: 284.52756pt x 136.53606pt.
  [7
 
  <./img/cluster-overview.png>]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <6> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 191.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 192.
  [8]
 
 Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 267.
+(caption)                outside box or environment on input line 268.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
+Underfull \hbox (badness 10000) in paragraph at lines 272--272
 [][]\T1/ptm/m/n/10 Nije za-pravo u tom trenutku se ni²ta do-godilo nego tek nak
 on poziva metode
  []
 
-[9] [10]
-Underfull \hbox (badness 1895) in paragraph at lines 336--337
+[9]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <12> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 300.
+
+Overfull \hbox (54.90247pt too wide) in paragraph at lines 296--307
+ [][] 
+ []
+
+[10]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 320.
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--332
+
+ []
+
+[11]
+Underfull \hbox (badness 1895) in paragraph at lines 374--375
 \T1/ptm/m/n/12 Ovdje imamo 4 RDD-a: \T1/pcr/m/n/12 ulaz\T1/ptm/m/n/12 , \T1/pcr
 /m/n/12 burze\T1/ptm/m/n/12 , \T1/pcr/m/n/12 indexi \T1/ptm/m/n/12 i \T1/pcr/m/
 n/12 burzeUnijaIndexi\T1/ptm/m/n/12 .
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 336--337
+Underfull \hbox (badness 1565) in paragraph at lines 374--375
 \T1/ptm/m/n/12 RDD \T1/pcr/m/n/12 burze \T1/ptm/m/n/12 i RDD \T1/pcr/m/n/12 ind
 exi \T1/ptm/m/n/12 su kreirani na temelju RDD-a \T1/pcr/m/n/12 ulaz\T1/ptm/m/n/
 12 . RDD
  []
 
-<img/burzeUnijaIndexiRDD.png, id=62, 639.38875pt x 445.665pt>
+<img/burzeUnijaIndexiRDD.png, id=65, 639.38875pt x 445.665pt>
 File: img/burzeUnijaIndexiRDD.png Graphic file (type png)
 
 <use img/burzeUnijaIndexiRDD.png>
-Package pdftex.def Info: img/burzeUnijaIndexiRDD.png used on input line 340.
+Package pdftex.def Info: img/burzeUnijaIndexiRDD.png used on input line 378.
 (pdftex.def)             Requested size: 284.52756pt x 198.3237pt.
-
-! Undefined control sequence.
-l.345 ... memorije.  Prilikom poziva akcije \textt
-                                                  {burzaUnijaIndexi.first()}...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[11 <./img/burzeUnijaIndexiRDD.png>]
+ [12 <./img/burzeUnijaIndexiRDD.png>] [13]
 Chapter 3.
-[12
+[14
 
-] [13
+] [15
 
 ]
 Dodatak A.
@@ -867,18 +873,18 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-) [14
+) [16
 
-] [15]
+] [17]
 (./zavrsni.aux) ) 
 Here is how much of TeX's memory you used:
- 7842 strings out of 494957
- 108224 string characters out of 6180029
- 329914 words of memory out of 5000000
- 10894 multiletter control sequences out of 15000+600000
- 84857 words of font info for 106 fonts, out of 8000000 for 9000
+ 7855 strings out of 494957
+ 108450 string characters out of 6180029
+ 329916 words of memory out of 5000000
+ 10905 multiletter control sequences out of 15000+600000
+ 86215 words of font info for 110 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 43i,8n,51p,1193b,1669s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,10n,51p,1193b,1669s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
 sr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dis
@@ -889,10 +895,10 @@ ic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
 live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on zavrsni.pdf (19 pages, 210525 bytes).
+Output written on zavrsni.pdf (21 pages, 214897 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 119 PDF objects out of 1000 (max. 8388607)
+ 80 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

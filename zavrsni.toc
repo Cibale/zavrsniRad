@@ -10,6 +10,7 @@
 \contentsline {subsection}{\numberline {2.1.1}Osnovni elementi aplikacije}{7}
 \contentsline {subsection}{\numberline {2.1.2}Programiranje u Javi}{7}
 \contentsline {section}{\numberline {2.2}Programiranje s RDD-ovima}{10}
-\contentsline {chapter}{\numberline {3}Zaklju\IeC {\v c}ak}{12}
-\contentsline {chapter}{Literatura}{13}
-\contentsline {chapter}{Dodatak \numberline {A}Postavljanje datoteke pom.xml}{14}
+\contentsline {section}{\numberline {2.3}Kratki pregled}{13}
+\contentsline {chapter}{\numberline {3}Zaklju\IeC {\v c}ak}{14}
+\contentsline {chapter}{Literatura}{15}
+\contentsline {chapter}{Dodatak \numberline {A}Postavljanje datoteke pom.xml}{16}

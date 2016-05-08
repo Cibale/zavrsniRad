@@ -6,6 +6,7 @@
 \renewcommand{\figurename}{Slika}
 \renewcommand{\contentsname}{Sadržaj}
 \renewcommand{\appendixname}{Dodatak}
+\renewcommand\tablename{Tablica}
 \renewcommand\bibname{Literatura}
 \renewcommand\bibtoc{Literatura}
 \renewcommand{\lstlistingname}{Primjer}
@@ -287,9 +288,46 @@ JavaRDD<String> rijeci = ulaz.flatMap(redak -> Arrays.asList(" "));
 \section{Programiranje s RDD-ovima}
 \emph{Resilient distributed dataset} (RDD) je osnovna podatkovna struktura Spark-a. To je \emph{nepromjenjiva} \engl{immutable} kolekcija podataka. To znači da se iz jednog RDD-a može jedino napraviti drugi RDD, a ne može se promijeniti postojeći RDD. U prethodnom primjeru to vidimo pri pozivu metode \texttt{flatMap}. Ta metoda transformira postojeći RDD \texttt{ulaz} u novi RDD \texttt{rijeci}. Sličnu transformaciju radi i metoda \texttt{mapToPair}. Drugim riječima, \emph{transformacija} \engl{transformation} je svaka metoda koja iz jednog RDD-a kreira drugi RDD. Uz transformacije, postoje i \emph{akcije} \engl{actions}. Akcije se razlikuju od transformacija po tome što ne vraćaju novi RDD nego vraćaju jedan ili više elemenata iz nekog RDD-a, ili kao u našem primjeru s brojanjem riječi, zapisuju RDD u obliku tekstualne datoteke - metoda \texttt{saveAsTextFile}.
 
-U tablici u nastavku je popis nekih osnovnih transformacija i akcija.
-%TODO Tablica transformacija i akcija
+U tablici \ref{tbl:transformacije} mogu se naći neke od mogućih transformacija i njihovi opisi, a u tablici \ref{tbl:akcije} nalaze se akcije koje je moguće pozvati zajedno s odgovarajućim opisima.
+\begin{table}[htb]
+\caption{Neke od transformacija}
+\label{tbl:transformacije}
+\centering
+\begin{tabular}{lp{10cm}} 
+\hline
+Transformacija & Opis \\
+\hline
+\texttt{map(\emph{func})} & Vraća novi RDD nastao tako što je svaki element orginalnog RDD-a predan funckiji \emph{func}. \\
+\texttt{filter(\emph{func})} & Vraća novi RDD nastao tako što su iz orginalnog RDD-a preuzeti samo oni elementi za koje funkcija \emph{func} vraća \texttt{true}. \\
+\texttt{flatMap(\emph{func})} & Slično kao \texttt{map(\emph{func})}, ali jedan ulazni element kreira 0 ili više izlaznih elemenata. \\
+\texttt{union(\emph{drugiRDD})} & Vraća uniju između RDD-a nad kojim je akcija pozana i RDD-a koji je predan kao argument. \\
+\texttt{intersection(\emph{drugiRDD})} & Vraća presjek između RDD-a nad kojim je akcija pozana i RDD-a koji je predan kao argument. \\
+\hline
+\end{tabular}
+\end{table}
 
+Za opis ostalih transformacija, pogledati \url{http://spark.apache.org/docs/latest/programming-guide.html#transformations}.
+\newpage
+\begin{table}[htb]
+\scriptsize
+\caption{Akcije}
+\label{tbl:akcije}
+\centering
+\begin{tabular}{lp{10cm}} 
+\hline
+Akcija & Opis \\
+\hline
+\texttt{reduce(\emph{func})} & Agregacija elemenata iz RDD-a tako što se nad dva elementa pozove funkcije \emph{func}, a ta funkcija vrati jedan element. Funkcija \emph{func} bi trebala biti komutativna i asocijativna kako bi se pravilno izvršavala u paralelnoj obradi podataka.\\
+\texttt{collect()} & Vraća polje svih elemenata iz RDD-a direktno u \emph{driver} program. Budući da je tih elemenata puno, u praksi se poziva nakon transformacije \texttt{filter()}. \\
+\texttt{count()} & Vraća broj elemenata u RDD-u \\
+\texttt{take(\emph{n})} & Vraća polje prvih \emph{n} elemenata iz RDD-a. \\
+\texttt{first()} & Vraća prvi element iz RDD-a. Može se ostvariti i pozivom metode  \texttt{take(\emph{1})}\\
+\hline
+\end{tabular}
+\end{table}
+Za opis ostalih akcija, pogledati \url{http://spark.apache.org/docs/latest/programming-guide.html#actions}.
+\\
+\\
 Budući da se radi o velikoj količini podataka, evaluacija transformacija je \emph{lijena} \engl{lazy evaluation}. To znači da Spark samo pamti koje sve transformacije treba napraviti nad RDD-ovima, ali ne i da ih odmah odradi. Sve potrebne transformacije budu napravljene tek pozivom prve akcije. 
 
 U nastavku slijedi primjer koji iz datoteke \texttt{logfile.txt} broji koliko puta je zahtjev bio na URL koji u sebi sadrži riječ "burza" i koliko je puta došao zahtjev na URL koji u sebi sadrži riječ "index". Njihova unija je također izračunata.
@@ -342,23 +380,43 @@ Ovdje imamo 4 RDD-a: \texttt{ulaz}, \texttt{burze}, \texttt{indexi} i \texttt{bu
 \label{fig:burzeUnijaIndexiRDD}
 \end{figure}
 
-Tek prilikom poziva akcije \texttt{burzaUnijaIndexi.count()} se zapravo kreira RDD \texttt{ulaz}, na temelju njega RDD \texttt{burza} i RDD \texttt{indexi} i onda tek na temelju njih se kreira RDD \texttt{burzaUnijaIndexi} te se tek onda računa ukupni broj linija u tom RDD-u. Nakon što se to izračuna, svi RDD-ovi nestaju iz memorije.  Prilikom poziva akcije \textt{burzaUnijaIndexi.first()} \textbf{ponovno} se kreiraju prethodno navedeni RDD-i i sve ide iz početka.
+Tek prilikom poziva akcije \texttt{burzaUnijaIndexi.count()} se zapravo kreira RDD \texttt{ulaz}, na temelju njega RDD \texttt{burza} i RDD \texttt{indexi} i onda tek na temelju njih se kreira RDD \texttt{burzaUnijaIndexi} te se tek onda računa ukupni broj linija u tom RDD-u. Nakon što se to izračuna, svi RDD-ovi nestaju iz memorije.  Prilikom poziva akcije \texttt{burzeUnijaIndexi.first()} \textbf{ponovno} se kreiraju prethodno navedeni RDD-i i sve ide iz početka.
 
-Na prvi pogled ovo izgleda kao loša implementacija, ali budući da se ovdje radi o velikoj količini podataka i ne možemo ih nikako sve pohraniti u memoriju, ovo je zapravo logična implementacija. Ukoliko ne želimo svaki puta iz početka računati i kreirati RDD \texttt{burzaUnijaIndexi}, trebamo ga \texttt{perzistirati} pozivom metode \texttt{persist()}, odnosno spremiti ga u memoriju ili na disk. Ako ga imamo spremljenog, ne treba ga ponovno računati. Razine perzistencije dane su u tablici u nastavku.  
+Na prvi pogled ovo izgleda kao loša implementacija, ali budući da se ovdje radi o velikoj količini podataka i ne možemo ih nikako sve pohraniti u memoriju, ovo je zapravo logična implementacija. Ukoliko ne želimo svaki puta iz početka računati i kreirati RDD \texttt{burzaUnijaIndexi}, trebamo ga \texttt{perzistirati} pozivom metode \texttt{persist()} i predavanjem odgovarajućeg parametra (pogledati tablicu \ref{tbl:razinePerzistencije}), odnosno spremiti ga u memoriju ili na disk. Ako ga imamo spremljenog, ne treba ga ponovno računati. Razine perzistencije dane su u tablici u \ref{tbl:razinePerzistencije}.  
 
-%TODO Tablica perzistencije
+\begin{table}[htb]
+\scriptsize
+\caption{Razine perzistencije}
+\label{tbl:razinePerzistencije}
+\centering
+\begin{tabular}{lllll} 
+\hline
+Razina & Prostorno zauzeće & Procesorsko vrijeme & U memoriji & Na disku\\
+\hline
+\texttt{MEMORY\_ONLY} & Visoko & Nisko & Da & Ne  \\
+\texttt{MEMORY\_ONLY\_SER} & Nisko & Visoko & Da & Ne  \\
+\texttt{MEMORY\_AND\_DISK} & Visoko & Srednje & Dio & Dio \\
+\texttt{MEMORY\_AND\_DISK\_SER} & Nisko & Visoko & Dio & Dio \\
+\texttt{DISK\_ONLY} & Nisko & Visoko & Ne & Da \\
+\hline
+\end{tabular}
+\end{table}
 
+\section{Kratki pregled}
+U ovom poglavlju smo postavili temelje nad kojima ćemo kasnije graditi složenije aplikacije. Vrlo je važno da čitatelj jasno razumije što je to RDD jer bez toga nema smisla dalje pratiti ovaj rad. Dan je pregled osnovnih transformacija i akcija koje zapravo, uz RDD, čine jezgru tehnologije \emph{Apache Spark}. Također je uveden i pojam perzistencije za efektivniji rad s RDD-ovima.
 \chapter{Zaključak} 
 Zaključak.
 
 \begin{thebibliography}{9}
+\bibitem{officialDocumentation}
+  Službena dokumentacija projekta \emph{Apache Spark} \url{http://spark.apache.org/docs/latest/}
+\bibitem{learningSpark}
+  Holden Karau, Andy Konwinski, Patrick Wendell i Matei Zaharia
+  \emph{Learning Spark, lighting-fast}
 \bibitem{marcupic}
   Marko Čupić,
   \emph{Programiranje u Javi},
   verzija 0.3.26
-\bibitem{learningSpark}
-  Holden Karau, Andy Konwinski, Patrick Wendell i Matei Zaharia
-  \emph{Learning Spark, lighting-fast}
 \bibitem{latexPredlozak}
   Ivan Krišto, Boran Car, Mateja Čuljak, Vedrana Janković, Hrvoje Bandov
   \emph{Upute za korištenje \LaTeX predloška za Završni i Diplomski rad te seminar},
