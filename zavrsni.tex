@@ -14,6 +14,7 @@
  basicstyle=\tiny\tt,
  showspaces=false,
  showstringspaces=false,
+ breaklines=true
  %inputencoding=utf8x
  %literate={č}{{\'c}}1 {ć}{{\~c}}1 {š}{{\'s}}1 {ž}{{\'z}}1 {đ}{{\'d}}1
  }
@@ -251,6 +252,8 @@ public class BrojanjeRijeci {
 }
 \end{lstlisting}
 \captionof{lstlisting}{Program koji broji koliko se puta koja riječ pojavljuje u datoteci.}
+
+\vspace{5mm}
 
 Analizirajmo što smo napravili. Inicijalizirali smo \emph{SparkContext} tako što smo rekli da se odvija na lokalnom računalu i zadali smo ime aplikacije. Zatim smo kreirali RDD iz tekstualne datoteke koja je predana kao argument naredbenog retka. Taj RDD nam je poslužio za kreiranje novog RDD-a koji je nastao tako što smo svaki redak razdvojili po razmaku i kreirali uređeni par (\emph{riječ}, 1). U tom uređenom paru nam \emph{riječ} predstavlja ključ, a 1 predstavlja vrijednost. Odnosno, uređeni par je oblika (\emph{ključ}, \emph{vrijednost}). Zatim smo iz tako uređenih parova, one koji imaju jednaki ključ zbrojili po vrijednostima i u tom trenutku\footnote{Nije zapravo u tom trenutku se ništa dogodilo nego tek nakon poziva metode \texttt{saveAsTextFile()}, ali o \emph{lijenoj evaluaciji} \engl{lazy evaluation} će biti govora tek kasnije.} nije više postojalo dva uređena para koji imaju jednake ključeve. Na kraju smo rezultat zapisali i eksplicitno zatvorili \emph{SparkContext}. Budući da se \emph{SparkContext} implicitno zatvori na kraju metode \texttt{main}, više ga nećemo eksplicitno zatvarati osim kada to bude potrebno.
 
