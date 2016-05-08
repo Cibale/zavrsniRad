@@ -6,6 +6,17 @@
 \renewcommand{\figurename}{Slika}
 \renewcommand{\contentsname}{Sadržaj}
 \renewcommand{\appendixname}{Dodatak}
+\renewcommand\bibname{Literatura}
+\renewcommand\bibtoc{Literatura}
+\renewcommand{\lstlistingname}{Primjer}
+\captionsetup[lstlisting]{position=bottom}
+\lstset{language=Java,
+ basicstyle=\tiny\tt,
+ showspaces=false,
+ showstringspaces=false,
+ %inputencoding=utf8x
+ %literate={č}{{\'c}}1 {ć}{{\~c}}1 {š}{{\'s}}1 {ž}{{\'z}}1 {đ}{{\'d}}1
+ }
 \begin{document}
 
 % TODO: Navedite broj rada.
@@ -93,7 +104,7 @@ drwxr-xr-x 2 mmatak mmatak    4096 Feb 27 06:02 sbin
 
 \begin{description}
 \item[\emph{README.md} ]Sadrži kratke instrukcije za upoznavanje sa Spark-om.
-\item[\emph{bin} ]Sadrži izvršive datoteke koje se koriste za interaktivni rad sa Spark-om.\\Zanimljivo je spomenuti da postoji interaktivna ljuska \emph{Spark shell} za programske jezike \emph{Python} i \emph{Scala}. Datoteke u ovom direktorij služe upravo za to. Budući da je ovaj rad ograničen isključivo na programski jezik \emph{Java}, ovaj dio neće biti detaljnije obrađen.
+\item[\emph{bin} ]Sadrži izvršive datoteke koje se koriste za interaktivni rad sa Spark-om.\\Zanimljivo je spomenuti da postoji interaktivna ljuska \emph{Spark shell} isključivo za programske jezike \emph{Python} i \emph{Scala}. Datoteke u ovom direktoriju služe upravo za to. Budući da je ovaj rad ograničen isključivo na programski jezik \emph{Java}, a u ovom trenutku takva interaktivna ljuska još ne postoji, ovaj dio neće biti detaljnije obrađen.
 \item[\emph{core, streaming, python, ...} ]Sadrži glavne komponente projekta \emph{Apache Spark} 
 \item[\emph{examples} ]Sastoji se od nekoliko jednostavnih primjera koje pomažu korisniku da se uhoda i što bezbolnije nauči koristiti odgovarajući API.
 \end{description}
@@ -161,39 +172,128 @@ groupId = org.apache.spark
 artifactId = spark-core_2.10
 version = 1.6.1
 \end{lstlisting}
-Odgovarajuća \texttt{pom.xml} datoteka nalazi se u dodatku \ref{ch:datotekapomXML}.
 
-Jednom kada smo namjestili \texttt{pom.xml} datoteku i povezali se s \texttt{spark-core}, sve što trebamo još napraviti je inicijalizirati \emph{SparkContext} i napisati prvu aplikaciju. U nastavku je jednostavna aplikacija koja jedino što radi je broji koliko riječi ima u tekstualnoj datoteci.
+Odgovarajuća \texttt{pom.xml} datoteka nalazi se u dodatku \ref{ch:datotekapomXML}.
+Jednom kada smo namjestili \texttt{pom.xml} datoteku i povezali se s \texttt{spark-core}, sve što trebamo još napraviti je inicijalizirati \emph{SparkContext} i napisati prvu aplikaciju. U nastavku slijedi jednostavna aplikacija koja jedino što radi je broji koliko puta se pojedina riječ pojavljuje u tekstualnoj datoteci.
+\begin{lstlisting}[numbers=left]
+/**
+ *
+ */
+package hr.fer.zemris;
+
+import java.util.Arrays;
+
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
+import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.api.java.function.FlatMapFunction;
+import org.apache.spark.api.java.function.Function2;
+import org.apache.spark.api.java.function.PairFunction;
+
+import scala.Tuple2;
+
+/**
+ * Razred ima svrhu prikazati osnovnu funkcionalnost Spark tehnologije na
+ * primjeru prebrojavanja riječi u tekstualnoj datoteci. Kao rezultat program će
+ * zapisati u tekstualnu datoteku koja riječ se koliko puta ponavlja. Očekuje se
+ * dva argumenta kroz naredbeni redak, a to su putanja do tekstualne datoteke u
+ * kojoj treba izbrojati riječi i putanja do direktorija u koji će se zapisati
+ * rezultat.
+ *
+ * @author mmatak
+ *
+ */
+public class BrojanjeRijeci {
+	/**
+	 * Metoda koja se pokrene kada se pokrene program. Očekuje putanju do
+	 * datoteke s riječima i putanju do direktorija gdje će zapisati rezultat
+	 * izvođenja programa.
+	 *
+	 * @param args
+	 *            Argumenti naredbenog retka.
+	 */
+	@SuppressWarnings("serial")
+	public static void main(String[] args) {
+		String ulaznaDatoteka = args[0];
+		String izlazniDirektorij = args[1];
+
+		// inicijalizacija SparkContext-a
+		SparkConf conf = new SparkConf().setMaster("local").setAppName("Brojanje rijeci");
+		JavaSparkContext sc = new JavaSparkContext(conf);
+
+		// učitavanje podataka
+		JavaRDD<String> ulaz = sc.textFile(ulaznaDatoteka);
+
+		// razmak se koristi da bi razdvojio dvije riječi
+		JavaRDD<String> rijeci = ulaz.flatMap(new FlatMapFunction<String, String>() {
+			public Iterable<String> call(String redak) {
+				return Arrays.asList(redak.split(" "));
+			}
+		});
+
+		// transformiraj u parove (rijec,1) i broji
+		JavaPairRDD<String, Integer> brojRijeci = rijeci.mapToPair(new PairFunction<String, String, Integer>() {
+			public Tuple2<String, Integer> call(String rijec) {
+				return new Tuple2<String, Integer>(rijec, 1);
+			}
+		}).reduceByKey(new Function2<Integer, Integer, Integer>() {
+			public Integer call(Integer x, Integer y) {
+				return x + y;
+			}
+		});
+
+		// spremi rezultat u izlaznu datoteku
+		brojRijeci.saveAsTextFile(izlazniDirektorij);
+		// zatvori "tunel" odnosno SparkContext
+		sc.close();
+	}
+}
+\end{lstlisting}
+\captionof{lstlisting}{Program koji broji koliko se puta koja riječ pojavljuje u datoteci.}
+
+Analizirajmo što smo napravili. Inicijalizirali smo \emph{SparkContext} tako što smo rekli da se odvija na lokalnom računalu i zadali smo ime aplikacije. Zatim smo kreirali RDD iz tekstualne datoteke koja je predana kao argument naredbenog retka. Taj RDD nam je poslužio za kreiranje novog RDD-a koji je nastao tako što smo svaki redak razdvojili po razmaku i kreirali uređeni par (\emph{riječ}, 1). U tom uređenom paru nam \emph{riječ} predstavlja ključ, a 1 predstavlja vrijednost. Odnosno, uređeni par je oblika (\emph{ključ}, \emph{vrijednost}). Zatim smo iz tako uređenih parova, one koji imaju jednaki ključ zbrojili po vrijednostima i u tom trenutku\footnote{Nije zapravo u tom trenutku se ništa dogodilo nego tek nakon poziva metode \texttt{saveAsTextFile()}, ali o \emph{lijenoj evaluaciji} \engl{lazy evaluation} će biti govora tek kasnije.} nije više postojalo dva uređena para koji imaju jednake ključeve. Na kraju smo rezultat zapisali i eksplicitno zatvorili \emph{SparkContext}. Budući da se \emph{SparkContext} implicitno zatvori na kraju metode \texttt{main}, više ga nećemo eksplicitno zatvarati osim kada to bude potrebno.
+
 \section{Programiranje s RDD-ovima}
 
 
 \chapter{Zaključak}
 Zaključak.
 
-\bibliography{literatura}
-\bibliographystyle{fer}
+\begin{thebibliography}{9}
+\bibitem{marcupic}
+  Marko Čupić,
+  \emph{Programiranje u Javi},
+  verzija 0.3.26
+\bibitem{learningSpark}
+  Holden Karau, Andy Konwinski, Patrick Wendell i Matei Zaharia
+  \emph{Learning Spark, lighting-fast}
+\bibitem{latexPredlozak}
+  Ivan Krišto, Boran Car, Mateja Čuljak, Vedrana Janković, Hrvoje Bandov
+  \emph{Upute za korištenje \LaTeX predloška za Završni i Diplomski rad te seminar},
+  godina 2010.
+\end{thebibliography}
 
 \newpage
 % Dodatak nije obavezan
 \begin{appendices}
 \chapter{Postavljanje datoteke pom.xml}
 \label{ch:datotekapomXML}
-Datoteka koja je potrebna kako bi Maven ispravno dohvatio artifakt \texttt{spark-core} bi trebala izgledati slično kao što je dano u nastavku. Za ispravno funkcioniranje, trebala bi se zvati \texttt{pom.xml} i nalaziti se direktno u direktoriju \texttt{src}.
+Datoteka koja je potrebna kako bi Maven ispravno dohvatio artifakt \texttt{spark-core} bi trebala izgledati slično kao što je dano u nastavku. Za ispravno funkcioniranje, trebala bi se zvati \texttt{pom.xml}.
 \begin{lstlisting}[language=XML]
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>hr.fer.zemris</groupId>
-  <artifactId>Prva Spark aplikacija</artifactId>
-  <packaging>jar</packaging>
-  <version>1</version>
-  <name>Prva Spark aplikacija</name>	
-  <url>http://maven.apache.org</url>
+  <artifactId>Prvi-programi</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Prvi programi</name>
+  <description>Prvi programi u Spark-u</description>
   <dependencies>
-    <dependency>
-	<groupId>org.apache.spark</groupId>
-	<artifactId>spark-core_2.10</artifactId>
-	<version>1.6.1</version>
-    </dependency>
+  	<dependency>
+  		<groupId>org.apache.spark</groupId>
+  		<artifactId>spark-core_2.10</artifactId>
+  		<version>1.6.1</version>
+  	</dependency>
   </dependencies>
 </project>
 \end{lstlisting}
