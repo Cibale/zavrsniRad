@@ -15,9 +15,20 @@
  showspaces=false,
  showstringspaces=false,
  breaklines=true
- %inputencoding=utf8x
- %literate={č}{{\'c}}1 {ć}{{\~c}}1 {š}{{\'s}}1 {ž}{{\'z}}1 {đ}{{\'d}}1
  }
+\lstset{
+    literate=%
+    {ć}{{\'c}}1
+    {č}{{\v{c}}}1
+    {đ}{{\dj{}}}1
+    {š}{{\v{s}}}1
+    {ž}{{\v{z}}}1
+    {Ć}{{\'C}}1
+    {Č}{{\v{C}}}1
+    {Đ}{{\DJ{}}}1
+    {Š}{{\v{S}}}1
+    {Ž}{{\v{Z}}}1
+}
 \begin{document}
 
 % TODO: Navedite broj rada.
@@ -220,7 +231,8 @@ public class BrojanjeRijeci {
 		String izlazniDirektorij = args[1];
 
 		// inicijalizacija SparkContext-a
-		SparkConf conf = new SparkConf().setMaster("local").setAppName("Brojanje rijeci");
+		SparkConf conf = new SparkConf().setMaster("local")
+		.setAppName("Brojanje rijeci");
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
 		// učitavanje podataka
@@ -234,7 +246,8 @@ public class BrojanjeRijeci {
 		});
 
 		// transformiraj u parove (rijec,1) i broji
-		JavaPairRDD<String, Integer> brojRijeci = rijeci.mapToPair(new PairFunction<String, String, Integer>() {
+		JavaPairRDD<String, Integer> brojRijeci = rijeci
+		.mapToPair(new PairFunction<String, String, Integer>() {
 			public Tuple2<String, Integer> call(String rijec) {
 				return new Tuple2<String, Integer>(rijec, 1);
 			}
@@ -257,10 +270,85 @@ public class BrojanjeRijeci {
 
 Analizirajmo što smo napravili. Inicijalizirali smo \emph{SparkContext} tako što smo rekli da se odvija na lokalnom računalu i zadali smo ime aplikacije. Zatim smo kreirali RDD iz tekstualne datoteke koja je predana kao argument naredbenog retka. Taj RDD nam je poslužio za kreiranje novog RDD-a koji je nastao tako što smo svaki redak razdvojili po razmaku i kreirali uređeni par (\emph{riječ}, 1). U tom uređenom paru nam \emph{riječ} predstavlja ključ, a 1 predstavlja vrijednost. Odnosno, uređeni par je oblika (\emph{ključ}, \emph{vrijednost}). Zatim smo iz tako uređenih parova, one koji imaju jednaki ključ zbrojili po vrijednostima i u tom trenutku\footnote{Nije zapravo u tom trenutku se ništa dogodilo nego tek nakon poziva metode \texttt{saveAsTextFile()}, ali o \emph{lijenoj evaluaciji} \engl{lazy evaluation} će biti govora tek kasnije.} nije više postojalo dva uređena para koji imaju jednake ključeve. Na kraju smo rezultat zapisali i eksplicitno zatvorili \emph{SparkContext}. Budući da se \emph{SparkContext} implicitno zatvori na kraju metode \texttt{main}, više ga nećemo eksplicitno zatvarati osim kada to bude potrebno.
 
+Kako je ovo bio početni primjer, \emph{lambda} izrazi koji su uobičajeni za programski jezik \emph{Java 8} nisu korišteni iz razloga da bi čitatelj mogao lakše shvatiti što se sve treba implementirati. Odgovarajući kod koristeći lambda izraze bi izgledao ovako:
+\vspace{5mm}
+\begin{lstlisting}
+// razmak se koristi da bi razdvojio dvije riječi
+JavaRDD<String> rijeci = ulaz.flatMap(redak -> Arrays.asList(" "));
+
+// transformiraj u parove (rijec,1) i broji
+		JavaPairRDD<String, Integer> brojRijeci = rijeci
+				.mapToPair(rijec -> new Tuple2<String, Integer>(rijec, 1))
+				.reduceByKey((x, y) -> x + y);
+\end{lstlisting}
+\vspace{5mm}
+\captionof{lstlisting}{Brojanje riječi koristeći lambda izraze.}
+
 \section{Programiranje s RDD-ovima}
+\emph{Resilient distributed dataset} (RDD) je osnovna podatkovna struktura Spark-a. To je \emph{nepromjenjiva} \engl{immutable} kolekcija podataka. To znači da se iz jednog RDD-a može jedino napraviti drugi RDD, a ne može se promijeniti postojeći RDD. U prethodnom primjeru to vidimo pri pozivu metode \texttt{flatMap}. Ta metoda transformira postojeći RDD \texttt{ulaz} u novi RDD \texttt{rijeci}. Sličnu transformaciju radi i metoda \texttt{mapToPair}. Drugim riječima, \emph{transformacija} \engl{transformation} je svaka metoda koja iz jednog RDD-a kreira drugi RDD. Uz transformacije, postoje i \emph{akcije} \engl{actions}. Akcije se razlikuju od transformacija po tome što ne vraćaju novi RDD nego vraćaju jedan ili više elemenata iz nekog RDD-a, ili kao u našem primjeru s brojanjem riječi, zapisuju RDD u obliku tekstualne datoteke - metoda \texttt{saveAsTextFile}.
 
+U tablici u nastavku je popis nekih osnovnih transformacija i akcija.
+%TODO Tablica transformacija i akcija
 
-\chapter{Zaključak}
+Budući da se radi o velikoj količini podataka, evaluacija transformacija je \emph{lijena} \engl{lazy evaluation}. To znači da Spark samo pamti koje sve transformacije treba napraviti nad RDD-ovima, ali ne i da ih odmah odradi. Sve potrebne transformacije budu napravljene tek pozivom prve akcije. 
+
+U nastavku slijedi primjer koji iz datoteke \texttt{logfile.txt} broji koliko puta je zahtjev bio na URL koji u sebi sadrži riječ "burza" i koliko je puta došao zahtjev na URL koji u sebi sadrži riječ "index". Njihova unija je također izračunata.
+ 
+\vspace{5mm}
+\begin{lstlisting}
+package hr.fer.zemris;
+
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.JavaSparkContext;
+
+public class Primjer3 {
+	public static void main(String[] args) {
+		// inicijalizacija SparkContext-a
+		SparkConf conf = new SparkConf().setMaster("local")
+				.setAppName("Brojanje rijeci");
+		JavaSparkContext sc = new JavaSparkContext(conf);
+
+		// učitavanje podataka
+		JavaRDD<String> ulaz = sc.textFile("logfile.txt");
+
+		// transformacije
+		JavaRDD<String> burze = ulaz.filter(redak -> redak.contains("burza"));
+		JavaRDD<String> indexi = ulaz.filter(redak -> redak.contains("index"));
+		JavaRDD<String> burzeUnijaIndexi = burze.union(indexi);
+
+		// akcije
+		long brojLinija = burzeUnijaIndexi.count();
+		long ukupanBrojLinija = ulaz.count();
+		System.out.println(
+				"Broj linija koje sadrže riječ 'burza' ili 'index' je: "
+						+ brojLinija + ", odnosno "
+						+ (double) 100 * brojLinija / ukupanBrojLinija + "%.");
+		System.out.println(
+				"Prva linija koja sadrži riječ 'burza' ili 'index' je: \n"
+						+ burzeUnijaIndexi.first());
+	}
+}
+\end{lstlisting}
+\captionof{lstlisting}{Korištenje transformacija i akcija.}
+\vspace{5mm}
+
+Ovdje imamo 4 RDD-a: \texttt{ulaz}, \texttt{burze}, \texttt{indexi} i \texttt{burzeUnijaIndexi}. RDD \texttt{burze} i RDD \texttt{indexi} su kreirani na temelju RDD-a \texttt{ulaz}. RDD \texttt{burzeUnijaIndexi} je kreiran na temelju RDD-a \texttt{burze} i na temelju RDD-a \texttt{indexi}. U nastavku je graf koji to opisuje.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=10cm]{img/burzeUnijaIndexiRDD.png}
+\caption{Transformacije nad RDD-ovima.}
+\label{fig:burzeUnijaIndexiRDD}
+\end{figure}
+
+Tek prilikom poziva akcije \texttt{burzaUnijaIndexi.count()} se zapravo kreira RDD \texttt{ulaz}, na temelju njega RDD \texttt{burza} i RDD \texttt{indexi} i onda tek na temelju njih se kreira RDD \texttt{burzaUnijaIndexi} te se tek onda računa ukupni broj linija u tom RDD-u. Nakon što se to izračuna, svi RDD-ovi nestaju iz memorije.  Prilikom poziva akcije \textt{burzaUnijaIndexi.first()} \textbf{ponovno} se kreiraju prethodno navedeni RDD-i i sve ide iz početka.
+
+Na prvi pogled ovo izgleda kao loša implementacija, ali budući da se ovdje radi o velikoj količini podataka i ne možemo ih nikako sve pohraniti u memoriju, ovo je zapravo logična implementacija. Ukoliko ne želimo svaki puta iz početka računati i kreirati RDD \texttt{burzaUnijaIndexi}, trebamo ga \texttt{perzistirati} pozivom metode \texttt{persist()}, odnosno spremiti ga u memoriju ili na disk. Ako ga imamo spremljenog, ne treba ga ponovno računati. Razine perzistencije dane su u tablici u nastavku.  
+
+%TODO Tablica perzistencije
+
+\chapter{Zaključak} 
 Zaključak.
 
 \begin{thebibliography}{9}
