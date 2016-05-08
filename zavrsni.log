@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  9 MAY 2016 00:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  9 MAY 2016 00:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -828,27 +828,24 @@ on poziva metode
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <12> not available
 (Font)              Font shape `T1/pcr/m/sl' tried instead on input line 300.
 
-Overfull \hbox (54.90247pt too wide) in paragraph at lines 296--307
- [][] 
+Underfull \hbox (badness 5161) in paragraph at lines 301--302
+[]\T1/ptm/m/n/12 Vra¢a novi RDD nas-tao tako ²to su iz
  []
 
 [10]
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 320.
-
-Underfull \hbox (badness 10000) in paragraph at lines 328--332
+Underfull \hbox (badness 10000) in paragraph at lines 327--331
 
  []
 
 [11]
-Underfull \hbox (badness 1895) in paragraph at lines 374--375
+Underfull \hbox (badness 1895) in paragraph at lines 373--374
 \T1/ptm/m/n/12 Ovdje imamo 4 RDD-a: \T1/pcr/m/n/12 ulaz\T1/ptm/m/n/12 , \T1/pcr
 /m/n/12 burze\T1/ptm/m/n/12 , \T1/pcr/m/n/12 indexi \T1/ptm/m/n/12 i \T1/pcr/m/
 n/12 burzeUnijaIndexi\T1/ptm/m/n/12 .
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 374--375
+Underfull \hbox (badness 1565) in paragraph at lines 373--374
 \T1/ptm/m/n/12 RDD \T1/pcr/m/n/12 burze \T1/ptm/m/n/12 i RDD \T1/pcr/m/n/12 ind
 exi \T1/ptm/m/n/12 su kreirani na temelju RDD-a \T1/pcr/m/n/12 ulaz\T1/ptm/m/n/
 12 . RDD
@@ -858,7 +855,7 @@ exi \T1/ptm/m/n/12 su kreirani na temelju RDD-a \T1/pcr/m/n/12 ulaz\T1/ptm/m/n/
 File: img/burzeUnijaIndexiRDD.png Graphic file (type png)
 
 <use img/burzeUnijaIndexiRDD.png>
-Package pdftex.def Info: img/burzeUnijaIndexiRDD.png used on input line 378.
+Package pdftex.def Info: img/burzeUnijaIndexiRDD.png used on input line 377.
 (pdftex.def)             Requested size: 284.52756pt x 198.3237pt.
  [12 <./img/burzeUnijaIndexiRDD.png>] [13]
 Chapter 3.
@@ -878,11 +875,11 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 ] [17]
 (./zavrsni.aux) ) 
 Here is how much of TeX's memory you used:
- 7855 strings out of 494957
- 108450 string characters out of 6180029
+ 7852 strings out of 494957
+ 108417 string characters out of 6180029
  329916 words of memory out of 5000000
- 10905 multiletter control sequences out of 15000+600000
- 86215 words of font info for 110 fonts, out of 8000000 for 9000
+ 10903 multiletter control sequences out of 15000+600000
+ 85478 words of font info for 108 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  43i,10n,51p,1193b,1669s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
@@ -895,7 +892,7 @@ ic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
 live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on zavrsni.pdf (21 pages, 214897 bytes).
+Output written on zavrsni.pdf (21 pages, 215099 bytes).
 PDF statistics:
  119 PDF objects out of 1000 (max. 8388607)
  80 compressed objects within 1 object stream
