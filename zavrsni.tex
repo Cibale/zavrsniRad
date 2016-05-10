@@ -1,16 +1,16 @@
 \documentclass[times, utf8, zavrsni]{fer}
 \usepackage{booktabs}
 \usepackage{listingsutf8}
-\usepackage[titletoc]{appendix}
-\usepackage[page]{appendix}
-\renewcommand{\figurename}{Slika}
-\renewcommand{\contentsname}{Sadržaj}
-\renewcommand{\appendixname}{Dodatak}
-\renewcommand\tablename{Tablica}
-\renewcommand\bibname{Literatura}
-\renewcommand\bibtoc{Literatura}
-\renewcommand{\lstlistingname}{Primjer}
+\usepackage[titletoc,page]{appendix}
 \captionsetup[lstlisting]{position=bottom}
+\addto\captionsenglish{%
+  \renewcommand{\figurename}{Slika}%
+  \renewcommand{\contentsname}{Sadržaj}
+  \renewcommand{\appendixname}{Dodatak}
+  \renewcommand\tablename{Tablica}
+  \renewcommand\bibname{Literatura}
+  \renewcommand{\lstlistingname}{Primjer}
+}
 \lstset{language=Java,
  basicstyle=\tiny\tt,
  showspaces=false,
@@ -33,7 +33,7 @@
 \begin{document}
 
 % TODO: Navedite broj rada.
-\thesisnumber{1337}
+\thesisnumber{1347}
 
 % TODO: Navedite naslov rada.
 \title{Obrada podataka tehnologijom Apache Spark}
@@ -269,7 +269,7 @@ public class BrojanjeRijeci {
 
 \vspace{5mm}
 
-Analizirajmo što smo napravili. Inicijalizirali smo \emph{SparkContext} tako što smo rekli da se odvija na lokalnom računalu i zadali smo ime aplikacije. Zatim smo kreirali RDD iz tekstualne datoteke koja je predana kao argument naredbenog retka. Taj RDD nam je poslužio za kreiranje novog RDD-a koji je nastao tako što smo svaki redak razdvojili po razmaku i kreirali uređeni par (\emph{riječ}, 1). U tom uređenom paru nam \emph{riječ} predstavlja ključ, a 1 predstavlja vrijednost. Odnosno, uređeni par je oblika (\emph{ključ}, \emph{vrijednost}). Zatim smo iz tako uređenih parova, one koji imaju jednaki ključ zbrojili po vrijednostima i u tom trenutku\footnote{Nije zapravo u tom trenutku se ništa dogodilo nego tek nakon poziva metode \texttt{saveAsTextFile()}, ali o \emph{lijenoj evaluaciji} \engl{lazy evaluation} će biti govora tek kasnije.} nije više postojalo dva uređena para koji imaju jednake ključeve. Na kraju smo rezultat zapisali i eksplicitno zatvorili \emph{SparkContext}. Budući da se \emph{SparkContext} implicitno zatvori na kraju metode \texttt{main}, više ga nećemo eksplicitno zatvarati osim kada to bude potrebno.
+Analizirajmo što smo napravili. Inicijalizirali smo \emph{SparkContext} tako što smo rekli da se odvija na lokalnom računalu i zadali smo ime aplikacije. Zatim smo kreirali RDD iz tekstualne datoteke koja je predana kao argument naredbenog retka. Taj RDD nam je poslužio za kreiranje novog RDD-a koji je nastao tako što smo svaki redak razdvojili po razmaku i kreirali uređeni par (\emph{riječ}, 1). U tom uređenom paru nam \emph{riječ} predstavlja ključ, a 1 predstavlja vrijednost. Odnosno, uređeni par je oblika (\emph{ključ}, \emph{vrijednost}). Zatim smo iz tako uređenih parova, one koji imaju jednaki ključ zbrojili po vrijednostima i u tom trenutku\footnote{Nije zapravo u tom trenutku se ništa dogodilo nego tek nakon poziva metode \texttt{saveAsTextFile()}, ali o \emph{lijenoj evaluaciji} \engl{lazy evaluation} će biti govora tek kasnije.} nije više postojalo dva uređena para koji imaju jednake ključeve. Na kraju smo rezultat zapisali i eksplicitno zatvorili \emph{SparkContext}. 
 
 Kako je ovo bio početni primjer, \emph{lambda} izrazi koji su uobičajeni za programski jezik \emph{Java 8} nisu korišteni iz razloga da bi čitatelj mogao lakše shvatiti što se sve treba implementirati. Odgovarajući kod koristeći lambda izraze bi izgledao ovako:
 \vspace{5mm}
@@ -364,6 +364,7 @@ public class Primjer3 {
 		System.out.println(
 				"Prva linija koja sadrži riječ 'burza' ili 'index' je: \n"
 						+ burzeUnijaIndexi.first());
+		sc.close();
 	}
 }
 \end{lstlisting}
@@ -403,6 +404,97 @@ Razina & Prostorno zauzeće & Procesorsko vrijeme & U memoriji & Na disku\\
 
 \section{Kratki pregled}
 U ovom poglavlju smo postavili temelje nad kojima ćemo kasnije graditi složenije aplikacije. Vrlo je važno da čitatelj jasno razumije što je to RDD jer bez toga nema smisla dalje pratiti ovaj rad. Dan je pregled osnovnih transformacija i akcija koje zapravo, uz RDD, čine jezgru tehnologije \emph{Apache Spark}. Također je uveden i pojam perzistencije za efektivniji rad s RDD-ovima.
+
+\chapter{Napredno programiranje}
+\section{Primjer: Analiza PageRank algoritma}
+\subsection{Algoritam}
+Zanimljivo je pitanje kako je \emph{Google} toliko dobar u rezultatima koje dobijemo na naš upit, točnije, kako ispravno sortira po relevantnosti stranice od bolje prema lošijoj? Odgovor na to daje \emph{PageRank} algoritam koji je dobio ime po jednom od osnivača \emph{Google}-a, Larry Pageu. Ovo potpoglavlje ćemo započeti kroz analizu \emph{PageRank} algoritma. Ovdje će biti iznesena pojednostavljena verzija algoritma\footnote{Zainteresiranog čitatelja se upućuje na \url{https://en.wikipedia.org/wiki/PageRank}.} koja je sasvim dovoljna za pobliže upoznavanje sa Sparkom.
+
+Algoritam mjeri koliko je koja stranica važna po tome koliko drugih stranica upućuje na nju. Ideja je jednostavna: što više stranica ima poveznicu na neku stranicu \texttt{N}, to je stranica \texttt{N} važnija i time bolje rangirana. U obzir se uzima i koja stranica pokazuje na stranicu \texttt{N} (je li to stranica na koju sve ostale stranice pokazuju ili je to neka stranica na koju nitko ne pokazuje) kao i na koliko ostalih stranica ta stranica sadrži poveznice (nije isto ako je na cijeloj stranici samo jedna poveznica i ako na cijeloj stranici ima 1000 poveznica). Stranice na koje neka stranica \texttt{M} ima linkove nazivamo \emph{susjedima}.
+
+Pojednostavljena izvedba algoritma je sljedeća:
+\begin{enumerate}
+\item Inicijalizira se rang svake stranice na 1.0.
+\item Svaka stranica \emph{n} svim svojim susjedima šalje doprinos \texttt{rang(\emph{n})/brojSusjeda(\emph{n})}.
+\item Postavi ukupni rang stranice prema formuli: $0.15 + 0.85*\emph{ukupan primljeni doprinos}$.
+\end{enumerate}
+
+Posljednja dva koraka se odrade nekoliko puta kako bi se dobio što precizniji rezultat, u praksi je dovoljno desetak puta.
+
+Implementacija algoritma dana je u primjeru ispod.
+
+\vspace{5mm}
+\begin{lstlisting}[numbers=left, label={lst:pagerank}]
+package hr.fer.zemris.naprednoProgramiranje;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
+import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.JavaSparkContext;
+
+import com.google.common.collect.Iterables;
+
+import scala.Tuple2;
+
+public class PageRankAlgoritam {
+	private static final String ULAZNA_DATOTEKA = "pageRankInput.txt";
+	private static final int BROJ_ITERACIJA = 10;
+
+	public static void main(String[] args) {
+
+		// Inicijalizacija SparkContext-a.
+		SparkConf conf = new SparkConf().setMaster("local")
+				.setAppName("Brojanje rijeci");
+		JavaSparkContext sc = new JavaSparkContext(conf);
+
+		// Učitavanje podataka.
+		JavaRDD<String> ulaz = sc.textFile(ULAZNA_DATOTEKA);
+
+		// Pročitaj sve ulazne URL-e i inicijaliziraj njihove susjede.
+		JavaPairRDD<String, Iterable<String>> linkovi = ulaz
+				.mapToPair(redak -> {
+					String[] elementi = redak.split("\\s+");
+					return new Tuple2<String, String>(elementi[0], elementi[1]);
+				}).distinct().groupByKey().cache();
+		// Svaku vrijednost u orginalnom RDDu zamijeni s 1.0 i vrati novi RDD.
+		JavaPairRDD<String, Double> rangovi = linkovi.mapValues(value -> 1.0);
+
+		// iteracija 2. i 3. koraka algoritma
+		for (int i = 0; i < BROJ_ITERACIJA; i++) {
+			// za svaki link izracunaj njegovu doprinos drugim linkovima
+			JavaPairRDD<String, Double> doprinosi = linkovi.join(rangovi)
+					.values().flatMapToPair(linkoviRang -> {
+						int brojSusjeda = Iterables.size(linkoviRang._1);
+						List<Tuple2<String, Double>> rezultati = new ArrayList<Tuple2<String, Double>>();
+						for (String susjed : linkoviRang._1) {
+							rezultati.add(new Tuple2<String, Double>(susjed,
+									linkoviRang._2 / brojSusjeda));
+						}
+						return rezultati;
+					});
+			rangovi = doprinosi.reduceByKey((v1, v2) -> v1 + v2)
+					.mapValues(suma -> 0.15 + suma * 0.85);
+		}
+		// spremi u memoriju
+		List<Tuple2<String, Double>> rangoviFinal = rangovi.collect();
+		// ispis
+		for (Tuple2<String, Double> entry : rangoviFinal) {
+			System.out.println(
+					"URL " + entry._1 + "\tima vrijednost " + entry._2);
+		}
+		sc.close();
+	}
+}
+\end{lstlisting}
+\captionof{lstlisting}{PageRank algoritam}
+\vspace{5mm}
+\subsection{Analiza algoritma}
+\section{RDD-i kao uređeni parovi}
+\section{Čitanje i spremanje podataka}
+\section{Globalne varijable}
 \chapter{Zaključak} 
 Zaključak.
 

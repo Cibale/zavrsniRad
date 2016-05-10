@@ -1,3 +1,4 @@
+\select@language {english}
 \contentsline {chapter}{\numberline {1}Uvod}{1}
 \contentsline {section}{\numberline {1.1}Motivacija}{1}
 \contentsline {section}{\numberline {1.2}Instalacija i izvorni kodovi}{2}
@@ -11,6 +12,13 @@
 \contentsline {subsection}{\numberline {2.1.2}Programiranje u Javi}{7}
 \contentsline {section}{\numberline {2.2}Programiranje s RDD-ovima}{10}
 \contentsline {section}{\numberline {2.3}Kratki pregled}{13}
-\contentsline {chapter}{\numberline {3}Zaklju\IeC {\v c}ak}{14}
-\contentsline {chapter}{Literatura}{15}
-\contentsline {chapter}{Dodatak \numberline {A}Postavljanje datoteke pom.xml}{16}
+\contentsline {chapter}{\numberline {3}Napredno programiranje}{14}
+\contentsline {section}{\numberline {3.1}Primjer: Analiza PageRank algoritma}{14}
+\contentsline {subsection}{\numberline {3.1.1}Algoritam}{14}
+\contentsline {subsection}{\numberline {3.1.2}Analiza algoritma}{16}
+\contentsline {section}{\numberline {3.2}RDD-i kao ure\IeC {\dj }eni parovi}{16}
+\contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka}{16}
+\contentsline {section}{\numberline {3.4}Globalne varijable}{16}
+\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{17}
+\contentsline {chapter}{Literatura}{18}
+\contentsline {chapter}{Dodatak \numberline {A}Postavljanje datoteke pom.xml}{20}
