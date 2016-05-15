@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  10 MAY 2016 23:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  15 MAY 2016 23:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -525,6 +525,14 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 \c@@ppsavesec=\count121
 \c@@ppsaveapp=\count122
 )
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 142.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (./zavrsni.aux
@@ -538,7 +546,7 @@ See the natbib package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.62 ...mand\NAT@force@numbers{}\NAT@force@numbers
+l.69 ...mand\NAT@force@numbers{}\NAT@force@numbers
                                                   
 Check the bibliography entries for non-compliant syntax,
 or select author-year BibTeX style, e.g. plainnat
@@ -546,19 +554,19 @@ or select author-year BibTeX style, e.g. plainnat
 )
 \openout1 = `zavrsni.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 56.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
@@ -644,32 +652,32 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count129
-LaTeX Font Info:    Try loading font information for T1+phv on input line 44.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 67.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 44.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 44.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 44.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 44.
-LaTeX Font Info:    Try loading font information for U+msa on input line 44.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 67.
+LaTeX Font Info:    Try loading font information for U+msa on input line 67.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 44.
+LaTeX Font Info:    Try loading font information for U+msb on input line 67.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 47.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 70.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
@@ -686,124 +694,139 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 55.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 78.
 
-Overfull \hbox (1.40163pt too wide) in paragraph at lines 61--62
-[]\T1/ptm/m/n/12 - mehani£ki sen-zor za mjerenje at-mos-fer-skog pri-tiska (na 
-trenut-noj lokaciji
+Overfull \hbox (3.33873pt too wide) in paragraph at lines 80--81
+\T1/ptm/m/n/12 Dana²nji mo-bilni ure-žaji imaju puno vi²e mogu¢nosti. Osim ²to 
+je zadrºana funkcional-
  []
 
-LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 67.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 83.
 
-Overfull \hbox (10.22174pt too wide) in paragraph at lines 67--68
-[]\T1/ptm/m/n/12 - mag-net-ski sen-zor zaduºen za pre-poz-na-vanje je li maska 
-tele-fona zatvorena
+Underfull \hbox (badness 1052) in paragraph at lines 91--92
+[]\T1/ptm/m/n/12 Mehani£ki sen-zor za mjerenje at-mos-fer-skog
+ []
+
+
+Overfull \hbox (4.34778pt too wide) in paragraph at lines 106--108
+\T1/ptm/m/n/12 omogu¢ava pisanje pro-grama za obradu po-dataka u tri pro-gram-s
+kih jezika: \T1/ptm/m/it/12 Java\T1/ptm/m/n/12 , \T1/ptm/m/it/12 Python
+ []
+
+
+Overfull \hbox (9.20805pt too wide) in paragraph at lines 106--108
+\T1/ptm/m/n/12 U okviru ovog rada prou£eni su neki djelovi ove tehnologije, raz
+raženo neko-liko konkret-
+ []
+
+
+Overfull \hbox (0.42339pt too wide) in paragraph at lines 106--108
+\T1/ptm/m/n/12 nih prim-jera obrade po-dataka te ost-varena pro-gram-ska rje²en
+ja koja obavl-jaju tu obradu
  []
 
 [1
 
 ]
-Overfull \hbox (4.43343pt too wide) in paragraph at lines 84--85
-\T1/ptm/m/n/12 stran-ice: $\T1/pcr/m/n/12 https : / / spark . apache . org / do
-wnloads . html$\T1/ptm/m/n/12 , odabrati na-jnoviju
+Underfull \hbox (badness 2409) in paragraph at lines 124--125
+[]\T1/ptm/m/n/12 Sadrºi kratke in-struk-cije za up-oz-na-vanje s
  []
 
+
+Underfull \hbox (badness 1152) in paragraph at lines 125--126
+\T1/ptm/m/n/12 nije nau£i ko-ris-titi pro-gram-sko su£elje koje
+ []
+
+[2] <img/gradivniElementi.pdf, id=28, 597.23125pt x 845.1575pt>
+File: img/gradivniElementi.pdf Graphic file (type pdf)
+
+<use img/gradivniElementi.pdf>
+Package pdftex.def Info: img/gradivniElementi.pdf used on input line 134.
+(pdftex.def)             Requested size: 284.52756pt x 402.64043pt.
+ [3] [4 <./img/gradivniElementi.pdf>]
+Chapter 2.
+<img/cluster-overview.png, id=53, 598.235pt x 287.0725pt>
+File: img/cluster-overview.png Graphic file (type png)
+
+<use img/cluster-overview.png>
+Package pdftex.def Info: img/cluster-overview.png used on input line 166.
+(pdftex.def)             Requested size: 284.52756pt x 136.53606pt.
+ [5
+
+ <./img/cluster-overview.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) [2]
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
-
+)
+Overfull \hbox (2.5936pt too wide) in paragraph at lines 182--184
+[]\T1/ptm/m/n/12 Odgovaraju¢a \T1/pcr/m/n/12 pom.xml \T1/ptm/m/n/12 da-toteka n
+alazi se u do-datku B[]. Jed-nom kada je \T1/pcr/m/n/12 pom.xml
  []
 
-[3]
-LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <6> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 136.
- [4] <img/spark-stack.png, id=38, 304.9794pt x 143.5764pt>
-File: img/spark-stack.png Graphic file (type png)
 
-<use img/spark-stack.png>
-Package pdftex.def Info: img/spark-stack.png used on input line 152.
-(pdftex.def)             Requested size: 284.52756pt x 133.95186pt.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 153.
-
-Overfull \hbox (3.61002pt too wide) in paragraph at lines 159--160
-[]\T1/ptm/m/n/12 - omogu¢uje rad s bilo kakvim struk-turi-ranim po-datcima, pri
-m-jerice JSON.
+Overfull \hbox (8.67996pt too wide) in paragraph at lines 182--184
+\T1/ptm/m/n/12 da-toteka nam-je²tena i pro-jekt us-p-je²no povezan sa \T1/pcr/m
+/n/12 spark-core\T1/ptm/m/n/12 , sve ²to je jo² potrebno
  []
 
-[5 <./img/spark-stack.png>] [6]
-Chapter 2.
-<img/cluster-overview.png, id=47, 598.235pt x 287.0725pt>
-File: img/cluster-overview.png Graphic file (type png)
-
-<use img/cluster-overview.png>
-Package pdftex.def Info: img/cluster-overview.png used on input line 177.
-(pdftex.def)             Requested size: 284.52756pt x 136.53606pt.
- [7
-
- <./img/cluster-overview.png>]
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <6> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 192.
- [8]
+[6] [7]
 
 Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 268.
+(caption)                outside box or environment on input line 261.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--272
+Underfull \hbox (badness 10000) in paragraph at lines 265--265
 [][]\T1/ptm/m/n/10 Nije za-pravo u tom trenutku se ni²ta do-godilo nego tek nak
 on poziva metode
  []
 
-[9]
+[8] [9]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <12> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 300.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 294.
 
-Underfull \hbox (badness 5161) in paragraph at lines 301--302
+Underfull \hbox (badness 5161) in paragraph at lines 295--296
 []\T1/ptm/m/n/12 Vra¢a novi RDD nas-tao tako ²to su iz
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 327--331
+Underfull \hbox (badness 10000) in paragraph at lines 321--325
 
  []
 
 [11]
-Underfull \hbox (badness 1895) in paragraph at lines 374--375
+Underfull \hbox (badness 1895) in paragraph at lines 368--369
 \T1/ptm/m/n/12 Ovdje imamo 4 RDD-a: \T1/pcr/m/n/12 ulaz\T1/ptm/m/n/12 , \T1/pcr
 /m/n/12 burze\T1/ptm/m/n/12 , \T1/pcr/m/n/12 indexi \T1/ptm/m/n/12 i \T1/pcr/m/
 n/12 burzeUnijaIndexi\T1/ptm/m/n/12 .
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 374--375
+Underfull \hbox (badness 1565) in paragraph at lines 368--369
 \T1/ptm/m/n/12 RDD \T1/pcr/m/n/12 burze \T1/ptm/m/n/12 i RDD \T1/pcr/m/n/12 ind
 exi \T1/ptm/m/n/12 su kreirani na temelju RDD-a \T1/pcr/m/n/12 ulaz\T1/ptm/m/n/
 12 . RDD
  []
 
-<img/burzeUnijaIndexiRDD.png, id=65, 639.38875pt x 445.665pt>
+<img/burzeUnijaIndexiRDD.png, id=80, 639.38875pt x 445.665pt>
 File: img/burzeUnijaIndexiRDD.png Graphic file (type png)
 
 <use img/burzeUnijaIndexiRDD.png>
-Package pdftex.def Info: img/burzeUnijaIndexiRDD.png used on input line 378.
+Package pdftex.def Info: img/burzeUnijaIndexiRDD.png used on input line 372.
 (pdftex.def)             Requested size: 284.52756pt x 198.3237pt.
- [12 <./img/burzeUnijaIndexiRDD.png>] [13]
+ [12] [13 <./img/burzeUnijaIndexiRDD.png>]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
-[]\T1/ptm/m/n/12 Svaka stran-ica \T1/ptm/m/it/12 n \T1/ptm/m/n/12 svim svo-jim 
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
+[]\T1/ptm/m/n/12 Svaka stran-ica \T1/pcr/m/sl/12 n \T1/ptm/m/n/12 svim svo-jim 
 sus-jed-ima ²alje do-pri-nos
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 419--420
+Underfull \hbox (badness 10000) in paragraph at lines 412--413
 []\T1/ptm/m/n/12 Postavi ukupni rang stran-ice prema for-muli: $\OT1/cmr/m/n/12
  0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 15 + 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 85 
 \OMS/cmsy/m/n/12 ^^C
@@ -811,50 +834,99 @@ Underfull \hbox (badness 10000) in paragraph at lines 419--420
 
 [14
 
-] [15] [16]
+] [15] [16] [17]
 Chapter 4.
-[17
-
-] [18
+[18
 
 ] [19
 
+] [20
+
 ]
 Dodatak A.
+
+Underfull \hbox (badness 1142) in paragraph at lines 520--521
+\T1/ptm/m/n/12 ice: $\T1/pcr/m/n/12 https : / / spark . apache . org / download
+s . html$\T1/ptm/m/n/12 , odabrati na-jnoviju
+ []
+
+
+! Package keyval Error: size undefined.
+
+See the keyval package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.523 \begin{lstlisting}[language=bash, size=tiny]
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! Package keyval Error: size undefined.
+
+See the keyval package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.527 \begin{lstlisting}[language=bash, size=tiny]
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! Package keyval Error: size undefined.
+
+See the keyval package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.533 \begin{lstlisting}[language=bash, size=tiny]
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--533
+
+ []
+
+[21
+
+] [22]
+Dodatak B.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-) [20
+) [23
 
-] [21]
+] [24]
 (./zavrsni.aux) ) 
 Here is how much of TeX's memory you used:
- 8205 strings out of 494957
- 112857 string characters out of 6180029
- 365649 words of memory out of 5000000
- 11251 multiletter control sequences out of 15000+600000
- 87190 words of font info for 109 fonts, out of 8000000 for 9000
+ 8224 strings out of 494957
+ 113434 string characters out of 6180029
+ 234171 words of memory out of 5000000
+ 11271 multiletter control sequences out of 15000+600000
+ 84612 words of font info for 109 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 43i,10n,51p,1043b,1669s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,11n,51p,1043b,1744s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/font
-s/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/c
-ourier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb
-8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
-mes/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb
->
-Output written on zavrsni.pdf (25 pages, 244455 bytes).
+xmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
+helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
+r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/times/utmri8a.pfb>
+Output written on zavrsni.pdf (28 pages, 224059 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
+ 162 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,1 +1,24 @@
-Paket "listingsutf8" (odjeljak 4.4)
+reference na figure
+
+senzore prebaciti u tablicu
+
+tekst izmedju stranih tijela
+
+"tehnologija apache spark"
+
+bit će
+
+kreiranje slika u wordu kao vektori
+
+efektivno / djelotvorno / ucinkovito
+
+isnstalacija u appendix
+
+ono slovo N u pagerank
+
+algoritam pangerank != pagerank algoritam
+
+literaturu popravit
+
+
+burza/indexi - imenovanje

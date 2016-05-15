@@ -11,12 +11,35 @@
   \renewcommand\bibname{Literatura}
   \renewcommand{\lstlistingname}{Primjer}
 }
-\lstset{language=Java,
- basicstyle=\tiny\tt,
- showspaces=false,
- showstringspaces=false,
- breaklines=true
- }
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+%\lstset{language=Java,
+% basicstyle=\tiny\tt,
+% showspaces=false,
+% showstringspaces=false,
+% breaklines=true
+% }
 \lstset{
     literate=%
     {ć}{{\'c}}1
@@ -33,7 +56,7 @@
 \begin{document}
 
 % TODO: Navedite broj rada.
-\thesisnumber{1347}
+\thesisnumber{1337}
 
 % TODO: Navedite naslov rada.
 \title{Obrada podataka tehnologijom Apache Spark}
@@ -54,141 +77,111 @@
 \chapter{Uvod}
 \section{Motivacija}
 %Literatura: http://mob.hr/samsung-galaxy-s4-skrivene-mogucnosti-senzori-i-octa-5-benchmark/
-Pametni mobilni uređaji postaju neizostavan dodatak svakog modernog čovjeka.\\
-Većina pametnih mobilnih uređaja u sebi sadrži sljedeće senzore:
-\begin{description}
-	\item[akcelerometar] - elektromehanička komponenta koja mjeri sile ubrzanja;
-	\item[barometar] - mehanički senzor za mjerenje atmosferskog pritiska (na trenutnoj lokaciji uređaja);
-	\item[senzor svjetlosti] - mjeri intenzitet, tj. jačinu svjetlosti i uglavnom se nalazi s prednje strane uređaja, iznad ekrana;
-	\item[senzor blizine] - u stanju prepoznati situacije kada mu neki objekt stoji u blizini - ovo omogućava automatske pozive prilikom primicanja telefona licu uz zaključavanje telefona da bi onemogućili slučajno prekidanje poziva uhom ili slično;
-	\item[senzor gestikulacije] - prepoznaje kretnje ruke tako što detektira infracrvene zrake koje se reflektiraju - omogućuje nam djelomično upravljanje telefonom bez doticanja ekrana;
-	\item[žiroskop] - uređaj koji se koristi za navigaciju i merenje kutne brzine;
-	\item[geomagnetski senzor] - mjeri okolno geomagnetsko polje za sve tri fizičke osi i u biti služi kao kompas na mobilnim uređajima i 
-	\item[\emph{Hall Sensor}] - magnetski senzor zadužen za prepoznavanje je li  maska telefona zatvorena ili otvorena.
-\end{description}
+Skoro pa svaka osoba danas posjeduje mobilni uređaj, a neke osobe posjeduju i više njih. Pametni mobilni uređaji postaju neizostavan dodatak svakog modernog čovjeka. Prošlo je vrijeme kada su mobilni uređaji jedino služili za pozive i SMS poruke. Današnji mobilni uređaji imaju puno više mogućnosti. Osim što je zadržana funkcionalnost uspostavljanja poziva i slanja poruka, postoji mogućnost povezivanja na internet, orijentaciju u prostoru, mjerenje brzine itd. Da bi sve te stvari bile moguće, većina današnjih mobilnih uređaja u sebi sadrži senzore koji su navedeni i opisani u tablici \ref{tbl:senzori}.
+
+\begin{table}[htb]
+\caption{Neki od senzora u današnjim mobilnim uređajima.}
+\label{tbl:senzori}
+\centering
+\begin{tabular}{l p{8cm}}
+\hline
+Senzor & Opis \\
+\hline
+Akcelerometar & Elektromehanička komponenta koja mjeri sile ubrzanja. \\
+Barometar & Mehanički senzor za mjerenje atmosferskog pritiska (na trenutnoj lokaciji uređaja).\\
+Senzor svjetlosti & Mjeri intenzitet, tj. jačinu svjetlosti i uglavnom se nalazi s prednje strane uređaja, iznad ekrana. \\
+Senzor blizine & U stanju prepoznati situacije kada mu neki objekt stoji u blizini - ovo omogućava automatske pozive prilikom primicanja telefona licu uz zaključavanje telefona da bi onemogućili slučajno prekidanje poziva uhom ili slično.\\
+Senzor gestikulacije & Prepoznaje kretnje ruke tako što detektira infracrvene zrake koje se reflektiraju, odnosno omogućuje djelomično upravljanje telefonom bez doticanja ekrana.\\
+Žiroskop & Uređaj koji se koristi za navigaciju i mjerenje kutne brzine.\\
+Geomagnetski senzor & Mjeri okolno geomagnetsko polje za sve tri fizičke osi, odnosno služi kao kompas na mobilnim uređajima. \\
+\emph{Hall Sensor} & Magnetski senzor zadužen za prepoznavanje je li  maska telefona zatvorena ili otvorena. \\
+\hline
+\end{tabular}
+\end{table}
+
 Pretpostavimo da je mobilni uređaj spojen na internet i da svakih nekoliko sekundi pošalje vrijednost koju u tom trenutku mjeri pojedini senzor. U samo jednom danu može se skupiti dosta podataka. A što kada to ne bi radili za jedan uređaj nego za sve izdane uređaje nekog modela? Količina podataka bi jako brzo narasla.
 
-Kako količina podataka postaje sve veća, dolazimo do pojma \emph{Velika količina podataka} \engl{Big Data}. U današnje vrijeme imamo više podataka u digitalnom obliku nego što smo ikada imali. Jedan od zanimljivijih izazova je kako ih efektivno obraditi i zaključiti nešto iz toga. Kako od te velike količine podataka doći do nekih pametnih zaključaka iz kojih ćemo nešto novo naučiti.
+Kako količina podataka postaje sve veća, dolazimo do pojma \emph{Velika količina podataka} \engl{Big Data}. U današnje vrijeme postoji više podataka u digitalnom obliku nego što ih je ikada bilo. Jedan od zanimljivijih izazova je kako ih djelotvorno obraditi i zaključiti nešto iz toga, odnosno kako od te velike količine podataka doći do nekih pametnih zaključaka i nešto novo naučiti.
 
-\emph{Apache Spark} je otvorena \engl{open source} tehnologija koja omogućava pisanje programa za obradu podataka u tri programskih jezika: \emph{Java}, \emph{Python} i  \emph{Scala}; a nudi i mogućnost interaktivnog rada. \\
-U okviru ovog rada biti će proučene mogućnosti ove tehnologije, razrađeno nekoliko konkretnih primjera obrade podataka te ostvarena programska rješenja koja obavljaju tu obradu koristeći \emph{Apache Spark}.
+Tehnologija \emph{Apache Spark} je tehnologija otvorenog koda \engl{open source} koja omogućava pisanje programa za obradu podataka u tri programskih jezika: \emph{Java}, \emph{Python} i  \emph{Scala}. Dodatno, postoji i mogućnost interaktivnog rada. \\
+U okviru ovog rada proučeni su neki djelovi ove tehnologije, razrađeno nekoliko konkretnih primjera obrade podataka te ostvarena programska rješenja koja obavljaju tu obradu koristeći tehnologiju \emph{Apache Spark}.
 
-Svi primjeri će biti napisani u programskom jeziku \emph{Java}.
+Svi primjeri su napisani u programskom jeziku \emph{Java}.
 
-\section{Instalacija i izvorni kodovi}
-\subsection{Instalacija}
-\emph{Apache Spark} je pisan u programskom jeziku \emph{Scala} i izvršava se na \emph{Javinom virtualnom stroju} \engl{Java Virtual Machine} (JVM). Instalacija na osobno računalo je prilično jednostavna, a u ovdje će biti prikazana instalacija na operacijskom sustavu \emph{Ubuntu 15.10}. \\
-Za početak je potrebno imati instaliranu Javu, a je li Java instalirana na računalu se može provjeriti tako što se u naredbenom retku unese sljedeća naredba:\\
-\texttt{java -version}. Kao rezultat bi trebali dobiti trenutno instaliranu verziju Jave. Ukoliko Java nije instalirana, potrebno ju je najprije instalirati. Taj dio neće biti objašnjen ovdje.
-
-Jednom kada imamo instaliranu Javu, sve što treba napraviti je otići na službene stranice: \url{https://spark.apache.org/downloads.html}, odabrati najnoviju verziju (Za vrijeme pisanja ovog rada to je verzija \emph{1.6.1 (Mar 09 2016}), izabrati odgovarajući paket te pokrenuti dohvaćanje odgovarajuće \emph{.tgz} arhive. Najjednostavnije je odabrati neki \emph{pre-built} paket, primjerice \emph{Pre-built for Hadoop 2.6 and later} te će daljnji koraci instalacije biti napisani pod pretpostavkom da je korisnik dohvatio tu verziiju paketa. Ukoliko korisnik želi, moguće je instalirati i \emph{Source code} varijantu paketa, ali taj postupak instalacije ovdje nije opisan. 
-
-Nakon što smo dohvatili odgovarajuću arhivu, potrebno ju je raspakirati.\\ Raspakiranje arhive moguće je napraviti preko naredbe:
-\begin{lstlisting}[language=bash]
-$ tar -xvf spark-1.6.1-bin-hadoop2.6.tgz
-\end{lstlisting}
-Nakon toga, dobra je praksa premjestiti instalaciju u neki prikladniji direktorij. Tako nešto može se napraviti na sljedeći način:
-\begin{lstlisting}[language=bash]
-$ mv Downloads/spark-1.6.1-bin-hadoop2.6 faks/spark/
-\end{lstlisting}
-Službeno, sada je instalacija gotova. Idemo u sljedećem odlomku malo detaljnije pogledati što smo to zapravo dobili instalacijom. Koje datoteke se sada nalaze na našem računalu, a nije ih bilo ranije. Također, biti će objašnjena i uloga nekih datoteka i direktorija.
-
-\subsection{Izvorni kodovi}
-Ako izlistamo što nam se trenutno nalazi u novonastalom direktoriju, dobiti ćemo sljedeći ispis:
-\begin{lstlisting}[language=bash]
-mmatak@martins-beast:~/faks/spark$ ls -l
-total 1408
-drwxr-xr-x 2 mmatak mmatak    4096 Feb 27 06:02 bin
--rw-r--r-- 1 mmatak mmatak 1343562 Feb 27 06:02 CHANGES.txt
-drwxr-xr-x 2 mmatak mmatak    4096 Feb 27 06:02 conf
-drwxr-xr-x 3 mmatak mmatak    4096 Feb 27 06:02 data
-drwxr-xr-x 3 mmatak mmatak    4096 Feb 27 06:02 ec2
-drwxr-xr-x 3 mmatak mmatak    4096 Feb 27 06:02 examples
-drwxr-xr-x 2 mmatak mmatak    4096 Feb 27 06:02 lib
--rw-r--r-- 1 mmatak mmatak   17352 Feb 27 06:02 LICENSE
-drwxr-xr-x 2 mmatak mmatak    4096 Feb 27 06:02 licenses
--rw-r--r-- 1 mmatak mmatak   23529 Feb 27 06:02 NOTICE
-drwxr-xr-x 6 mmatak mmatak    4096 Feb 27 06:02 python
-drwxr-xr-x 3 mmatak mmatak    4096 Feb 27 06:02 R
--rw-r--r-- 1 mmatak mmatak    3359 Feb 27 06:02 README.md
--rw-r--r-- 1 mmatak mmatak     120 Feb 27 06:02 RELEASE
-drwxr-xr-x 2 mmatak mmatak    4096 Feb 27 06:02 sbin
-\end{lstlisting}
-
-\begin{description}
-\item[\emph{README.md} ]Sadrži kratke instrukcije za upoznavanje sa Spark-om.
-\item[\emph{bin} ]Sadrži izvršive datoteke koje se koriste za interaktivni rad sa Spark-om.\\Zanimljivo je spomenuti da postoji interaktivna ljuska \emph{Spark shell} isključivo za programske jezike \emph{Python} i \emph{Scala}. Datoteke u ovom direktoriju služe upravo za to. Budući da je ovaj rad ograničen isključivo na programski jezik \emph{Java}, a u ovom trenutku takva interaktivna ljuska još ne postoji, ovaj dio neće biti detaljnije obrađen.
-\item[\emph{core, streaming, python, ...} ]Sadrži glavne komponente projekta \emph{Apache Spark} 
-\item[\emph{examples} ]Sastoji se od nekoliko jednostavnih primjera koje pomažu korisniku da se uhoda i što bezbolnije nauči koristiti odgovarajući API.
-\end{description}
-
-Kako bi bili sigurni da je instalacija uspješna, potrebno je pozicionirati se u \emph{bin} direktorij te u terminalu upisati \texttt{./spark-shell}. Ispis bi trebao biti sličan ovome:\\
-\begin{lstlisting}[language=bash]
-mmatak@martins-beast:~/faks/spark/bin$ ./spark-shell
-Welcome to
-      ____              __
-     / __/__  ___ _____/ /__
-    _\ \/ _ \/ _ `/ __/  '_/
-   /___/ .__/\_,_/_/ /_/\_\   version 1.6.1
-      /_/
-
-Using Scala version 2.10.5 (OpenJDK 64-Bit Server VM, Java 1.8.0_91)
-Type in expressions to have them evaluated.
-Type :help for more information.
-scala>
-\end{lstlisting}
-
-
-Ukoliko se prikaže greška vezana uz \emph{sqlContext}, to je OK. U ovom trenutku to nije važno. Važno je napomenuti da su u gornjem ispisu (radi ljepšeg formata ovog rada) izbrisana upozorenja \engl{warnings} koja su normalna i očekivana.
-
-\newpage
 \section{Osnovni gradivni elementi}
-Osnovna programska apstrakcija s kojom \emph{Apache Spark} radi naziva se \emph{resilient distributed dataset} (RDD). RDD-ovi predstavljaju kolekcije podataka koje se nalaze na računalima (jednom ili više njih) i moguće ih je paralelno obrađivati. \emph{Apache Spark} nudi bogati API za rad s RDD-ovima.
+Tehnologija \emph{Apache Spark} je pisana u programskom jeziku \emph{Scala} i izvršava se na \emph{Javinom virtualnom stroju} \engl{Java Virtual Machine, kratica JVM}. Instalacija na osobno računalo je objašnjena u dodatku \ref{ch:instalacijaSpark}. Opisi nekih direktorija i datoteka koje se dobiju instalacijom dani su u tablici \ref{tbl:installPackage}. Zanimljivo je spomenuti da postoji interaktivna ljuska \emph{Spark shell}, ali isključivo za programske jezike \emph{Python} i \emph{Scala}. Datoteke u direktoriju \emph{bin} služe upravo za to. Budući da je ovaj rad ograničen isključivo na programski jezik \emph{Java}, a u ovom trenutku takva interaktivna ljuska još ne postoji, interaktivna ljuska nije detaljnije obrađena. Više informacija potražiti u TODO: REFERENCA.
 
-\emph{Apache Spark} se sastoji od nekoliko ključnih elemenata koji će ovdje biti samo nabrojani i opisani rečenicom ili dvije, a u kasnijim poglavljima će biti detaljnije objašnjeni. Slika koja predstavlja osnovne elemente je sljedeća: 
-%preuzeto s http://spark.apache.org/images/spark-stack.png
+\begin{table}[htb]
+\caption{Dio datoteka i direktorija dobivenih instalacijom.}
+\label{tbl:installPackage}
+\centering
+\begin{tabular}{l p{8cm}}
+\hline
+Datoteka ili direktorij & Opis \\
+\hline
+\emph{bin} & Sadrži izvršive datoteke koje se koriste za interaktivni rad s tehnologijom \emph{Apache Spark}.\\
+\emph{core, streaming, python, ...} & Sadrži glavne komponente tehnologije. \\
+\emph{README.md} & Sadrži kratke instrukcije za upoznavanje s tehnologijom.\\
+\emph{examples} & Sastoji se od nekoliko jednostavnih primjera koje pomažu korisniku da se uhoda i što bezbolnije nauči koristiti programsko sučelje koje tehnologija pruža. \\
+\hline
+\end{tabular}
+\end{table}
+
+Osnovna programska apstrakcija s kojom tehnologija \emph{Apache Spark} radi je \emph{otporni raspodijeljeni skup podataka} \engl{resilient distributed dataset, kratica RDD}. To je skup podataka koji se nalazi na računalima (jednom ili više njih) i moguće ga je paralelno obrađivati. Tehnologija \emph{Apache Spark} nudi bogato programsko sučelje za rad s tim skupovima podataka.
+
 \begin{figure}[htb]
 \centering
-\includegraphics[width=10cm]{img/spark-stack.png}
+\includegraphics[width=10cm]{img/gradivniElementi.pdf}
 \caption{Osnovni elementi tehnologije \emph{Apache Spark}.}
 \label{fig:spark-stack}
 \end{figure}
 
-Na slici su prikazana četiri osnovna elementa koja čine osnovu tehnologije \emph{Apache Spark}, a to su: 
-\begin{description}
-\item[\emph{Spark SQL}] - omogućuje rad s bilo kakvim strukturiranim podatcima, primjerice JSON. Nudi mogućnost izvršavanja SQL-a nad RDD-ovima;
-\item[\emph{Spark Streaming}] - komponenta zadužena za rad s tokovima podataka;
-\item[\emph{MLib}] - koristi se za postupak strojnog učenja i 
-\item[\emph{GraphX}] - biblioteka za obradu grafova (npr. graf prijatelja na društvenoj mreži).
-\end{description}
+Tehnologija se sastoji od nekoliko ključnih elemenata koji su u tablici \ref{tbl:gradivniElementi} samo nabrojani i opisani rečenicom ili dvije. Detaljnije objašnjenje nalazi se u kasnijim poglavljima. Slika \ref{fig:spark-stack} predstavlja osnovne elemente tehnologije \emph{Apache Spark}.
 
-\section{Kratki pregled}
-U ovom poglavlju je bila ideja da čitatelj dobije motivaciju i želju za upoznavanjem s tehnologijom \emph{Apache Spark}. Detaljno je opisan postupak instalacije koji bi čitatelju trebao biti sasvim dovoljan za samostalnu instalaciju. Također, dan je pregled nekih najosnovnijih datoteka i direktorija koje dolaze s instalacijom. Zainteresiranog čitatelja se ohrabruje da samostalno prouči kako se koristi \emph{Spark shell}. Na kraju, nabrojani su osnovni elementi koji čine jezgru tehnologije \emph{Apache Spark} i uveden je pojam osnovne programske apstrakcije koja se koristi u ovoj tehnologiji, a to je \emph{resilient distributed dataset} (RDD).
+\begin{table}[htb]
+\caption{Dio datoteka i direktorija dobivenih instalacijom.}
+\label{tbl:gradivniElementi}
+\centering
+\begin{tabular}{l p{8cm}}
+\hline
+Komponenta & Opis \\
+\hline
+\emph{Spark SQL} & Omogućuje rad s bilo kakvim strukturiranim podatcima, primjerice \emph{JSON}. Također, nudi i mogućnost izvršavanja \emph{SQL} naredbi. \\
+\emph{Spark Streaming} & Komponenta zadužena za rad s tokovima podataka. \\
+\emph{MLib} & Koristi se za postupak strojnog učenja. \\
+\emph{GraphX} & Biblioteka za obradu grafova (npr. graf prijatelja na društvenoj mreži).\\
+\hline
+\end{tabular}
+\end{table}
 
 \chapter{Prvi programi}
+U ovom poglavlju opisano je kako napisati osnovni program koristeći tehnologiju \emph{Apache Spark}. Također je opisano i od čega se takav program sastoji i koja je uloga pojedine komponente programa. Primjer koji se obrađuje je primjer \ref{lst:brojanjeRijeci}, a svodi se na jednostavan algoritam brojanja riječi.
+
 \section{Postavljanje temelja}
 \subsection{Osnovni elementi aplikacije}
-Općenito govoreći, svaka Spark aplikacija sastoji se od nekoliko komponenata. Prva komponenta koju ćemo spomenuti je program koji se izvršava - onaj čija je \texttt{main} metoda pokrenuta, odnosno onaj koji pokreće obradu podataka. Taj program se naziva \emph{driver}. On s podatcima priča kroz "tunel" između sebe i Sparka odnosno kroz \emph{SparkContext}. Budući da je \emph{Apache Spark} namijenjen za paralelnu obradu podataka, idemo se odmah upoznati i s još dvije komponente. Pojedino računalo u \emph{grozdu} \engl{cluster} ćemo nazvati \emph{radnim čvorom} \engl{worker node}, a proces koji se izvršava na pojedinom računalu nazvati ćemo \emph{radnik} \engl{executor}. Dozvoljeno je da \emph{radnici} međusobno komuniciraju. U cijeloj priči može, a i ne mora eksplicitno biti uključen \emph{upravitelj grozdom} \engl{cluster manager}.
-
-%Izvor slike: http://spark.apache.org/docs/latest/cluster-overview.html
+Općenito govoreći, svaka se Spark aplikacija sastoji  od nekoliko komponenata. Prva komponenta koju ćemo spomenuti je program koji se izvršava - onaj čija je \texttt{main} metoda pokrenuta, odnosno onaj koji pokreće obradu podataka. Taj program naziva se pozivajući program \engl{driver}. Pozivajući program s podatcima priča kroz "tunel" koji se naziva \emph{SparkContext}.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=10cm]{img/cluster-overview.png}
-\caption{Prikaz elemenata aplikacije.}
+\caption{Prikaz elemenata aplikacije. Preuzeto s \protect\url{http://spark.apache.org/docs/latest/cluster-overview.html}.}
 \label{fig:cluster-overview}
 \end{figure}
-\subsection{Programiranje u Javi}
-Kako bi mogli pisati Spark programe u programskom jeziku \emph{Java}, potrebno je povezati svoju aplikaciju s \texttt{spark-core} artifaktom s Mavena. Za postavljanje i instalaciju Mavena konzultirati \url{https://maven.apache.org/install.html} i knjigu (Programiranje u Javi, Čupić). Za vrijeme pisanja ovog rada, najnovija verzija Sparka je 1.6.1, a odgovarajuće Maven koordinate su:
-\begin{lstlisting}[language=bash]
+
+Budući da je tehnologija \emph{Apache Spark} namijenjena za paralelnu obradu podataka, postoje još dvije komponente koje pridonose upravo tome. Pojedino računalo u \emph{grozdu} \engl{cluster} naziva se \emph{radnim čvorom} \engl{worker node}, a proces koji se izvršava na pojedinom računalu naziva se \emph{radnik} \engl{executor}. Dozvoljeno je da \emph{radnici} međusobno komuniciraju. U cijeloj priči može, a i ne mora eksplicitno biti uključen \emph{upravitelj grozdom} \engl{cluster manager}.
+Opisana struktura prikazana je na slici \ref{fig:cluster-overview}.
+
+\subsection{Korištenje tehnologije Apache Spark kroz programski jezik Java}
+Kako bi mogli pisati Spark programe u programskom jeziku \emph{Java}, potrebno je povezati svoju aplikaciju s \texttt{spark-core} artifaktom s Mavena. Za postavljanje i instalaciju Mavena konzultirati \url{https://maven.apache.org/install.html} i knjigu TODO: Referenca. Za vrijeme pisanja ovog rada, najnovija verzija Sparka je 1.6.1, a odgovarajuće Maven koordinate su:
+\begin{lstlisting}[language=bash, basicstyle=\small]
 groupId = org.apache.spark
 artifactId = spark-core_2.10
 version = 1.6.1
 \end{lstlisting}
 
 Odgovarajuća \texttt{pom.xml} datoteka nalazi se u dodatku \ref{ch:datotekapomXML}.
-Jednom kada smo namjestili \texttt{pom.xml} datoteku i povezali se s \texttt{spark-core}, sve što trebamo još napraviti je inicijalizirati \emph{SparkContext} i napisati prvu aplikaciju. U nastavku slijedi jednostavna aplikacija koja jedino što radi je broji koliko puta se pojedina riječ pojavljuje u tekstualnoj datoteci.
-\begin{lstlisting}[numbers=left]
+Jednom kada je \texttt{pom.xml} datoteka namještena i projekt uspješno povezan sa \texttt{spark-core}, sve što je još potrebno jest inicijalizirati \emph{SparkContext} i napisati prvu aplikaciju. U primjeru \ref{lst:brojanjeRijeci} nalazi se jednostavna aplikacija koja jedino što radi je broji koliko puta se pojedina riječ pojavljuje u tekstualnoj datoteci.
+\begin{lstlisting}[numbers=left, label={lst:brojanjeRijeci}]
 /**
  *
  */
@@ -271,9 +264,9 @@ public class BrojanjeRijeci {
 
 Analizirajmo što smo napravili. Inicijalizirali smo \emph{SparkContext} tako što smo rekli da se odvija na lokalnom računalu i zadali smo ime aplikacije. Zatim smo kreirali RDD iz tekstualne datoteke koja je predana kao argument naredbenog retka. Taj RDD nam je poslužio za kreiranje novog RDD-a koji je nastao tako što smo svaki redak razdvojili po razmaku i kreirali uređeni par (\emph{riječ}, 1). U tom uređenom paru nam \emph{riječ} predstavlja ključ, a 1 predstavlja vrijednost. Odnosno, uređeni par je oblika (\emph{ključ}, \emph{vrijednost}). Zatim smo iz tako uređenih parova, one koji imaju jednaki ključ zbrojili po vrijednostima i u tom trenutku\footnote{Nije zapravo u tom trenutku se ništa dogodilo nego tek nakon poziva metode \texttt{saveAsTextFile()}, ali o \emph{lijenoj evaluaciji} \engl{lazy evaluation} će biti govora tek kasnije.} nije više postojalo dva uređena para koji imaju jednake ključeve. Na kraju smo rezultat zapisali i eksplicitno zatvorili \emph{SparkContext}. 
 
-Kako je ovo bio početni primjer, \emph{lambda} izrazi koji su uobičajeni za programski jezik \emph{Java 8} nisu korišteni iz razloga da bi čitatelj mogao lakše shvatiti što se sve treba implementirati. Odgovarajući kod koristeći lambda izraze bi izgledao ovako:
+Kako je ovo bio početni primjer, \emph{lambda} izrazi koji su uobičajeni za programski jezik \emph{Java 8} nisu korišteni iz razloga da bi se lakše shvatilo što se sve treba implementirati. Odgovarajući kod koristeći lambda izraze dan je u primjeru \ref{lst:lambdaBrojanjeRijeci}.
 \vspace{5mm}
-\begin{lstlisting}
+\begin{lstlisting}[label={lst:lambdaBrojanjeRijeci}]
 // razmak se koristi da bi razdvojio dvije riječi
 JavaRDD<String> rijeci = ulaz.flatMap(redak -> Arrays.asList(" "));
 
@@ -285,8 +278,9 @@ JavaRDD<String> rijeci = ulaz.flatMap(redak -> Arrays.asList(" "));
 \vspace{5mm}
 \captionof{lstlisting}{Brojanje riječi koristeći lambda izraze.}
 
+
 \section{Programiranje s RDD-ovima}
-\emph{Resilient distributed dataset} (RDD) je osnovna podatkovna struktura Spark-a. To je \emph{nepromjenjiva} \engl{immutable} kolekcija podataka. To znači da se iz jednog RDD-a može jedino napraviti drugi RDD, a ne može se promijeniti postojeći RDD. U prethodnom primjeru to vidimo pri pozivu metode \texttt{flatMap}. Ta metoda transformira postojeći RDD \texttt{ulaz} u novi RDD \texttt{rijeci}. Sličnu transformaciju radi i metoda \texttt{mapToPair}. Drugim riječima, \emph{transformacija} \engl{transformation} je svaka metoda koja iz jednog RDD-a kreira drugi RDD. Uz transformacije, postoje i \emph{akcije} \engl{actions}. Akcije se razlikuju od transformacija po tome što ne vraćaju novi RDD nego vraćaju jedan ili više elemenata iz nekog RDD-a, ili kao u našem primjeru s brojanjem riječi, zapisuju RDD u obliku tekstualne datoteke - metoda \texttt{saveAsTextFile}.
+\emph{Resilient distributed dataset} (RDD) je osnovna podatkovna struktura tehnologije Apache Spark. To je \emph{nepromjenjiva} \engl{immutable} kolekcija podataka. To znači da se iz jednog RDD-a može jedino napraviti drugi RDD, a ne može se promijeniti postojeći RDD. U prethodnom primjeru to je vidljivo pri pozivu metode \texttt{flatMap}. Ta metoda transformira postojeći RDD \texttt{ulaz} u novi RDD \texttt{rijeci}. Sličnu transformaciju radi i metoda \texttt{mapToPair}. Drugim riječima, \emph{transformacija} \engl{transformation} je svaka metoda koja iz jednog RDD-a kreira drugi RDD. Uz transformacije, postoje i \emph{akcije} \engl{actions}. Akcije se razlikuju od transformacija po tome što ne vraćaju novi RDD nego vraćaju jedan ili više elemenata iz nekog RDD-a, ili kao u primjeru \ref{lst:brojanjeRijeci}, zapisuju RDD u obliku tekstualne datoteke - metoda \texttt{saveAsTextFile}.
 
 U tablici \ref{tbl:transformacije} mogu se naći neke od mogućih transformacija i njihovi opisi, a u tablici \ref{tbl:akcije} nalaze se akcije koje je moguće pozvati zajedno s odgovarajućim opisima.
 \begin{table}[htb]
@@ -402,26 +396,25 @@ Razina & Prostorno zauzeće & Procesorsko vrijeme & U memoriji & Na disku\\
 \end{tabular}
 \end{table}
 
-\section{Kratki pregled}
-U ovom poglavlju smo postavili temelje nad kojima ćemo kasnije graditi složenije aplikacije. Vrlo je važno da čitatelj jasno razumije što je to RDD jer bez toga nema smisla dalje pratiti ovaj rad. Dan je pregled osnovnih transformacija i akcija koje zapravo, uz RDD, čine jezgru tehnologije \emph{Apache Spark}. Također je uveden i pojam perzistencije za efektivniji rad s RDD-ovima.
 
 \chapter{Napredno programiranje}
-\section{Primjer: Analiza PageRank algoritma}
+U ovom poglavlju opisane su neke napredne tehnike za rad s tehnologijom \emph{Apache Spark}. Objašnjen je \emph{PageRank} algoritam, a i dana je implementacija istog u primjeru \ref{lst:pagerank}.
+\section{Primjer: Analiza algoritma PageRank}
 \subsection{Algoritam}
-Zanimljivo je pitanje kako je \emph{Google} toliko dobar u rezultatima koje dobijemo na naš upit, točnije, kako ispravno sortira po relevantnosti stranice od bolje prema lošijoj? Odgovor na to daje \emph{PageRank} algoritam koji je dobio ime po jednom od osnivača \emph{Google}-a, Larry Pageu. Ovo potpoglavlje ćemo započeti kroz analizu \emph{PageRank} algoritma. Ovdje će biti iznesena pojednostavljena verzija algoritma\footnote{Zainteresiranog čitatelja se upućuje na \url{https://en.wikipedia.org/wiki/PageRank}.} koja je sasvim dovoljna za pobliže upoznavanje sa Sparkom.
+Zanimljivo je pitanje kako je \emph{Google} toliko dobar u rezultatima koje korisnik dobije na svoj upit, točnije, kako ispravno sortira po relevantnosti stranice od bolje prema lošijoj? Odgovor na to daje algoritam \emph{PageRank} koji je dobio ime po jednom od osnivača \emph{Google}-a, Larry Pageu. Ovo potpoglavlje započinje kroz analizu algoritma \emph{PageRank}. U ovom radu iznesena je pojednostavljena verzija algoritma, a više informacija nalazi se na \url{https://en.wikipedia.org/wiki/PageRank}. 
 
 Algoritam mjeri koliko je koja stranica važna po tome koliko drugih stranica upućuje na nju. Ideja je jednostavna: što više stranica ima poveznicu na neku stranicu \texttt{N}, to je stranica \texttt{N} važnija i time bolje rangirana. U obzir se uzima i koja stranica pokazuje na stranicu \texttt{N} (je li to stranica na koju sve ostale stranice pokazuju ili je to neka stranica na koju nitko ne pokazuje) kao i na koliko ostalih stranica ta stranica sadrži poveznice (nije isto ako je na cijeloj stranici samo jedna poveznica i ako na cijeloj stranici ima 1000 poveznica). Stranice na koje neka stranica \texttt{M} ima linkove nazivamo \emph{susjedima}.
 
 Pojednostavljena izvedba algoritma je sljedeća:
 \begin{enumerate}
-\item Inicijalizira se rang svake stranice na 1.0.
-\item Svaka stranica \emph{n} svim svojim susjedima šalje doprinos \texttt{rang(\emph{n})/brojSusjeda(\emph{n})}.
+\item Inicijalizira se rang svake stranice na $1.0$.
+\item Svaka stranica \texttt{\emph{n}} svim svojim susjedima šalje doprinos \texttt{rang(\emph{n})/brojSusjeda(\emph{n})}.
 \item Postavi ukupni rang stranice prema formuli: $0.15 + 0.85*\emph{ukupan primljeni doprinos}$.
 \end{enumerate}
 
 Posljednja dva koraka se odrade nekoliko puta kako bi se dobio što precizniji rezultat, u praksi je dovoljno desetak puta.
 
-Implementacija algoritma dana je u primjeru ispod.
+Implementacija algoritma dana je u primjeru \ref{lst:pagerank}.
 
 \vspace{5mm}
 \begin{lstlisting}[numbers=left, label={lst:pagerank}]
@@ -489,7 +482,7 @@ public class PageRankAlgoritam {
 	}
 }
 \end{lstlisting}
-\captionof{lstlisting}{PageRank algoritam}
+\captionof{lstlisting}{Algoritam \emph{PageRank}.}
 \vspace{5mm}
 \subsection{Analiza algoritma}
 \section{RDD-i kao uređeni parovi}
@@ -517,6 +510,43 @@ Zaključak.
 \newpage
 % Dodatak nije obavezan
 \begin{appendices}
+\chapter{Instalacija}
+\label{ch:instalacijaSpark}
+Ovdje će biti prikazana instalacija na operacijskom sustavu \emph{Ubuntu 15.10}. Ovo nije veliko ograničenje jer se iz ovih uputa može zaključiti i kako instalacija ide za neki drugi operacijski sustav.
+
+Za početak je potrebno imati instaliranu Javu, a je li Java instalirana na računalu se može provjeriti tako što se u naredbenom retku unese sljedeća naredba:\\
+\texttt{java -version}. Kao rezultat bi trebali dobiti trenutno instaliranu verziju Jave. Ukoliko Java nije instalirana, potrebno ju je najprije instalirati. Više informacija o instalaciji se može pronaći u TODO.
+
+Jednom kada imamo instaliranu Javu, sve što treba napraviti je otići na službene stranice: \url{https://spark.apache.org/downloads.html}, odabrati najnoviju verziju (Za vrijeme pisanja ovog rada to je verzija \emph{1.6.1 (Mar 09 2016}), izabrati odgovarajući paket te pokrenuti dohvaćanje odgovarajuće \emph{.tgz} arhive. Najjednostavnije je odabrati neki \emph{pre-built} paket, primjerice \emph{Pre-built for Hadoop 2.6 and later}. Daljnji koraci instalacije su napisani pod pretpostavkom da je dohvaćena ta verzija paketa. Moguće je instalirati i \emph{Source code} varijantu paketa, ali taj postupak instalacije ovdje nije opisan. 
+
+Nakon što je dohvaćena odgovarajuća arhivu, potrebno ju je raspakirati.\\ Raspakiranje arhive moguće je napraviti preko naredbe:
+\begin{lstlisting}[language=bash, size=tiny]
+$ tar -xvf spark-1.6.1-bin-hadoop2.6.tgz
+\end{lstlisting}
+Nakon toga, dobra je praksa premjestiti instalaciju u neki prikladniji direktorij. Tako nešto može se napraviti na sljedeći način:
+\begin{lstlisting}[language=bash, size=tiny]
+$ mv Downloads/spark-1.6.1-bin-hadoop2.6 faks/spark/
+\end{lstlisting}
+Ovim korakom je instalacija završena. 
+
+Kako bi bili sigurni da je instalacija uspješna, potrebno je pozicionirati se u \emph{bin} direktorij te u terminalu upisati \texttt{./spark-shell}. Ispis bi trebao biti sličan ovome:\\
+\begin{lstlisting}[language=bash, size=tiny]
+mmatak@martins-beast:~/faks/spark/bin$ ./spark-shell
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 1.6.1
+      /_/
+
+Using Scala version 2.10.5 (OpenJDK 64-Bit Server VM, Java 1.8.0_91)
+Type in expressions to have them evaluated.
+Type :help for more information.
+scala>
+\end{lstlisting}
+
+
+Ukoliko se prikaže greška vezana uz \emph{sqlContext}, to nije razlog za brigu. U ovom trenutku to nije važno. Radi ljepšeg formata ovog rada, u gornjem ispisu izbrisana su upozorenja \engl{warnings}.
 \chapter{Postavljanje datoteke pom.xml}
 \label{ch:datotekapomXML}
 Datoteka koja je potrebna kako bi Maven ispravno dohvatio artifakt \texttt{spark-core} bi trebala izgledati slično kao što je dano u nastavku. Za ispravno funkcioniranje, trebala bi se zvati \texttt{pom.xml}.

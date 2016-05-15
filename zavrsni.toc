@@ -1,24 +1,20 @@
 \select@language {english}
 \contentsline {chapter}{\numberline {1}Uvod}{1}
 \contentsline {section}{\numberline {1.1}Motivacija}{1}
-\contentsline {section}{\numberline {1.2}Instalacija i izvorni kodovi}{2}
-\contentsline {subsection}{\numberline {1.2.1}Instalacija}{2}
-\contentsline {subsection}{\numberline {1.2.2}Izvorni kodovi}{3}
-\contentsline {section}{\numberline {1.3}Osnovni gradivni elementi}{5}
-\contentsline {section}{\numberline {1.4}Kratki pregled}{5}
-\contentsline {chapter}{\numberline {2}Prvi programi}{7}
-\contentsline {section}{\numberline {2.1}Postavljanje temelja}{7}
-\contentsline {subsection}{\numberline {2.1.1}Osnovni elementi aplikacije}{7}
-\contentsline {subsection}{\numberline {2.1.2}Programiranje u Javi}{7}
-\contentsline {section}{\numberline {2.2}Programiranje s RDD-ovima}{10}
-\contentsline {section}{\numberline {2.3}Kratki pregled}{13}
+\contentsline {section}{\numberline {1.2}Osnovni gradivni elementi}{2}
+\contentsline {chapter}{\numberline {2}Prvi programi}{5}
+\contentsline {section}{\numberline {2.1}Postavljanje temelja}{5}
+\contentsline {subsection}{\numberline {2.1.1}Osnovni elementi aplikacije}{5}
+\contentsline {subsection}{\numberline {2.1.2}Kori\IeC {\v s}tenje tehnologije Apache Spark kroz programski jezik Java}{6}
+\contentsline {section}{\numberline {2.2}Programiranje s RDD-ovima}{9}
 \contentsline {chapter}{\numberline {3}Napredno programiranje}{14}
-\contentsline {section}{\numberline {3.1}Primjer: Analiza PageRank algoritma}{14}
+\contentsline {section}{\numberline {3.1}Primjer: Analiza algoritma PageRank}{14}
 \contentsline {subsection}{\numberline {3.1.1}Algoritam}{14}
-\contentsline {subsection}{\numberline {3.1.2}Analiza algoritma}{16}
-\contentsline {section}{\numberline {3.2}RDD-i kao ure\IeC {\dj }eni parovi}{16}
-\contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka}{16}
-\contentsline {section}{\numberline {3.4}Globalne varijable}{16}
-\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{17}
-\contentsline {chapter}{Literatura}{18}
-\contentsline {chapter}{Dodatak \numberline {A}Postavljanje datoteke pom.xml}{20}
+\contentsline {subsection}{\numberline {3.1.2}Analiza algoritma}{17}
+\contentsline {section}{\numberline {3.2}RDD-i kao ure\IeC {\dj }eni parovi}{17}
+\contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka}{17}
+\contentsline {section}{\numberline {3.4}Globalne varijable}{17}
+\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{18}
+\contentsline {chapter}{Literatura}{19}
+\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{21}
+\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{23}
