@@ -6,15 +6,14 @@
 \contentsline {section}{\numberline {2.1}Postavljanje temelja}{5}
 \contentsline {subsection}{\numberline {2.1.1}Osnovni elementi aplikacije}{5}
 \contentsline {subsection}{\numberline {2.1.2}Kori\IeC {\v s}tenje tehnologije Apache Spark kroz programski jezik Java}{6}
-\contentsline {section}{\numberline {2.2}Programiranje s RDD-ovima}{9}
-\contentsline {chapter}{\numberline {3}Napredno programiranje}{14}
-\contentsline {section}{\numberline {3.1}Primjer: Analiza algoritma PageRank}{14}
-\contentsline {subsection}{\numberline {3.1.1}Algoritam}{14}
-\contentsline {subsection}{\numberline {3.1.2}Analiza algoritma}{17}
-\contentsline {section}{\numberline {3.2}RDD-i kao ure\IeC {\dj }eni parovi}{17}
-\contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka}{17}
-\contentsline {section}{\numberline {3.4}Globalne varijable}{17}
-\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{18}
-\contentsline {chapter}{Literatura}{19}
-\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{21}
-\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{23}
+\contentsline {section}{\numberline {2.2}Otporni raspodijeljeni skup podataka}{9}
+\contentsline {chapter}{\numberline {3}Napredno programiranje}{15}
+\contentsline {section}{\numberline {3.1}Primjer: Algoritam PageRank}{15}
+\contentsline {subsection}{\numberline {3.1.1}Analiza algoritma}{21}
+\contentsline {section}{\numberline {3.2}RDD-i kao ure\IeC {\dj }eni parovi}{21}
+\contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka}{21}
+\contentsline {section}{\numberline {3.4}Globalne varijable}{21}
+\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{22}
+\contentsline {chapter}{Literatura}{23}
+\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{25}
+\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{27}

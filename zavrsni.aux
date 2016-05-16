@@ -3,20 +3,22 @@
 \@writefile{toc}{\select@language{english}}
 \@writefile{lof}{\select@language{english}}
 \@writefile{lot}{\select@language{english}}
+\citation{learningSpark}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Uvod}{1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Motivacija}{1}}
+\citation{workingSets}
 \@writefile{lot}{\contentsline {table}{\numberline {1.1}{\ignorespaces Neki od senzora u dana\IeC {\v s}njim mobilnim ure\IeC {\dj }ajima.\relax }}{2}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{tbl:senzori}{{1.1}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}Osnovni gradivni elementi}{2}}
 \@writefile{lot}{\contentsline {table}{\numberline {1.2}{\ignorespaces Dio datoteka i direktorija dobivenih instalacijom.\relax }}{3}}
 \newlabel{tbl:installPackage}{{1.2}{3}}
-\@writefile{lot}{\contentsline {table}{\numberline {1.3}{\ignorespaces Dio datoteka i direktorija dobivenih instalacijom.\relax }}{3}}
-\newlabel{tbl:gradivniElementi}{{1.3}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Osnovni elementi tehnologije \emph  {Apache Spark}.\relax }}{4}}
-\newlabel{fig:spark-stack}{{1.1}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Osnovni elementi tehnologije \emph  {Apache Spark}.\relax }}{3}}
+\newlabel{fig:spark-stack}{{1.1}{3}}
+\@writefile{lot}{\contentsline {table}{\numberline {1.3}{\ignorespaces Dio datoteka i direktorija dobivenih instalacijom.\relax }}{4}}
+\newlabel{tbl:gradivniElementi}{{1.3}{4}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Prvi programi}{5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -24,46 +26,61 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Osnovni elementi aplikacije}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Prikaz elemenata aplikacije. Preuzeto s \url {http://spark.apache.org/docs/latest/cluster-overview.html}.\relax }}{5}}
 \newlabel{fig:cluster-overview}{{2.1}{5}}
+\citation{marcupic}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Kori\IeC {\v s}tenje tehnologije Apache Spark kroz programski jezik Java}{6}}
-\newlabel{lst:brojanjeRijeci}{{2.1.2}{6}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.1}{\ignorespaces Program koji broji koliko se puta koja rije\IeC {\v c} pojavljuje u datoteci.\relax }}{8}}
-\newlabel{lst:lambdaBrojanjeRijeci}{{2.1}{9}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.2}{\ignorespaces Brojanje rije\IeC {\v c}i koriste\IeC {\'c}i lambda izraze.\relax }}{9}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Programiranje s RDD-ovima}{9}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Neke od transformacija\relax }}{10}}
+\newlabel{lst:brojanjeRijeci}{{2.1}{6}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.1}Program koji broji koliko se puta koja rije\IeC {\v c} pojavljuje u datoteci.}{6}}
+\newlabel{lst:lambdaBrojanjeRijeci}{{2.2}{9}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.2}Brojanje rije\IeC {\v c}i koriste\IeC {\'c}i lambda izraze.}{9}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Otporni raspodijeljeni skup podataka}{9}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Neke od transformacija nad otpornim raspodijeljenim skupovima podataka.\relax }}{10}}
 \newlabel{tbl:transformacije}{{2.1}{10}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces Akcije\relax }}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces Akcije primjenjive nad otpornim raspodijeljenim skupom podataka\relax }}{11}}
 \newlabel{tbl:akcije}{{2.2}{11}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.3}{\ignorespaces Kori\IeC {\v s}tenje transformacija i akcija.\relax }}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Transformacije nad RDD-ovima.\relax }}{13}}
+\newlabel{lst:redakDatoteke}{{2.3}{11}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.3}Kori\IeC {\v s}tenje transformacija i akcija.}{11}}
+\newlabel{lst:primjer3}{{2.4}{11}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.4}Kori\IeC {\v s}tenje transformacija i akcija.}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Transformacije nad skupovima podataka.\relax }}{13}}
 \newlabel{fig:burzeUnijaIndexiRDD}{{2.2}{13}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Razine perzistencije\relax }}{13}}
-\newlabel{tbl:razinePerzistencije}{{2.3}{13}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Napredno programiranje}{14}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Usporedba mogu\IeC {\'c}ih parametara za metodu \texttt  {persist()}.\relax }}{14}}
+\newlabel{tbl:razinePerzistencije}{{2.3}{14}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Napredno programiranje}{15}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Primjer: Analiza algoritma PageRank}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Algoritam}{14}}
-\newlabel{lst:pagerank}{{3.1.1}{15}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}{\ignorespaces Algoritam \emph  {PageRank}.\relax }}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Analiza algoritma}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}RDD-i kao ure\IeC {\dj }eni parovi}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Globalne varijable}{17}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{18}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Primjer: Algoritam PageRank}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Raspored susjeda u algoritmu\relax }}{16}}
+\newlabel{fig:pageRankSusjedi}{{3.1}{16}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Inicijalizacija rangova i odre\IeC {\dj }ivanje susjeda\relax }}{17}}
+\newlabel{tbl:pageRankKorak1}{{3.1}{17}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Izra\IeC {\v c}un doprinosa koji \IeC {\v s}alje svaka od stranica.\relax }}{17}}
+\newlabel{tbl:pageRankKorak21p1}{{3.2}{17}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Ukupni primljeni doprinos svake od stranica.\relax }}{18}}
+\newlabel{tbl:pageRankKorak22ap1}{{3.3}{18}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Rang svake od stranica nakon prve iteracije.\relax }}{18}}
+\newlabel{tbl:pageRankStanje1}{{3.4}{18}}
+\newlabel{lst:pagerank}{{3.1}{18}}
+\citation{officialDocumentation}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}{\ignorespaces Algoritam \emph  {PageRank}.\relax }}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Analiza algoritma}{21}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}RDD-i kao ure\IeC {\dj }eni parovi}{21}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka}{21}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Globalne varijable}{21}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{22}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibcite{officialDocumentation}{{1}{}{{}}{{}}}
 \bibcite{learningSpark}{{2}{}{{}}{{}}}
 \bibcite{marcupic}{{3}{}{{}}{{}}}
-\bibcite{latexPredlozak}{{4}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{Literatura}{19}}
-\@writefile{toc}{\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{21}}
+\bibcite{workingSets}{{4}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {chapter}{Literatura}{23}}
+\citation{marcupic}
+\@writefile{toc}{\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{25}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:instalacijaSpark}{{A}{21}}
-\@writefile{toc}{\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{23}}
+\newlabel{ch:instalacijaSpark}{{A}{25}}
+\@writefile{toc}{\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{27}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:datotekapomXML}{{B}{23}}
+\newlabel{ch:datotekapomXML}{{B}{27}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
