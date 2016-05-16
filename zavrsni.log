@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  16 MAY 2016 18:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  17 MAY 2016 00:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -834,80 +834,87 @@ kreira \T1/pcr/m/n/12 unijaBI\T1/ptm/m/n/12 .
 [13 <./img/transformacijeCropped.pdf>] [14]
 Chapter 3.
 
-Overfull \hbox (63.61633pt too wide) in paragraph at lines 428--429
+Overfull \hbox (63.61633pt too wide) in paragraph at lines 429--430
 []\T1/ptm/m/n/12 Svaka stran-ica \T1/pcr/m/sl/12 n \T1/ptm/m/n/12 svim svo-jim 
 sus-jed-ima ²alje do-pri-nos \T1/pcr/m/n/12 rang(\T1/pcr/m/sl/12 n\T1/pcr/m/n/1
 2 )/brojSusjeda(\T1/pcr/m/sl/12 n\T1/pcr/m/n/12 )\T1/ptm/m/n/12 . 
  []
 
+[15
 
-Overfull \hbox (41.74028pt too wide) in paragraph at lines 429--430
+]
+Overfull \hbox (41.74028pt too wide) in paragraph at lines 430--431
 []\T1/ptm/m/n/12 Postavi ukupni rang stran-ice prema for-muli: $\OT1/cmr/m/n/12
  0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 15 + 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 85 
 \OMS/cmsy/m/n/12 ^^C []$\T1/ptm/m/n/12 . 
  []
 
 
-Overfull \hbox (3.26318pt too wide) in paragraph at lines 433--434
+Overfull \hbox (3.26318pt too wide) in paragraph at lines 434--435
 []\T1/ptm/m/n/12 Kako bi se do-bio ²to brºe do-bio ²to pre-cizniji rezul-tat, v
 aºno je param-etar \T1/pcr/m/n/12 P \T1/ptm/m/n/12 postaviti
  []
 
-[15
-
-]
 <img/algoritamPageRankRucnoCropped.pdf, id=114, 464.27855pt x 657.37593pt>
 File: img/algoritamPageRankRucnoCropped.pdf Graphic file (type pdf)
 
 <use img/algoritamPageRankRucnoCropped.pdf>
 Package pdftex.def Info: img/algoritamPageRankRucnoCropped.pdf used on input li
-ne 439.
+ne 440.
 (pdftex.def)             Requested size: 232.1387pt x 328.68715pt.
  [16 <./img/algoritamPageRankRucnoCropped.pdf>] [17] [18] [19]
+<img/grafPageRankStraniceCropped.pdf, id=137, 556.73596pt x 428.71667pt>
+File: img/grafPageRankStraniceCropped.pdf Graphic file (type pdf)
+
+<use img/grafPageRankStraniceCropped.pdf>
+Package pdftex.def Info: img/grafPageRankStraniceCropped.pdf used on input line
+ 607.
+(pdftex.def)             Requested size: 278.3673pt x 214.3578pt.
+ [20 <./img/grafPageRankStraniceCropped.pdf>] [21] [22]
 
 Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 603.
+(caption)                outside box or environment on input line 694.
 See the caption package documentation for explanation.
 
-[20] [21]
+[23]
 Chapter 4.
-[22
+[24
 
-] [23
+] [25
 
-] [24
+] [26
 
 ]
 Dodatak A.
 
-Underfull \hbox (badness 1142) in paragraph at lines 639--640
+Underfull \hbox (badness 1142) in paragraph at lines 729--730
 \T1/ptm/m/n/12 ice: $\T1/pcr/m/n/12 https : / / spark . apache . org / download
 s . html$\T1/ptm/m/n/12 , odabrati na-jnoviju
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 651--652
+Underfull \hbox (badness 10000) in paragraph at lines 741--742
 
  []
 
-[25
+[27
 
-] [26]
+] [28]
 Dodatak B.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-) [27
+) [29
 
-] [28]
+] [30]
 (./zavrsni.aux) ) 
 Here is how much of TeX's memory you used:
- 8242 strings out of 494957
- 113906 string characters out of 6180029
+ 8251 strings out of 494957
+ 114187 string characters out of 6180029
  239213 words of memory out of 5000000
- 11288 multiletter control sequences out of 15000+600000
+ 11296 multiletter control sequences out of 15000+600000
  83476 words of font info for 108 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  43i,11n,51p,1095b,1743s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -922,10 +929,10 @@ r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on zavrsni.pdf (32 pages, 241319 bytes).
+Output written on zavrsni.pdf (34 pages, 252808 bytes).
 PDF statistics:
- 204 PDF objects out of 1000 (max. 8388607)
- 137 compressed objects within 2 object streams
+ 215 PDF objects out of 1000 (max. 8388607)
+ 144 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

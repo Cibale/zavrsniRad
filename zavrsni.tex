@@ -418,6 +418,7 @@ U ovom poglavlju opisane su neke napredne tehnike za rad s tehnologijom \emph{Ap
 \section{Primjer: Algoritam PageRank}
 Zanimljivo je pitanje kako je \emph{Google} toliko dobar u rezultatima koje korisnik dobije na svoj upit, točnije, kako ispravno sortira po relevantnosti stranice od važnije prema manje važnoj? Odgovor na to daje algoritam \emph{PageRank} koji je dobio ime po jednom od osnivača \emph{Googlea}, Larry Pageu. Ovo potpoglavlje analizira upravo algoritam \emph{PageRank}. U nastavku je iznesena pojednostavljena verzija algoritma, a više informacija o samom algoritmu nalazi se na \url{https://en.wikipedia.org/wiki/PageRank}. 
 
+\subsection{Upoznavanje s algoritmom}
 Algoritam računa koliko je koja stranica važna po tome koliko drugih stranica upućuje na nju. Ideja je jednostavna: što više stranica ima poveznicu na neku stranicu \texttt{N}, to je stranica \texttt{N} važnija i time bolje rangirana. U obzir se uzima i koja stranica pokazuje na stranicu \texttt{N} (je li to stranica na koju sve ostale stranice pokazuju ili je to neka stranica na koju nitko ne pokazuje) kao i na koliko ostalih stranica ta stranica sadrži poveznice (nije isto ako je na cijeloj stranici samo jedna poveznica i ako na cijeloj stranici ima 1000 poveznica). Stranice na koje neka stranica \texttt{M} sadrži poveznice nazivamo \emph{susjedima}.
 
 Pojednostavljena izvedba algoritma je sljedeća:
@@ -529,7 +530,9 @@ G & $1.0$ & D\\
 \end{tabular}
 \end{table}
 
-Vidimo da je već u prvoj iteraciji algoritma stranica \texttt{D} iskočila sa svojim rangom od okoline. Ovo smo bili i pretpostavili budući da je stranica \texttt{D} susjed najvećem broju stranica, odnosno najveći broj stranica sadrži poveznicu na stranicu \texttt{D}. Idemo napraviti još jednu iteraciju i vidjeti što će se dogoditi s rangovima. 
+Vidimo da je već u prvoj iteraciji algoritma stranica \texttt{D} iskočila sa svojim rangom od okoline. Ovo smo bili i pretpostavili budući da je stranica \texttt{D} susjed najvećem broju stranica, odnosno najveći broj stranica sadrži poveznicu na stranicu \texttt{D}. 
+
+Idemo napraviti još jednu iteraciju i vidjeti što će se dogoditi s rangovima. 
 
 Iz tablice \ref{tbl:pageRankStanje1} dohvaćamo rang i broj susjeda svake od stranica te računamo doprinos koji svaka od stranica može dati svojim susjedima prema već spomenutoj formuli u gornjem algoritmu u koraku 2.1. Doprinos koji stranica \texttt{A} šalje drugima iznosi $1.0 / 2 = 0.5$. Doprinos koji stranica \texttt{B} šalje je $0.575 / 2 = 0.2875$. Doprinos stranice \texttt{C} je jednak doprinosu stranice \texttt{B} budući da imaju jednak rang i broj susjeda. Doprinos stranice \texttt{D} iznosi $2.7 / 1 = 2.7$. Doprinos stranica \texttt{E} i \texttt{F} iznosi $0.575$, a doprinos stranice \texttt{G} je $1.0$. Rezultati izračuna koliko koja stranica doprinosi drugima prikazani su u tablici \ref{tbl:pageRankKorak21p2}.
 
@@ -552,9 +555,62 @@ G & $1.0$ & D & 1.0\\
 \end{tabular}
 \end{table}
 
-Sada se računa ukupni primljeni doprinos svake od stranica. Tako za stranicu \texttt{A} se dobije da ukupni primljeni doprinos iznosi $2.7$ jer je ona jedino susjed stranici D. Ukupni primljeni doprinos stranice \texttt{B} je $0.5$ jer je upravo to iznos koliko stranica \texttt{A} doprinosi drugima, a stranica \texttt{B} je jedino susjed od stranice \texttt{A}. Stranica \texttt{C} ima ukupni primljeni doprinos $0.2875$ jer je upravo to iznos doprinosa stranice \texttt{B}, a stranica \texttt{C} je susjed jedino stranici \texttt{B}. Stranica \texttt{D} prima zbroj doprinosa svih stranica kojima je susjed odnosno zbroj doprinosa stranica \texttt{B}, \texttt{C}, \texttt{F} i \texttt{G}. Iz toga proizlazi da je ukupni primljeni doprinos stranice \texttt{D} $0.2875 + 0.2875 + 0.575 + 1.0 = 2.15$. 
+Sada se ponovno računa ukupni primljeni doprinos svake od stranica. Tako za stranicu \texttt{A} se dobije da ukupni primljeni doprinos iznosi $2.7$ jer je ona jedino susjed stranici D. Ukupni primljeni doprinos stranice \texttt{B} je $0.5$ jer je upravo to iznos koliko stranica \texttt{A} doprinosi drugima, a stranica \texttt{B} je jedino susjed od stranice \texttt{A}. Stranica \texttt{C} ima ukupni primljeni doprinos $0.2875$ jer je upravo to iznos doprinosa stranice \texttt{B}, a stranica \texttt{C} je susjed jedino stranici \texttt{B}. Stranica \texttt{D} prima zbroj doprinosa svih stranica kojima je susjed odnosno zbroj doprinosa stranica \texttt{B}, \texttt{C}, \texttt{F} i \texttt{G}. Iz toga proizlazi da je ukupni primljeni doprinos stranice \texttt{D} $0.2875 + 0.2875 + 0.575 + 1.0 = 2.15$. Ukupni primljeni doprinos za svaku od stranica nalazi se u tablici \ref{tbl:pageRankKorak22ap2} 
 
-Implementacija algoritma dana je u primjeru \ref{lst:pagerank}.
+\begin{table}[htb]
+\caption{Ukupni primljeni doprinos svake od stranica u drugoj tablici.}
+\label{tbl:pageRankKorak22ap2}
+\centering
+\begin{tabular}{lllll} 
+\hline
+Stranica & Rang & Susjedi & Doprinos drugima & Ukupni primljeni doprinos\\
+\hline
+A & $1.0$ & B, E & 0.5 & 2.7\\
+B & $0.575$ & C, D & 0.2875 & 0.5\\
+C & $0.575$ & D, F & 0.2875 & 0.2875\\
+D & $2.7$ & A & 2.7 & 2.15\\
+E & $0.575$ & G & 0.575 & 0.5\\
+F & $0.575$ & D & 0.575 & 0.2875\\
+G & $1.0$ & D & 1.0 & 0.575\\
+\hline
+\end{tabular}
+\end{table}
+
+Nakon što je i u drugoj iteraciji izračunat ukupni primljeni doprinos, vrijeme je za ponovni izračun ranga svake od stanica po formuli koja se nalazi u koraku 2.2. Novi rang stranice \texttt{A} iznosi $0.15 + 0.85 * 2.7 = 2.445$. Novi rang stanice \texttt{B} iznosi $0.15 + 0.85 * 0.5 = 0.575$. Novi rang stranice \texttt{C} iznosi $0.15 + 0.85 * 0.2875 = 0.394375 $. Novi rang stranice \texttt{D} je $0.15 + 0.85 * 2.15 = 1.9775$.
+Rang stranice \texttt{E} je $0.15 + 0.85 * 0.5 = 0.575$, a rang stranice \texttt{F} iznosi $0.15 + 0.85 * 0.2875 = 0.394375$. Konačno, rang stranice \texttt{G} je $0.15 + 0.85 * 0.575 = 0.63875$. Nakon što se postavi novi rang za svaku od stranica, nastupi situacija kao u tablici \ref{tbl:pageRankStanje2}
+
+\begin{table}[htb]
+\caption{Rang svake od stranica nakon prve iteracije.}
+\label{tbl:pageRankStanje2}
+\centering
+\begin{tabular}{lll} 
+\hline
+Stranica & Rang & Susjedi \\
+\hline
+A & $2.445$ & B, E\\
+B & $0.575$ & C, D\\
+C & $0.394375$ & D, F\\
+D & $1.9775$ & A\\
+E & $0.575$ & G\\
+F & $0.394375$ & D\\
+G & $0.63875$ & D\\
+\hline
+\end{tabular}
+\end{table}
+
+Iz tablice \ref{tbl:pageRankStanje2} vidljivo je da je stranica \texttt{A} preuzela vodstvo. To se isto može intuitivno prihvatiti budući da skoro sve stranice pokazuju na stranicu \texttt{D}, a upravo \texttt{D} je jedina stranica koja pokazuje na \texttt{A}.
+
+Nakon što se izvrti 10 iteracija, stvari se stabiliziraju. Graf koji opisuje kako se vrijednosti  mijenjaju kroz 10 iteracija prikazan je slikom \ref{fig:grafRangIteracija}.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale = 0.5]{img/grafPageRankStraniceCropped.pdf}
+\caption{Vrijednosti ranga ovisno o iteraciji}
+\label{fig:grafRangIteracija}
+\end{figure}
+
+\subsection{Implementacija i analiza}
+Kada je poznato kako "ručno" radi algoritam, ne bi trebao biti problem napisati programsku implementaciju koja se nalazi u primjeru \ref{lst:pagerank}. U ovom dijelu je osim samog koda napisana i detaljna analiza tog koda kako bi se dobilo što više informacija o tome kako tehnologija \emph{Apache Spark} radi. 
 
 \vspace{5mm}
 \begin{lstlisting}[numbers=left, label={lst:pagerank}]
@@ -572,42 +628,56 @@ import com.google.common.collect.Iterables;
 
 import scala.Tuple2;
 
-public class PageRankAlgoritam {
+/**
+ * Program računa rang pojedine stranice. 
+ * Očekuje se da svaki redak ulazne datoteke sadrži 
+ * samo 2 stranice u formatu "StranicaA StranicaB", a taj
+ * zapis predstavlja da je StranicaB susjed od StranicaA.
+ * 
+ * @author mmatak
+ *
+ */
+public class AlgoritamPageRank {
 	private static final String ULAZNA_DATOTEKA = "pageRankInput.txt";
 	private static final int BROJ_ITERACIJA = 10;
 
 	public static void main(String[] args) {
-
 		// Inicijalizacija SparkContext-a.
 		SparkConf conf = new SparkConf().setMaster("local")
-				.setAppName("Brojanje rijeci");
+				.setAppName("Algoritam PageRank");
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
 		// Učitavanje podataka.
 		JavaRDD<String> ulaz = sc.textFile(ULAZNA_DATOTEKA);
 
 		// Pročitaj sve ulazne URL-e i inicijaliziraj njihove susjede.
-		JavaPairRDD<String, Iterable<String>> linkovi = ulaz
-				.mapToPair(redak -> {
+		JavaPairRDD<String, Iterable<String>> linkovi = ulaz.mapToPair(
+				redak -> {
 					String[] elementi = redak.split("\\s+");
 					return new Tuple2<String, String>(elementi[0], elementi[1]);
 				}).distinct().groupByKey().cache();
-		// Svaku vrijednost u orginalnom RDDu zamijeni s 1.0 i vrati novi RDD.
+		// Svako ime susjeda zamijeni s 1.0 i vrati novi skup podataka.
 		JavaPairRDD<String, Double> rangovi = linkovi.mapValues(value -> 1.0);
 
 		// iteracija 2. i 3. koraka algoritma
 		for (int i = 0; i < BROJ_ITERACIJA; i++) {
 			// za svaki link izracunaj njegovu doprinos drugim linkovima
-			JavaPairRDD<String, Double> doprinosi = linkovi.join(rangovi)
-					.values().flatMapToPair(linkoviRang -> {
-						int brojSusjeda = Iterables.size(linkoviRang._1);
-						List<Tuple2<String, Double>> rezultati = new ArrayList<Tuple2<String, Double>>();
+			JavaPairRDD<String, Double> doprinosi =
+			linkovi.join(rangovi).values().flatMapToPair(
+				linkoviRang -> {
+				
+					int brojSusjeda = Iterables.size(linkoviRang._1);
+					List<Tuple2<String, Double>> rezultati = new ArrayList<Tuple2<String, Double>>();
+					
 						for (String susjed : linkoviRang._1) {
-							rezultati.add(new Tuple2<String, Double>(susjed,
-									linkoviRang._2 / brojSusjeda));
+							rezultati.add(new Tuple2<String, Double>(
+							susjed, linkoviRang._2 / brojSusjeda));
 						}
+						
 						return rezultati;
-					});
+						
+				}
+			);
 			rangovi = doprinosi.reduceByKey((v1, v2) -> v1 + v2)
 					.mapValues(suma -> 0.15 + suma * 0.85);
 		}
@@ -615,8 +685,7 @@ public class PageRankAlgoritam {
 		List<Tuple2<String, Double>> rangoviFinal = rangovi.collect();
 		// ispis
 		for (Tuple2<String, Double> entry : rangoviFinal) {
-			System.out.println(
-					"URL " + entry._1 + "\tima vrijednost " + entry._2);
+			System.out.printf("Stranica %s ima rang %.2f\n", entry._1, entry._2);
 		}
 		sc.close();
 	}
@@ -624,8 +693,7 @@ public class PageRankAlgoritam {
 \end{lstlisting}
 \captionof{lstlisting}{Algoritam \emph{PageRank}.}
 \vspace{5mm}
-Ovdje ide citiranje \cite{officialDocumentation}.
-\subsection{Analiza algoritma}
+TODO: Analiza gore implementiranog algoritma. 
 \section{RDD-i kao uređeni parovi}
 \section{Čitanje i spremanje podataka}
 \section{Globalne varijable}
