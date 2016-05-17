@@ -165,8 +165,8 @@ Općenito govoreći, svaka se Spark aplikacija sastoji  od nekoliko komponenata.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=10cm]{img/cluster-overview.png}
-\caption{Prikaz elemenata aplikacije. Preuzeto s \protect\url{http://spark.apache.org/docs/latest/cluster-overview.html}.}
+\includegraphics[scale=0.55]{img/elementiAplikacijeCropped.pdf}
+\caption{Prikaz elemenata aplikacije.}
 \label{fig:cluster-overview}
 \end{figure}
 
@@ -613,7 +613,7 @@ Nakon što se izvrti 10 iteracija, stvari se stabiliziraju. Graf koji opisuje ka
 Kada je poznato kako "ručno" radi algoritam, ne bi trebao biti problem napisati programsku implementaciju koja se nalazi u primjeru \ref{lst:pagerank}. U ovom dijelu je osim samog koda napisana i detaljna analiza tog koda kako bi se dobilo što više informacija o tome kako radi tehnologija \emph{Apache Spark}. 
 
 \vspace{5mm}
-\begin{lstlisting}[numbers=left, label={lst:pagerank}]
+\begin{lstlisting}[numbers=left, label={lst:pagerank}, caption={Algoritam \emph{PageRank}.}, escapechar=|]
 package hr.fer.zemris.naprednoProgramiranje;
 
 import java.util.ArrayList;
@@ -643,12 +643,12 @@ public class AlgoritamPageRank {
 
 	public static void main(String[] args) {
 		// Inicijalizacija SparkContext-a.
-		SparkConf conf = new SparkConf().setMaster("local")
+		SparkConf conf = new SparkConf().setMaster("local") |\label{line:initStart}|
 				.setAppName("Algoritam PageRank");
-		JavaSparkContext sc = new JavaSparkContext(conf);
+		JavaSparkContext sc = new JavaSparkContext(conf); |\label{line:initEnd}|
 
 		// Učitavanje podataka.
-		JavaRDD<String> ulaz = sc.textFile(ULAZNA_DATOTEKA);
+		JavaRDD<String> ulaz = sc.textFile(ULAZNA_DATOTEKA); |\label{line:ucitavanje}|
 
 		// Pročitaj sve ulazne URL-e i inicijaliziraj njihove susjede.
 		JavaPairRDD<String, Iterable<String>> linkovi = ulaz.mapToPair(
@@ -691,9 +691,15 @@ public class AlgoritamPageRank {
 	}
 }
 \end{lstlisting}
-\captionof{lstlisting}{Algoritam \emph{PageRank}.}
 \vspace{5mm}
-TODO: Analiza gore implementiranog algoritma. 
+
+Analizirajmo kod naveden u primjeru \ref{lst:pagerank}. 
+
+Od linije \ref{line:initStart} do linije \ref{line:initEnd} inicijalizira se glavno računalo i ime aplikacije. Ovdje je to postavljeno na \texttt{local} budući da se aplikacija odvija na lokalnom računalu, a ne na grozu. Ime aplikacije postavljeno je po algoritmu kojeg aplikacija implementira.
+
+Linija \ref{line:ucitavanje} obavlja inicijalizaciju \emph{otpornog raspodijeljenog skupa podataka} čitajući podatke iz datoteke čija je putanja zadana varijablom \texttt{ULAZNA\_DATOTEKA}.
+
+
 \section{RDD-i kao uređeni parovi}
 \section{Čitanje i spremanje podataka}
 \section{Globalne varijable}

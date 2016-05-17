@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  17 MAY 2016 00:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  17 MAY 2016 18:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -732,16 +732,17 @@ Package pdftex.def Info: img/gradivniElementiCropped.pdf used on input line 136
  [3 <./img/gradivniElementiCropped.pdf>]
 [4]
 Chapter 2.
-<img/cluster-overview.png, id=56, 598.235pt x 287.0725pt>
-File: img/cluster-overview.png Graphic file (type png)
+<img/elementiAplikacijeCropped.pdf, id=56, 514.9278pt x 409.40956pt>
+File: img/elementiAplikacijeCropped.pdf Graphic file (type pdf)
 
-<use img/cluster-overview.png>
-Package pdftex.def Info: img/cluster-overview.png used on input line 168.
-(pdftex.def)             Requested size: 284.52756pt x 136.53606pt.
+<use img/elementiAplikacijeCropped.pdf>
+Package pdftex.def Info: img/elementiAplikacijeCropped.pdf used on input line 1
+68.
+(pdftex.def)             Requested size: 283.21115pt x 225.17595pt.
  [5
 
- <./img/cluster-overview.png>]
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+ <./img/elementiAplikacijeCropped.pdf>] (/usr/share/texlive/texmf-dist/tex/late
+x/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -758,7 +759,7 @@ Overfull \hbox (8.67996pt too wide) in paragraph at lines 184--186
 /n/12 spark-core\T1/ptm/m/n/12 , sve ²to je jo² potrebno
  []
 
-[6] [7] [8]
+[6] [7] [8] [9]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <12> not available
 (Font)              Font shape `T1/pcr/m/sl' tried instead on input line 294.
 
@@ -771,7 +772,7 @@ Overfull \hbox (4.71693pt too wide) in paragraph at lines 290--301
  [][] 
  []
 
-[9]
+
 Overfull \hbox (2.49614pt too wide) in paragraph at lines 303--307
 []\T1/ptm/m/n/12 Za de-taljnije ob-ja²n-jenje ovih i os-talih trans-for-ma-cija
 , pogle-dati $\T1/pcr/m/n/12 http : / / spark .
@@ -813,7 +814,7 @@ Overfull \hbox (5.7985pt too wide) in paragraph at lines 380--381
 i \T1/pcr/m/n/12 burzeUnijaIndexi\T1/ptm/m/n/12 .
  []
 
-[12] <img/transformacijeCropped.pdf, id=86, 530.75487pt x 403.07788pt>
+[12] <img/transformacijeCropped.pdf, id=99, 530.75487pt x 403.07788pt>
 File: img/transformacijeCropped.pdf Graphic file (type pdf)
 
 <use img/transformacijeCropped.pdf>
@@ -855,7 +856,7 @@ Overfull \hbox (3.26318pt too wide) in paragraph at lines 434--435
 aºno je param-etar \T1/pcr/m/n/12 P \T1/ptm/m/n/12 postaviti
  []
 
-<img/algoritamPageRankRucnoCropped.pdf, id=114, 464.27855pt x 657.37593pt>
+<img/algoritamPageRankRucnoCropped.pdf, id=127, 464.27855pt x 657.37593pt>
 File: img/algoritamPageRankRucnoCropped.pdf Graphic file (type pdf)
 
 <use img/algoritamPageRankRucnoCropped.pdf>
@@ -863,20 +864,14 @@ Package pdftex.def Info: img/algoritamPageRankRucnoCropped.pdf used on input li
 ne 440.
 (pdftex.def)             Requested size: 232.1387pt x 328.68715pt.
  [16 <./img/algoritamPageRankRucnoCropped.pdf>] [17] [18] [19]
-<img/grafPageRankStraniceCropped.pdf, id=137, 556.73596pt x 428.71667pt>
+<img/grafPageRankStraniceCropped.pdf, id=150, 556.73596pt x 428.71667pt>
 File: img/grafPageRankStraniceCropped.pdf Graphic file (type pdf)
 
 <use img/grafPageRankStraniceCropped.pdf>
 Package pdftex.def Info: img/grafPageRankStraniceCropped.pdf used on input line
  607.
 (pdftex.def)             Requested size: 278.3673pt x 214.3578pt.
- [20 <./img/grafPageRankStraniceCropped.pdf>] [21] [22]
-
-Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 694.
-See the caption package documentation for explanation.
-
-[23]
+ [20 <./img/grafPageRankStraniceCropped.pdf>] [21] [22] [23]
 Chapter 4.
 [24
 
@@ -887,13 +882,13 @@ Chapter 4.
 ]
 Dodatak A.
 
-Underfull \hbox (badness 1142) in paragraph at lines 729--730
-\T1/ptm/m/n/12 ice: $\T1/pcr/m/n/12 https : / / spark . apache . org / download
-s . html$\T1/ptm/m/n/12 , odabrati na-jnoviju
+Overfull \hbox (4.43343pt too wide) in paragraph at lines 735--736
+\T1/ptm/m/n/12 stran-ice: $\T1/pcr/m/n/12 https : / / spark . apache . org / do
+wnloads . html$\T1/ptm/m/n/12 , odabrati na-jnoviju
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 741--742
+Underfull \hbox (badness 10000) in paragraph at lines 747--748
 
  []
 
@@ -911,13 +906,13 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 ] [30]
 (./zavrsni.aux) ) 
 Here is how much of TeX's memory you used:
- 8251 strings out of 494957
- 114187 string characters out of 6180029
- 239213 words of memory out of 5000000
- 11296 multiletter control sequences out of 15000+600000
+ 8254 strings out of 494957
+ 114282 string characters out of 6180029
+ 241213 words of memory out of 5000000
+ 11300 multiletter control sequences out of 15000+600000
  83476 words of font info for 108 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 43i,11n,51p,1095b,1743s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,11n,51p,1095b,1753s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texl
@@ -929,10 +924,10 @@ r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on zavrsni.pdf (34 pages, 252813 bytes).
+Output written on zavrsni.pdf (34 pages, 246741 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
+ 228 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
