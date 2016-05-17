@@ -651,19 +651,19 @@ public class AlgoritamPageRank {
 		JavaRDD<String> ulaz = sc.textFile(ULAZNA_DATOTEKA); |\label{line:ucitavanje}|
 
 		// Pročitaj sve ulazne URL-e i inicijaliziraj njihove susjede.
-		JavaPairRDD<String, Iterable<String>> linkovi = ulaz.mapToPair(
+		JavaPairRDD<String, Iterable<String>> linkovi = ulaz.mapToPair(|\label{line:susjediInitStart}|
 				redak -> {
 					String[] elementi = redak.split("\\s+");
 					return new Tuple2<String, String>(elementi[0], elementi[1]);
-				}).distinct().groupByKey().cache();
+				}).distinct().groupByKey().cache(); |\label{line:susjediInitEnd}|
 		// Svako ime susjeda zamijeni s 1.0 i vrati novi skup podataka.
-		JavaPairRDD<String, Double> rangovi = linkovi.mapValues(value -> 1.0);
+		JavaPairRDD<String, Double> rangovi = linkovi.mapValues(value -> 1.0); |\label{line:initRangovi}|
 
 		// iteracija 2. i 3. koraka algoritma
 		for (int i = 0; i < BROJ_ITERACIJA; i++) {
 			// za svaki link izracunaj njegovu doprinos drugim linkovima
 			JavaPairRDD<String, Double> doprinosi =
-			linkovi.join(rangovi).values().flatMapToPair(
+			linkovi.join(rangovi).values().flatMapToPair(|\label{line:joinValues}|
 				linkoviRang -> {
 				
 					int brojSusjeda = Iterables.size(linkoviRang._1);
@@ -699,6 +699,11 @@ Od linije \ref{line:initStart} do linije \ref{line:initEnd} inicijalizira se gla
 
 Linija \ref{line:ucitavanje} obavlja inicijalizaciju \emph{otpornog raspodijeljenog skupa podataka} čitajući podatke iz datoteke čija je putanja zadana varijablom \texttt{ULAZNA\_DATOTEKA}.
 
+Od linije \ref{line:susjediInitStart} do linije \ref{line:susjediInitEnd} obavlja se pridruživanje susjeda svakoj stranici. Svaki se redak iz skupa \texttt{ulaz} podijeli na dva elementa - element prije i element poslije razmaka. Ta dva elementa predstavljaju uređeni par (\emph{ključ}, \emph{vrijednost}) gdje je stranica koja je prije razmaka \emph{ključ}, a stranica nakon razmaka \emph{vrijednost}. To znači da je stranica \emph{vrijednost} susjed od stranice \emph{ključ}. Budući da su dozvoljeni duplikati u ulaznom skupu podataka tj. može postojati dva identična retka koja govore kako stranica \emph{N} ima susjeda \emph{M}, to se mora uzeti u obzir. Za rangiranje stranice nije bitno koliko poveznica stranica \emph{N} sadrži na stranicu \emph{M}. U ovoj implementaciji, svejedno je radi li se o 1 ili 1000 poveznica jer su to sve iste poveznice. Da bi se osiguralo da ne postoji niti jedan duplikat, poziva se metoda \texttt{distinct()}. Pozivom metode \texttt{groupByKey()} obavlja se \emph{spajanje} uređenih parova s istim ključem, a njihove vrijednosti spremamo u listu. Primjerice, postoje li kolekcija uređenih parova (\emph{A}, \emph{B}), (\emph{A}, \emph{C}), (\emph{A}, \emph{D}) i nad tom kolekcijom pozove se \texttt{groupByKey()} rezultat će biti uređeni par (\emph{A}, \{\emph{B}, \emph{C}, \emph{D}\}). \emph{Vrijednost} tog uređenog para je iterabilna (implementira sučelje \texttt{Iterable}) i zbog toga je povratna vrijednost u obliku \texttt{JavaPairRDD<String, Iterable<String>{}>}. Rezultat je skup podataka \texttt{linkovi} predstavljen uređenim parovima gdje su ključevi stranice, a vrijednosti susjedi tih stranica. Konačno, kako se ne bi ovo moralo svaki puta ispočetka računati, rezultat se pohranjuje u memoriju pozivom metode \texttt{cache()}.
+
+Linija \ref{line:initRangovi} iz skupa podataka \texttt{linkovi} "provuče" svaku od vrijednosti (čitava kolekcija je zapravo jedna vrijednost) kroz funkciju koja tu čitavu kolekciju samo preslika u vrijednost $1.0$. Sada je nastao novi skup uređenih parova koji za \emph{ključ} imaju stranicu, a za \emph{vrijednost} $1.0$. Ovim postupkom je zapravo postavljen rang svake stranice na početnu vrijednost.
+
+Poziv naredbe \texttt{linkovi.join(rangovi)} u liniji \ref{line:joinValues} vraća novi skup podataka koji kao ključeve ima ključeve iz skupova \texttt{linkovi} i \texttt{rangovi} (bez dupliciranja), a odgovarajuće vrijednosti su uređeni parovi vrijednosti iz tih skupova. Preciznije rečeno, \texttt{join(\emph{drugiSkupPodataka})} ako je pozvan nad skupovima uređenih parova oblika (\emph{K},\emph{V}) i (\emph{K}, \emph{W}) kao rezultat vraća skup podataka uređenih parova oblika (\emph{K},(\emph{V}, \emph{W})). Ukoliko postoje različiti ključevi u skupovima podataka nad kojima se izvršava \texttt{join()}, ti parovi su ignorirani. Jedino se "uparuju" uređeni parovi s istim ključem. Metoda \texttt{values()} vraća skup svih \emph{vrijednosti} iz skupa podataka dobivenog pozivom metode \texttt{join()}. U ovom primjeru metoda \texttt{values()} vraća skup uređenih parova gdje je \emph{ključ} kolekcija susjeda neke stranice, a \emph{vrijednost} rang te stranice. Metoda \texttt{flatMapToPair()} kao argument prima funkciju oblika \texttt{PairFlatMapFunction<T,K2,V2>} koja prima element tipa \texttt{T} i vraća nula ili više uređenih parova oblika (\texttt{K2}, \texttt{V2}). Metoda \texttt{flatMapToPair()} zapravo "provuče" svaki element skupa nad kojim je pozvana kroz funkciju koju primi kao argument i na kraju, na temelju uređenih parova koje je ta funkcija vratila, kreira skup podataka oblika (\texttt{K2}, \texttt{V2}). Element koji se "provlači" imenovan je varijablom \texttt{linkoviRang}.
 
 \section{RDD-i kao uređeni parovi}
 \section{Čitanje i spremanje podataka}

@@ -11,10 +11,10 @@
 \contentsline {section}{\numberline {3.1}Primjer: Algoritam PageRank}{15}
 \contentsline {subsection}{\numberline {3.1.1}Upoznavanje s algoritmom}{15}
 \contentsline {subsection}{\numberline {3.1.2}Implementacija i analiza}{21}
-\contentsline {section}{\numberline {3.2}RDD-i kao ure\IeC {\dj }eni parovi}{23}
-\contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka}{23}
-\contentsline {section}{\numberline {3.4}Globalne varijable}{23}
-\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{24}
-\contentsline {chapter}{Literatura}{25}
-\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{27}
-\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{29}
+\contentsline {section}{\numberline {3.2}RDD-i kao ure\IeC {\dj }eni parovi}{24}
+\contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka}{24}
+\contentsline {section}{\numberline {3.4}Globalne varijable}{24}
+\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{25}
+\contentsline {chapter}{Literatura}{26}
+\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{28}
+\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{30}
