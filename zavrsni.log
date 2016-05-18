@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  18 MAY 2016 14:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  18 MAY 2016 18:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -896,45 +896,163 @@ Overfull \hbox (10.29625pt too wide) in paragraph at lines 723--724
 o
  []
 
+
+Overfull \hbox (19.43484pt too wide) in paragraph at lines 727--728
+\T1/pcr/m/n/12 spark . apache . org / docs / latest / api / java / index . html
+ ? org / apache /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\T1/ptm/m/n/12 Kombinira vri-
+ []
+
+
+Underfull \hbox (badness 4353) in paragraph at lines 738--738
+\T1/ptm/m/n/12 jed-nosti s is-tim
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\T1/ptm/m/n/12 rdd.reduceByKey((x,y)
+ []
+
+
+Underfull \hbox (badness 4366) in paragraph at lines 738--739
+[]\T1/ptm/m/n/12 {(1, 2),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+[]\T1/ptm/m/n/12 Grupira vri-jed-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--740
+\T1/ptm/m/n/12 nosti s is-tim
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 740--741
+\T1/ptm/m/n/12 (3, [4,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 742--742
+\T1/ptm/m/n/12 nad svakom
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 742--742
+\T1/ptm/m/it/12 vri-jed-nosti \T1/ptm/m/n/12 u
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 742--742
+\T1/ptm/m/n/12 ure-ženom paru,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 742--742
+\T1/ptm/m/it/12 klju£ \T1/ptm/m/n/12 os-taje
+ []
+
+
+Underfull \hbox (badness 3977) in paragraph at lines 742--743
+\T1/ptm/m/n/12 (3, 14),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 745--745
+\T1/ptm/m/n/12 sas-toji od svih
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 748--748
+\T1/ptm/m/n/12 sas-toji od svih
+ []
+
 [25]
+Underfull \hbox (badness 10000) in paragraph at lines 764--764
+[]\T1/ptm/m/n/12 Bri²e parove
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 764--764
+\T1/ptm/m/n/12 koji imaju iste
+ []
+
+
+Overfull \hbox (10.01602pt too wide) in paragraph at lines 764--764
+[]\T1/ptm/m/n/12 rdd.subtractByKey(drugi)| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 766--766
+\T1/ptm/m/it/12 prirodnog spa-
+ []
+
+
+Underfull \hbox (badness 4366) in paragraph at lines 766--767
+[]\T1/ptm/m/n/12 {(3, (4,
+ []
+
+
+Underfull \hbox (badness 7981) in paragraph at lines 766--767
+\T1/ptm/m/n/12 9)), (3,
+ []
+
+
+Overfull \hbox (13.63219pt too wide) in paragraph at lines 771--772
+[]\T1/ptm/m/n/12 Ono ²to je jo² £esto potrebno, a nije ve¢ spomenuto je sor-ti-
+ranje po-dataka. Tehnologija
+ []
+
+[26]
+Overfull \hbox (44.35814pt too wide) in paragraph at lines 776--777
+\T1/ptm/m/n/12 moºe se pron-a¢i na $\T1/pcr/m/n/12 http : / / geokoder . com / 
+java-[]json-[]libraries-[]comparison$\T1/ptm/m/n/12 . 
+ []
+
+[27]
 Chapter 4.
-[26
+[28
 
-] [27
+] [29
 
-] [28
+] [30
 
 ]
 Dodatak A.
 
-Overfull \hbox (4.43343pt too wide) in paragraph at lines 756--757
+Overfull \hbox (4.43343pt too wide) in paragraph at lines 810--811
 \T1/ptm/m/n/12 stran-ice: $\T1/pcr/m/n/12 https : / / spark . apache . org / do
 wnloads . html$\T1/ptm/m/n/12 , odabrati na-jnoviju
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 768--769
+Underfull \hbox (badness 10000) in paragraph at lines 822--823
 
  []
 
-[29
+[31
 
-] [30]
+] [32]
 Dodatak B.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-) [31
+) [33
 
-] [32]
+] [34]
 (./zavrsni.aux) ) 
 Here is how much of TeX's memory you used:
- 8268 strings out of 494957
- 114568 string characters out of 6180029
+ 8271 strings out of 494957
+ 114653 string characters out of 6180029
  241213 words of memory out of 5000000
- 11314 multiletter control sequences out of 15000+600000
+ 11317 multiletter control sequences out of 15000+600000
  83476 words of font info for 108 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  43i,11n,51p,1854b,1753s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -949,10 +1067,10 @@ r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on zavrsni.pdf (36 pages, 254325 bytes).
+Output written on zavrsni.pdf (38 pages, 259442 bytes).
 PDF statistics:
- 234 PDF objects out of 1000 (max. 8388607)
- 157 compressed objects within 2 object streams
+ 243 PDF objects out of 1000 (max. 8388607)
+ 164 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

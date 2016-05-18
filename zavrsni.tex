@@ -724,11 +724,64 @@ Konačno, u \texttt{for} petlji iteriramo po elementima liste \texttt{rezultatiF
 
 
 \section{Skupovi podataka kao uređeni parovi}
-U primjeru \ref{lst:pagerank} već je uveden pojam skupa podataka koji je predstavljen uređenim parom (\emph{ključ}, \emph{vrijednost}). U ovoj tehnologiji takav skup podataka nije rijetkost i zbog toga postoji niz transformacija nad upravo tim oblikom skupa podataka, a neke od njih su već objašnjene u potpoglavlju \ref{ssec:implAnalizaPRalg}.
+U primjeru \ref{lst:pagerank} već je uveden pojam skupa podataka koji je predstavljen uređenim parom (\emph{ključ}, \emph{vrijednost}). U ovoj tehnologiji takav skup podataka nije rijetkost i zbog toga postoji niz transformacija nad upravo tim oblikom skupa podataka, a neke od njih su već objašnjene u potpoglavlju \ref{ssec:implAnalizaPRalg}. Osnovne informacije mogu se pronaći u tablicama \ref{tbl:transformacijeJedanPairRDD} i \ref{tbl:transformacijeDvaPairRDD}, a za više informacija, konzultirati službenu dokumentaciju \url{http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/api/java/JavaPairRDD.html}.
+
+\begin{table}[htb]
+\caption{Neke od transformacija nad jednim skupom podataka koji predstavljen uređenim parovima. Primjer: \{(1, 2), (3, 4), (3, 6)\}.}
+\label{tbl:transformacijeJedanPairRDD}
+\centering
+\begin{tabular}{lp{3cm}p{4cm}p{1.5cm}} 
+\hline
+Transformacija & Opis & Primjer korištenja & Rezultat\\
+\hline
+
+\texttt{reduceByKey(\emph{func})} & Kombinira vrijednosti s istim \emph{ključem}. & rdd.reduceByKey((x,y) -> x + y) & \{(1, 2), (3, 10)\}\\
+
+\texttt{groupByKey()} & Grupira vrijednosti s istim \emph{ključem}. & rdd.groupByKey() & \{(1, [2]), (3, [4, 6])\}\\
+
+\texttt{mapValues(\emph{func})} & Primjena funkcije nad svakom \emph{vrijednosti} u uređenom paru, \emph{ključ} ostaje nepromijenjen. & rdd.mapValues(\newline x -> x + 10) & \{(1, 12), (3, 14), (3, 16)\}\\
 
 
-\section{Čitanje i spremanje podataka}
+\texttt{keys()} & Vraća novi skup podataka koji se sastoji od svih \emph{ključeva}. & rdd.keys() & \{1, 3, 3\}\\
+
+
+\texttt{values()} & Vraća novi skup podataka koji se sastoji od svih \emph{vrijednosti}. & rdd.values() & \{2, 4, 6\}\\
+\hline
+\end{tabular}
+\end{table}
+
+Često postoji potreba za transformacijom koja je kombinacija dva skupa podataka. Primjerice, spajanje tablica iz baze podataka. Te stvari su moguće i ovdje, a samo neke od transformacija prikazane su u tablici \ref{tbl:transformacijeDvaPairRDD}. Osim transformacija, postoje i akcije koje je moguće izvoditi nad otpornim raspodijeljenim skupom podataka koji je predstavljen kao uređeni par, ali radi formata ovog rada, nije napisana još jedna tablica gdje bi te akcije bile objašnjene. Za informacije o akcijama, konzultirati \cite{officialDocumentation}.
+
+\begin{table}[htb]
+\caption{Neke od transformacija nad dva skupa podataka koji su predstavljeni uređenim parovima. Primjer: rdd = {(1, 2), (3, 4), (3, 6)}, drugi = {(3,9)}.}
+\label{tbl:transformacijeDvaPairRDD}
+\centering
+\begin{tabular}{lp{3cm}p{4cm}p{1.5cm}} 
+\hline
+Transformacija & Opis & Primjer korištenja & Rezultat\\
+\hline
+
+\texttt{subtractByKey} & Briše parove koji imaju iste \emph{ključeve}. & rdd.subtractByKey(drugi) & \{(1, 2)\}\\
+
+\texttt{join} & Obavlja operaciju \emph{prirodnog spajanja} \engl{inner join} & rdd.join(drugi) & \{(3, (4, 9)), (3, (6, 9))\}\\
+\hline
+\end{tabular}
+\end{table}
+
+Ono što je još često potrebno, a nije već spomenuto jest sortiranje podataka. Tehnologija \emph{Apache Spark} omogućuje i sortiranje uređenih parova po \emph{ključu}. Transformacija se naziva \texttt{sortByKey} i primjer poziva je \texttt{rdd.sortByKey()}. Prima argument treba li sortirati uzlazno (podrazumijevana vrijednost) ili silazno. Dodatno, moguće je i predati komparator koji će usporediti ključeve. 
+
+\section{Čitanje i spremanje podataka }
+U ranijim primjerima prikazano je kako ostvariti čitanje podataka iz tekstualne datoteke kao i kako zapisati rezultat u neku tekstualnu datoteku. Neki od podržanih oblika tekstualnih datoteka su JSON, CSV i TSV oblik. Tehnologija \emph{Apache Spark} omogućuje i puno više. Između ostalog, moguće je čitati i pisati direktno u bazu podataka (Cassandra, HBase, Elasticsearch, JDBC), strukturirane izvore uključujući JSON i Apache Hive, a isto tako moguće je čitati i podatke koji su spremljeni na raspodijeljenom sustavu datoteka poput NFS, HDFS ili Amazon S3.
+
+Datoteke u JSON obliku se učitaju poput tekstualne datoteke, a zatim se parsira JSON format. Za parsiranje JSON formata se u pravilu koriste gotove biblioteke, a popularna biblioteka za Javu naziva se \emph{Jackson}. Više informacija o tim bibliotekama može se pronaći na \url{http://geokoder.com/java-json-libraries-comparison}. 
+
+Više informacija o čitanju i spremanju podataka potražiti u poglavlju \emph{Loading and saving your data}\cite{learningSpark}.
+
 \section{Globalne varijable}
+Funkcija koju predamo metodi \texttt{map()} vidi varijable koje su definirane u \emph{pozivajućem programu}, ali svaki \emph{zadatak} \engl{task} koji se vrti na \emph{grozdu} dobije svoju kopiju vrijednosti tih varijabli, a nove vrijednosti tih varijabli nisu propagirane \emph{pozivajućem programu}. Riješenje ovog problema su globalne varijable, odnosno akumulator \engl{accumulator variable} i odašiljatelj \engl{broadcast variable}.
+\subsection{Akumulatori}
+\subsection{Odašiljatelji}
+TODO: http://www.sparktutorials.net/spark-broadcast-variables---what-are-they-and-how-do-i-use-them
 \chapter{Zaključak} 
 Zaključak.
 
