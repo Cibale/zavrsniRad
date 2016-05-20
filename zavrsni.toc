@@ -13,8 +13,10 @@
 \contentsline {subsection}{\numberline {3.1.2}Implementacija i analiza}{21}
 \contentsline {section}{\numberline {3.2}Skupovi podataka kao ure\IeC {\dj }eni parovi}{25}
 \contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka }{27}
-\contentsline {section}{\numberline {3.4}Globalne varijable}{27}
-\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{28}
-\contentsline {chapter}{Literatura}{29}
-\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{31}
-\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{33}
+\contentsline {section}{\numberline {3.4}Dijeljene varijable}{27}
+\contentsline {subsection}{\numberline {3.4.1}Oda\IeC {\v s}iljatelji}{28}
+\contentsline {subsection}{\numberline {3.4.2}Akumulatori}{31}
+\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{34}
+\contentsline {chapter}{Literatura}{35}
+\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{37}
+\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{39}

@@ -1,0 +1,20 @@
+\BOOKMARK [0][-]{chapter.1}{Uvod}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Motivacija}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Osnovni gradivni elementi}{chapter.1}% 3
+\BOOKMARK [0][-]{chapter.2}{Prvi programi}{}% 4
+\BOOKMARK [1][-]{section.2.1}{Postavljanje temelja}{chapter.2}% 5
+\BOOKMARK [2][-]{subsection.2.1.1}{Osnovni elementi aplikacije}{section.2.1}% 6
+\BOOKMARK [2][-]{subsection.2.1.2}{Kori\235tenje tehnologije Apache Spark kroz programski jezik Java}{section.2.1}% 7
+\BOOKMARK [1][-]{section.2.2}{Otporni raspodijeljeni skup podataka}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{Napredno programiranje}{}% 9
+\BOOKMARK [1][-]{subsection.3.0.1}{Upoznavanje s algoritmom}{chapter.3}% 10
+\BOOKMARK [2][-]{subsection.3.0.2}{Implementacija i analiza}{subsection.3.0.1}% 11
+\BOOKMARK [1][-]{section.3.1}{Skupovi podataka kao ureeni parovi}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{Citanje i spremanje podataka }{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.3}{Globalne varijable}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.3.1}{Akumulatori}{section.3.3}% 15
+\BOOKMARK [2][-]{subsection.3.3.2}{Oda\235iljatelji}{section.3.3}% 16
+\BOOKMARK [0][-]{chapter.4}{Zakljucak}{}% 17
+\BOOKMARK [0][-]{chapter*.19}{Literatura}{}% 18
+\BOOKMARK [0][-]{Dodatak.a.A}{Dodatak Instalacija}{}% 19
+\BOOKMARK [0][-]{Dodatak.a.B}{Dodatak Postavljanje datoteke pom.xml}{}% 20

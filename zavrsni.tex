@@ -777,11 +777,177 @@ Datoteke u JSON obliku se učitaju poput tekstualne datoteke, a zatim se parsira
 
 Više informacija o čitanju i spremanju podataka potražiti u poglavlju \emph{Loading and saving your data}\cite{learningSpark}.
 
-\section{Globalne varijable}
-Funkcija koju predamo metodi \texttt{map()} vidi varijable koje su definirane u \emph{pozivajućem programu}, ali svaki \emph{zadatak} \engl{task} koji se vrti na \emph{grozdu} dobije svoju kopiju vrijednosti tih varijabli, a nove vrijednosti tih varijabli nisu propagirane \emph{pozivajućem programu}. Riješenje ovog problema su globalne varijable, odnosno akumulator \engl{accumulator variable} i odašiljatelj \engl{broadcast variable}.
-\subsection{Akumulatori}
+\section{Dijeljene varijable}
+Funkcija koju predamo metodi \texttt{map()} vidi varijable koje su definirane u \emph{pozivajućem programu}, ali svaki \emph{zadatak} \engl{task} koji se vrti na \emph{grozdu} dobije svoju kopiju vrijednosti tih varijabli, a nove vrijednosti tih varijabli nisu propagirane \emph{pozivajućem programu}. Riješenje ovog problema su dijeljene varijable \engl{shared variables}. Ime su dobile po tome što je njihova \emph{ispravna} vrijednost vidljiva svuda u grozdu.
+
 \subsection{Odašiljatelji}
-TODO: http://www.sparktutorials.net/spark-broadcast-variables---what-are-they-and-how-do-i-use-them
+Ukoliko je potrebno dohvaćati vrijednost neke varijable na cijelom grozdu, potrebna je \emph{varijabla odašiljatelj} \engl{broadcast variable}. Ta varijabla se pohranjuje u memoriji i zbog toga ne smije zauzimati puno prostora. Također, takva varijabla je nepromjenjiva \engl{immutable}. Moguće je slati i promjenjivu varijablu, ali ta promjena će biti jedino vidljiva na tom čvoru koji je promjenu napravio, a takvo ponašanje u pravilu nije poželjno. 
+
+Kao što je navedeno u \cite{officialDocumentation}, \emph{odašiljatelji} se mogu koristiti kao statičke lookup tablice \engl{lookup table}. 
+Pretpostavimo da radimo na aplikaciji koja u bazi ima dvije tablice, tablicu koja pamti identifikator i ime naselja te tablicu koja pamti identifikator korisnika koji se prijavio i identifikator naselja gdje se prijavio. Primjer takvih tablica su tablice \ref{tbl:naselja} i \ref{tbl:prijave}.
+
+\begin{table}[htb]
+\caption{Tablica \texttt{naselja}.}
+\label{tbl:naselja}
+\centering
+\begin{tabular}{ll} 
+\hline
+\texttt{id} & \texttt{ime}\\
+\hline
+1 & Centar\\
+2 & Maksimir\\
+3 & Jordanovac\\
+4 & Siget\\
+5 & Dubrava\\
+\hline
+\end{tabular}
+\end{table}
+
+Zadatak je saznati ime naselje za svaku od prijava. Pretpostavka je da postoji jako puno prijava, a ne previše naselja tj. prijave su u nekoj velikoj tablici, a naselja su u maloj tablici. Pri obavljanju klasične transformacije \texttt{join}, podatci obje tablice bi putovali svuda po mreži i to bi uzelo puno vremena i mrežnih resursa. Ukoliko je potrebno napraviti \texttt{join} male i velike tablice, bolje rješenje je malu tablicu (koja stane u memoriju i ne mijenja se) postaviti kao varijablu \emph{odašiljatelj}. Na taj način, jedino će mala tablica putovati preko mreže. U ovom primjeru, mala tablica je tablica \texttt{naselja} \ref{tbl:naselja}, a velika tablica je tablica \texttt{prijave} \ref{tbl:prijave}. 
+
+Varijable koje su postavljene kao \emph{odašiljatelj} preko mreže se prenose bittorent protokolom. To znači da što više čvorova treba tu varijablu, ta varijabla se brže širi po mreži\footnote{Više informacija o bittorent protokolu na stranici \url{http://www.bittorrent.org/}}. 
+
+\vspace{5mm}
+\begin{lstlisting}[numbers=left, label={lst:odasiljateljPrimjer}, caption={Korištenje odašiljatelja.}, escapechar=|]
+package hr.fer.zemris.naprednoProgramiranje;
+
+import java.util.Map;
+
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
+import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.broadcast.Broadcast;
+
+import scala.Tuple2;
+
+public class Primjer5 {
+	public static void main(String[] args) {
+		// Inicijalizacija SparkContext-a.
+		SparkConf conf = new SparkConf().setMaster("local")
+				.setAppName("Razasiljane varijable");
+				
+		try (JavaSparkContext sc = new JavaSparkContext(conf)) {
+		
+			// inicijalizacija naselja
+			JavaPairRDD<String, String> naseljaRDD = sc
+				.textFile("tblNaselja.txt").mapToPair(
+					redakTablice -> {
+						String[] redak = redakTablice.split(",");
+						return new Tuple2<String, String>(redak[0], redak[1]);
+					});
+					
+			// prijave
+			JavaPairRDD<String, String> prijaveRDD = sc
+					.textFile("tblPrijave.txt").mapToPair(redakTablice -> {
+						String[] redak = redakTablice.split(",");
+						return new Tuple2<String, String>(redak[0], redak[1]);
+					});
+							
+			// odasiljanje read only varijable "naselja" kroz grozd
+			final Broadcast<Map<String, String>> naselja = sc
+					.broadcast(naseljaRDD.collectAsMap());
+
+			
+			JavaPairRDD<String, Tuple2<String, String>> imenovanePrijave = prijaveRDD
+					.mapToPair(
+						prijava -> new Tuple2<String, Tuple2<String, String>>(
+								prijava._1,
+								new Tuple2<String, String>(
+									prijava._2,
+									naselja.getValue().get(prijava._2)
+								)
+							)
+						);
+			//ispis
+			for (Tuple2<String, Tuple2<String, String>> element : imenovanePrijave
+					.collect()) {
+				System.out.printf("Id prijave: %s \t Ime naselja: %s\n",
+						element._1, element._2._2);
+			}
+		}
+	}
+}
+\end{lstlisting}
+\vspace{5mm}
+
+U primjeru \ref{lst:odasiljateljPrimjer} pokazano je korištenje odašiljatelja. Osim toga, u tom primjeru je \emph{SparkContext} inicijaliziran u \emph{try-catch} bloku naredbi. Budući da \emph{SparkContext} implementira sučelje \texttt{Closeable}, to je garancija da ako ga otvorimo \emph{try-catch} inicijalizacijskom bloku da će biti i pravovremeno zatvoren.
+
+Program čita iz datoteke \texttt{tblNaselja.txt} podatke o naseljima koji su zapisani u obliku \emph{id\_naselja,ime\_naselja}. Podatci o prijavama imaju oblik \emph{id\_prijave,id\_naselja} i čitaju se iz datoteke \texttt{tblPrijave.txt}. Podatci u tim datotekama jednaki su podatcima iz tablica \ref{tbl:naselja} i \ref{tbl:prijave}. Nakon što su podatci učitani, kreirani su skupovi podataka. Zatim se skup podataka koji predstavlja tablicu \ref{tbl:naselja} pretvorio u mapu gdje je \emph{ključ} identifikator naselja, a \emph{vrijednost} ime naselja. Takva mapa je \emph{odaslana} svuda po mreži. 
+
+\begin{table}[htb]
+\caption{Tablica \texttt{prijave}.}
+\label{tbl:prijave}
+\centering
+\begin{tabular}{ll} 
+\hline
+\texttt{id\_korisnik} & \texttt{id\_naselje}\\
+\hline
+112312 & 1\\
+243242 & 2\\
+254331 & 2\\
+432115 & 1\\
+567893 & 4\\
+537893 & 4\\
+\hline
+\end{tabular}
+\end{table}
+
+Nakon toga, za svaku prijavu, kreiran je novi uređeni par koji za \emph{ključ} ima identifikator prijave, a za vrijednost objekt \texttt{Tuple2} koji za prvu vrijednost ima identifikator nasilja, a za drugu vrijednost ime tog naselja. Razred \texttt{Tuple2} preuzet je iz programskog jezika Scala i predstavlja uređeni par (\emph{vrijednost\_1}, \emph{vrijednost\_2}). Shodno tome, prvoj vrijednosti se pristupa preko \texttt{element.\_1}, a drugoj vrijednost preko \texttt{element.\_2}.
+
+Na kraju su ispisani svi dobiveni podatci, a rezultat je prikazan u primjeru \ref{lst:rezultati}.
+\begin{lstlisting}[label={lst:rezultati}, caption={Identifikatori prijave i imena naselja odakle su prijave poslane.}]
+Id prijave: 112312 	 Ime naselja: Centar
+Id prijave: 243242 	 Ime naselja: Maksimir
+Id prijave: 254331 	 Ime naselja: Maksimir
+Id prijave: 432115 	 Ime naselja: Centar
+Id prijave: 567893 	 Ime naselja: Siget
+Id prijave: 537893 	 Ime naselja: Siget
+\end{lstlisting}
+
+\subsection{Akumulatori}
+Ako se odašiljatelje gleda kao globalne \emph{gettere}, \emph(akumulatore) \engl{accumulators} se može gledati kao na globalne \emph{settere}. Za razliku od odašiljatelja koji svim čvorovima dojavljuju vrijednost, akumulatori akumuliraju, odnosno dohvaćaju vrijednost svakog čvora. Ideja je jednostavna, ako je potrebno s iz više radnih čvorova mijenjati nekakvu globalnu varijablu, ta varijabla se postavi kao akumulator.
+
+U datoteci \texttt{log.txt} pohranjeni su zapisi pristupanju na server. Svaki zapis je u novom retku. Ukoliko u nekom retku postoji riječ \texttt{error}, taj zapis nije valjan. Svaki drugi zapis je valjan. Zadatak je izbrojati koliko postoji valjanih zapisa i koliko postoji zapisa koji nisu valjani. Jedno od riješenja je koristiti dva akumulatora: jedan za valjane zapise i drugi za zapise koji nisu valjani. Programska implementacija tog rješenja dana je u primjeru \ref{lst:akumulatoriPrimjer}.
+
+\begin{lstlisting}[numbers=left, label={lst:akumulatoriPrimjer}, caption={Korištenje akumulatora.}, escapechar=|]
+package hr.fer.zemris.naprednoProgramiranje;
+
+import org.apache.spark.Accumulator;
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.JavaSparkContext;
+
+public class Primjer6 {
+	public static void main(String[] args) {
+		SparkConf conf = new SparkConf().setMaster("local")
+				.setAppName("Koristenje akumulatora");
+		try (JavaSparkContext sc = new JavaSparkContext(conf)) {
+			// inicijalizacija naselja
+			JavaRDD<String> zapisi = sc.textFile("log.txt");
+
+			// inicijalizacija akumulatora
+			Accumulator<Integer> valjaniZapisi = sc.accumulator(0);
+			Accumulator<Integer> neValjaniZapisi = sc.accumulator(0);
+
+			// obrada podataka
+			for (String redak : zapisi.collect()) {
+				if (redak.contains("error")) {
+					neValjaniZapisi.add(1);
+				} else {
+					valjaniZapisi.add(1);
+				}
+			}
+			// ispis rezultata
+			System.out.printf("Valjanih zapisa ima %d\n",
+					valjaniZapisi.value());
+			System.out.printf("Nevaljanih zapisa ima %d\n",
+					neValjaniZapisi.value());
+		}
+	}
+}
+
+\end{lstlisting}
+
 \chapter{Zaključak} 
 Zaključak.
 
