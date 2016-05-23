@@ -905,7 +905,7 @@ Id prijave: 537893 	 Ime naselja: Siget
 \end{lstlisting}
 
 \subsection{Akumulatori}
-Ako se odašiljatelje gleda kao globalne \emph{gettere}, \emph(akumulatore) \engl{accumulators} se može gledati kao na globalne \emph{settere}. Za razliku od odašiljatelja koji svim čvorovima dojavljuju vrijednost, akumulatori akumuliraju, odnosno dohvaćaju vrijednost svakog čvora. Ideja je jednostavna, ako je potrebno s iz više radnih čvorova mijenjati nekakvu globalnu varijablu, ta varijabla se postavi kao akumulator.
+Ako se odašiljatelje gleda kao globalne \emph{gettere}, \emph{akumulatore} \engl{accumulators} se može gledati kao na globalne \emph{settere}. Za razliku od odašiljatelja koji svim čvorovima dojavljuju vrijednost, akumulatori akumuliraju, odnosno dohvaćaju vrijednost svakog čvora. Ideja je jednostavna, ako je potrebno s iz više radnih čvorova mijenjati nekakvu globalnu varijablu, ta varijabla se postavi kao akumulator.
 
 U datoteci \texttt{log.txt} pohranjeni su zapisi pristupanju na server. Svaki zapis je u novom retku. Ukoliko u nekom retku postoji riječ \texttt{error}, taj zapis nije valjan. Svaki drugi zapis je valjan. Zadatak je izbrojati koliko postoji valjanih zapisa i koliko postoji zapisa koji nisu valjani. Jedno od riješenja je koristiti dva akumulatora: jedan za valjane zapise i drugi za zapise koji nisu valjani. Programska implementacija tog rješenja dana je u primjeru \ref{lst:akumulatoriPrimjer}.
 
@@ -945,9 +945,11 @@ public class Primjer6 {
 		}
 	}
 }
-
 \end{lstlisting}
 
+Primjer \ref{lst:akumulatoriPrimjer} učita novi skup podataka, inicijalizira akumulatore te za svaki redak, ovisno sadrži li redak riječ \emph{error} ili ne, poveća vrijednost odgovarajućeg akumulatora.
+
+U primjeru \ref{lst:akumulatoriPrimjer} korišteni su cjelobrojni akumulatori. Osim \emph{Integer} tipa podataka, postoje akumulatori i za \emph{Long}, \emph{Double} te \emph{Float} tip podataka. Ukoliko je potrebno, moguće je kreirati i akumulator za svoj vlastiti tip podataka. Za više informacija, konzultirati \url{http://www.programcreek.com/java-api-examples/index.php?api=org.apache.spark.Accumulator}.
 \chapter{Zaključak} 
 Zaključak.
 
