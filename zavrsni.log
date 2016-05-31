@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  23 MAY 2016 11:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  31 MAY 2016 13:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -726,7 +726,7 @@ Underfull \hbox (badness 1152) in paragraph at lines 126--127
 File: img/gradivniElementiCropped.pdf Graphic file (type pdf)
 
 <use img/gradivniElementiCropped.pdf>
-Package pdftex.def Info: img/gradivniElementiCropped.pdf used on input line 136
+Package pdftex.def Info: img/gradivniElementiCropped.pdf used on input line 137
 .
 (pdftex.def)             Requested size: 284.52756pt x 151.92178pt.
  [3 <./img/gradivniElementiCropped.pdf>]
@@ -737,7 +737,7 @@ File: img/elementiAplikacijeCropped.pdf Graphic file (type pdf)
 
 <use img/elementiAplikacijeCropped.pdf>
 Package pdftex.def Info: img/elementiAplikacijeCropped.pdf used on input line 1
-68.
+69.
 (pdftex.def)             Requested size: 283.21115pt x 225.17595pt.
  [5
 
@@ -748,326 +748,308 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-Overfull \hbox (2.5936pt too wide) in paragraph at lines 184--186
+Overfull \hbox (2.5936pt too wide) in paragraph at lines 186--188
 []\T1/ptm/m/n/12 Odgovaraju¢a \T1/pcr/m/n/12 pom.xml \T1/ptm/m/n/12 da-toteka n
 alazi se u do-datku B[]. Jed-nom kada je \T1/pcr/m/n/12 pom.xml
  []
 
 
-Overfull \hbox (8.67996pt too wide) in paragraph at lines 184--186
+Overfull \hbox (8.67996pt too wide) in paragraph at lines 186--188
 \T1/ptm/m/n/12 da-toteka nam-je²tena i pro-jekt us-p-je²no povezan sa \T1/pcr/m
 /n/12 spark-core\T1/ptm/m/n/12 , sve ²to je jo² potrebno
  []
 
-[6] [7] [8] [9]
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <12> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 294.
+[6] [7] [8]
+Overfull \hbox (15.66396pt too wide) in paragraph at lines 294--295
+\T1/ptm/m/n/12 je os-novna po-datkovna struk-tura tehnologije Apache Spark. To 
+je \T1/ptm/m/it/12 ne-prom-jen-jiva \T1/ptm/m/n/12 (engl. \T1/ptm/m/it/12 im-
+ []
 
-Underfull \hbox (badness 2088) in paragraph at lines 295--296
+[9]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <12> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 307.
+
+Underfull \hbox (badness 2088) in paragraph at lines 308--309
 \T1/ptm/m/n/12 skupa preuzeti samo oni el-e-menti za koje
  []
 
 
-Overfull \hbox (4.71693pt too wide) in paragraph at lines 290--301
+Overfull \hbox (4.71693pt too wide) in paragraph at lines 303--314
  [][] 
  []
 
 
-Overfull \hbox (2.49614pt too wide) in paragraph at lines 303--307
-[]\T1/ptm/m/n/12 Za de-taljnije ob-ja²n-jenje ovih i os-talih trans-for-ma-cija
-, pogle-dati $\T1/pcr/m/n/12 http : / / spark .
+Underfull \hbox (badness 10000) in paragraph at lines 316--316
+[][]$\T1/pcr/m/n/10 http : / / spark . apache . org / docs / latest / programmi
+ng-[]guide . html #
  []
 
 
-Overfull \hbox (30.13484pt too wide) in paragraph at lines 303--307
-\T1/pcr/m/n/12 apache . org / docs / latest / programming-[]guide . html # tran
-sformations$\T1/ptm/m/n/12 . 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 303--307
+Underfull \hbox (badness 10000) in paragraph at lines 316--320
 
  []
 
 
-Overfull \hbox (14.12642pt too wide) in paragraph at lines 303--307
+Overfull \hbox (14.12642pt too wide) in paragraph at lines 316--320
 \T1/ptm/m/n/12 Budu¢i da se radi o ve-likoj koli£ini po-dataka, eval-u-acija tr
 ans-for-ma-cija je \T1/ptm/m/it/12 li-jena \T1/ptm/m/n/12 (engl. \T1/ptm/m/it/1
 2 lazy
  []
 
 [10]
-Overfull \hbox (12.24069pt too wide) in paragraph at lines 324--326
-[]\T1/ptm/m/n/12 Za de-taljnije ob-ja²n-jenje ovih i os-talih ak-cija, pogle-da
-ti $\T1/pcr/m/n/12 http : / / spark . apache .
+Underfull \hbox (badness 10000) in paragraph at lines 361--361
+[][]$\T1/pcr/m/n/10 http : / / spark . apache . org / docs / latest / programmi
+ng-[]guide . html #
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--326
+Underfull \hbox (badness 10000) in paragraph at lines 361--363
 
  []
 
-[11]
-Overfull \hbox (5.7985pt too wide) in paragraph at lines 380--381
-[]\T1/ptm/m/n/12 Ovdje imamo 4 skupa po-dataka: \T1/pcr/m/n/12 ulaz\T1/ptm/m/n/
-12 , \T1/pcr/m/n/12 burze\T1/ptm/m/n/12 , \T1/pcr/m/n/12 indexi \T1/ptm/m/n/12 
-i \T1/pcr/m/n/12 burzeUnijaIndexi\T1/ptm/m/n/12 .
- []
-
-[12] <img/transformacijeCropped.pdf, id=99, 530.75487pt x 403.07788pt>
+[11] [12] [13]
+<img/transformacijeCropped.pdf, id=102, 530.75487pt x 403.07788pt>
 File: img/transformacijeCropped.pdf Graphic file (type pdf)
 
 <use img/transformacijeCropped.pdf>
-Package pdftex.def Info: img/transformacijeCropped.pdf used on input line 384.
+Package pdftex.def Info: img/transformacijeCropped.pdf used on input line 422.
 (pdftex.def)             Requested size: 424.60446pt x 322.46274pt.
 
-Overfull \hbox (12.03949pt too wide) in paragraph at lines 384--385
+Overfull \hbox (12.03949pt too wide) in paragraph at lines 422--423
  [][] 
  []
 
 
-Overfull \hbox (7.90057pt too wide) in paragraph at lines 389--391
-\T1/pcr/m/n/12 ulaz\T1/ptm/m/n/12 , na temelju njega \T1/pcr/m/n/12 burza \T1/p
-tm/m/n/12 i \T1/pcr/m/n/12 indexi \T1/ptm/m/n/12 i onda tek na temelju njih se 
-kreira \T1/pcr/m/n/12 unijaBI\T1/ptm/m/n/12 .
+Overfull \hbox (9.69736pt too wide) in paragraph at lines 427--429
+[]\T1/ptm/m/n/12 Tek pri-likom poziva ak-cije \T1/pcr/m/n/12 unijaBI.count() \T
+1/ptm/m/n/12 se za-pravo kreira \T1/pcr/m/n/12 ulaz\T1/ptm/m/n/12 , na temelju
  []
 
-[13 <./img/transformacijeCropped.pdf>] [14]
+
+Overfull \hbox (5.89574pt too wide) in paragraph at lines 427--429
+\T1/ptm/m/n/12 svi skupovi po-dataka nes-taju iz mem-o-rije. Pri-likom poziva a
+k-cije \T1/pcr/m/n/12 unijaBI.first()
+ []
+
+[14 <./img/transformacijeCropped.pdf>] [15]
 Chapter 3.
 
-Overfull \hbox (63.61633pt too wide) in paragraph at lines 429--430
+Overfull \hbox (63.61633pt too wide) in paragraph at lines 467--468
 []\T1/ptm/m/n/12 Svaka stran-ica \T1/pcr/m/sl/12 n \T1/ptm/m/n/12 svim svo-jim 
 sus-jed-ima ²alje do-pri-nos \T1/pcr/m/n/12 rang(\T1/pcr/m/sl/12 n\T1/pcr/m/n/1
 2 )/brojSusjeda(\T1/pcr/m/sl/12 n\T1/pcr/m/n/12 )\T1/ptm/m/n/12 . 
  []
 
-[15
 
-]
-Overfull \hbox (41.74028pt too wide) in paragraph at lines 430--431
+Overfull \hbox (41.74028pt too wide) in paragraph at lines 468--469
 []\T1/ptm/m/n/12 Postavi ukupni rang stran-ice prema for-muli: $\OT1/cmr/m/n/12
  0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 15 + 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 85 
 \OMS/cmsy/m/n/12 ^^C []$\T1/ptm/m/n/12 . 
  []
 
+[16
 
-Overfull \hbox (3.26318pt too wide) in paragraph at lines 434--435
-[]\T1/ptm/m/n/12 Kako bi se do-bio ²to brºe do-bio ²to pre-cizniji rezul-tat, v
-aºno je param-etar \T1/pcr/m/n/12 P \T1/ptm/m/n/12 postaviti
- []
-
-<img/algoritamPageRankRucnoCropped.pdf, id=127, 464.27855pt x 657.37593pt>
+]
+<img/algoritamPageRankRucnoCropped.pdf, id=130, 464.27855pt x 657.37593pt>
 File: img/algoritamPageRankRucnoCropped.pdf Graphic file (type pdf)
 
 <use img/algoritamPageRankRucnoCropped.pdf>
 Package pdftex.def Info: img/algoritamPageRankRucnoCropped.pdf used on input li
-ne 440.
+ne 478.
 (pdftex.def)             Requested size: 232.1387pt x 328.68715pt.
- [16 <./img/algoritamPageRankRucnoCropped.pdf>] [17] [18] [19]
-<img/grafPageRankStraniceCropped.pdf, id=150, 556.73596pt x 428.71667pt>
+ [17 <./img/algoritamPageRankRucnoCropped.pdf>] [18] [19] [20]
+<img/grafPageRankStraniceCropped.pdf, id=153, 556.73596pt x 428.71667pt>
 File: img/grafPageRankStraniceCropped.pdf Graphic file (type pdf)
 
 <use img/grafPageRankStraniceCropped.pdf>
 Package pdftex.def Info: img/grafPageRankStraniceCropped.pdf used on input line
- 607.
+ 645.
 (pdftex.def)             Requested size: 278.3673pt x 214.3578pt.
- [20 <./img/grafPageRankStraniceCropped.pdf>] [21] [22] [23]
-Overfull \hbox (10.60173pt too wide) in paragraph at lines 705--706
+ [21 <./img/grafPageRankStraniceCropped.pdf>] [22] [23] [24]
+Overfull \hbox (10.60173pt too wide) in paragraph at lines 759--760
 \T1/ptm/m/n/12 re£eno, \T1/pcr/m/n/12 join(\T1/pcr/m/sl/12 drugiSkupPodataka\T1
 /pcr/m/n/12 ) \T1/ptm/m/n/12 ako je poz-van nad skupovima ure-ženih parova
  []
 
-
-Overfull \hbox (4.12828pt too wide) in paragraph at lines 707--708
-[]\T1/ptm/m/n/12 Od lin-ije 51[] do lin-ije 61[] obražuju se po-datci koji su p
+[25]
+Overfull \hbox (4.12828pt too wide) in paragraph at lines 761--762
+[]\T1/ptm/m/n/12 Od lin-ije 56[] do lin-ije 70[] obražuju se po-datci koji su p
 red-stavl-jeni ure-ženim parovima
  []
 
 
-Overfull \hbox (2.14854pt too wide) in paragraph at lines 709--710
-[]\T1/ptm/m/n/12 Linija 53[] za-pravo do-hva¢a veli£inu kolek-cije koja je pred
+Overfull \hbox (2.14854pt too wide) in paragraph at lines 763--764
+[]\T1/ptm/m/n/12 Linija 58[] za-pravo do-hva¢a veli£inu kolek-cije koja je pred
 -stavl-jena \T1/ptm/m/it/12 klju£em\T1/ptm/m/n/12 , odnosno
  []
 
-[24]
-Overfull \hbox (10.29625pt too wide) in paragraph at lines 723--724
+
+Overfull \hbox (10.29625pt too wide) in paragraph at lines 777--778
 []\T1/ptm/m/n/12 Kona£no, u \T1/pcr/m/n/12 for \T1/ptm/m/n/12 petlji iteri-ramo
  po el-e-men-tima liste \T1/pcr/m/n/12 rezultatiFinal \T1/ptm/m/n/12 te ispi²em
 o
  []
 
-
-Overfull \hbox (19.43484pt too wide) in paragraph at lines 727--728
-\T1/pcr/m/n/12 spark . apache . org / docs / latest / api / java / index . html
- ? org / apache /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 792--792
 []\T1/ptm/m/n/12 Kombinira vri-
  []
 
 
-Underfull \hbox (badness 4353) in paragraph at lines 738--738
+Underfull \hbox (badness 4353) in paragraph at lines 792--792
 \T1/ptm/m/n/12 jed-nosti s is-tim
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 738--738
+Underfull \hbox (badness 10000) in paragraph at lines 792--792
 []\T1/ptm/m/n/12 rdd.reduceByKey((x,y)
  []
 
 
-Underfull \hbox (badness 4366) in paragraph at lines 738--739
+Underfull \hbox (badness 4366) in paragraph at lines 792--793
 []\T1/ptm/m/n/12 {(1, 2),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 740--740
+Underfull \hbox (badness 10000) in paragraph at lines 794--794
 []\T1/ptm/m/n/12 Grupira vri-jed-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 740--740
+Underfull \hbox (badness 10000) in paragraph at lines 794--794
 \T1/ptm/m/n/12 nosti s is-tim
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 740--741
+Underfull \hbox (badness 10000) in paragraph at lines 794--795
 \T1/ptm/m/n/12 (3, [4,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 742--742
+Underfull \hbox (badness 10000) in paragraph at lines 796--796
 \T1/ptm/m/n/12 nad svakom
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 742--742
+Underfull \hbox (badness 10000) in paragraph at lines 796--796
 \T1/ptm/m/it/12 vri-jed-nosti \T1/ptm/m/n/12 u
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 742--742
+Underfull \hbox (badness 10000) in paragraph at lines 796--796
 \T1/ptm/m/n/12 ure-ženom paru,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 742--742
+Underfull \hbox (badness 10000) in paragraph at lines 796--796
 \T1/ptm/m/it/12 klju£ \T1/ptm/m/n/12 os-taje
  []
 
 
-Underfull \hbox (badness 3977) in paragraph at lines 742--743
+Underfull \hbox (badness 3977) in paragraph at lines 796--797
 \T1/ptm/m/n/12 (3, 14),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 745--745
+Underfull \hbox (badness 10000) in paragraph at lines 799--799
 \T1/ptm/m/n/12 sas-toji od svih
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 748--748
+Underfull \hbox (badness 10000) in paragraph at lines 802--802
 \T1/ptm/m/n/12 sas-toji od svih
  []
 
-[25]
-Underfull \hbox (badness 10000) in paragraph at lines 764--764
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 818--818
 []\T1/ptm/m/n/12 Bri²e parove
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 764--764
+Underfull \hbox (badness 10000) in paragraph at lines 818--818
 \T1/ptm/m/n/12 koji imaju iste
  []
 
 
-Overfull \hbox (10.01602pt too wide) in paragraph at lines 764--764
+Overfull \hbox (10.01602pt too wide) in paragraph at lines 818--818
 []\T1/ptm/m/n/12 rdd.subtractByKey(drugi)| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 766--766
+Underfull \hbox (badness 10000) in paragraph at lines 820--820
 \T1/ptm/m/it/12 prirodnog spa-
  []
 
 
-Underfull \hbox (badness 4366) in paragraph at lines 766--767
+Underfull \hbox (badness 4366) in paragraph at lines 820--821
 []\T1/ptm/m/n/12 {(3, (4,
  []
 
 
-Underfull \hbox (badness 7981) in paragraph at lines 766--767
+Underfull \hbox (badness 7981) in paragraph at lines 820--821
 \T1/ptm/m/n/12 9)), (3,
  []
 
 
-Overfull \hbox (21.63594pt too wide) in paragraph at lines 771--772
+Overfull \hbox (21.63594pt too wide) in paragraph at lines 825--826
 []\T1/ptm/m/n/12 Ono ²to je jo² £esto potrebno, a nije ve¢ spomenuto jest sor-t
 i-ranje po-dataka. Tehnologija
  []
 
-[26]
-Overfull \hbox (44.35814pt too wide) in paragraph at lines 776--777
-\T1/ptm/m/n/12 moºe se pron-a¢i na $\T1/pcr/m/n/12 http : / / geokoder . com / 
-java-[]json-[]libraries-[]comparison$\T1/ptm/m/n/12 . 
+[28] [29] [30] [31]
+Overfull \hbox (3.63881pt too wide) in paragraph at lines 941--942
+\T1/ptm/m/n/12 u ob-liku \T1/ptm/m/it/12 id_naselja, ime_naselja\T1/ptm/m/n/12 
+. Po-datci o pri-javama imaju ob-lik \T1/ptm/m/it/12 id_prijave,id_naselja
  []
 
-[27] [28] [29]
-Overfull \hbox (1.21478pt too wide) in paragraph at lines 875--876
-\T1/ptm/m/n/12 u ob-liku \T1/ptm/m/it/12 id_naselja,ime_naselja\T1/ptm/m/n/12 .
- Po-datci o pri-javama imaju ob-lik \T1/ptm/m/it/12 id_prijave,id_naselja
+[32] [33]
+Underfull \hbox (badness 10000) in paragraph at lines 1018--1018
+[][]$\T1/pcr/m/n/10 http : / / www . programcreek . com / java-[]api-[]examples
+ / index . php ? api = org .
  []
 
-[30] [31] [32]
-Overfull \hbox (20.32611pt too wide) in paragraph at lines 952--953
-\T1/ptm/m/n/12 konzul-ti-rati $\T1/pcr/m/n/12 http : / / www . programcreek . c
-om / java-[]api-[]examples / index .
- []
-
-[33]
+[34]
 Chapter 4.
-[34
-
-] [35
+[35
 
 ] [36
+
+] [37
 
 ]
 Dodatak A.
 
-Overfull \hbox (4.43343pt too wide) in paragraph at lines 982--983
+Overfull \hbox (4.43343pt too wide) in paragraph at lines 1048--1049
 \T1/ptm/m/n/12 stran-ice: $\T1/pcr/m/n/12 https : / / spark . apache . org / do
 wnloads . html$\T1/ptm/m/n/12 , odabrati na-jnoviju
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 994--995
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1061
 
  []
 
-[37
+[38
 
-] [38]
+] [39]
 Dodatak B.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-) [39
+) [40
 
-] [40]
+] [41]
 (./zavrsni.aux) ) 
 Here is how much of TeX's memory you used:
- 8302 strings out of 494957
- 115089 string characters out of 6180029
- 241213 words of memory out of 5000000
- 11348 multiletter control sequences out of 15000+600000
+ 8311 strings out of 494957
+ 115232 string characters out of 6180029
+ 238213 words of memory out of 5000000
+ 11357 multiletter control sequences out of 15000+600000
  83476 words of font info for 108 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 43i,11n,51p,1854b,1753s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,11n,51p,1650b,1753s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texl
@@ -1079,10 +1061,10 @@ r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on zavrsni.pdf (44 pages, 270412 bytes).
+Output written on zavrsni.pdf (45 pages, 273317 bytes).
 PDF statistics:
- 262 PDF objects out of 1000 (max. 8388607)
- 177 compressed objects within 2 object streams
+ 265 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

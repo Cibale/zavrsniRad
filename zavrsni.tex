@@ -131,6 +131,7 @@ Datoteka ili direktorij & Opis \\
 Osnovna programska apstrakcija s kojom tehnologija \emph{Apache Spark} radi je \emph{otporni raspodijeljeni skup podataka} (engl. \emph{resilient distributed dataset}, kratica RDD) \cite{workingSets}.
 Atribut \emph{otproni} znači da se može ponovno rekonstruirati u slučaju da se particija uništi. \emph{Raspodijeljeni} znači da je to skup podataka koji se nalazi na računalima (jednom ili više njih) i moguće ga je paralelno obrađivati. \emph{Skup podataka} znači da predstavlja nekakvu kolekciju podataka. Tehnologija \emph{Apache Spark} nudi bogato programsko sučelje za rad s tim skupovima podataka.
 
+\vspace{5mm}
 \begin{figure}[htb]
 \centering
 \includegraphics[width=10cm]{img/gradivniElementiCropped.pdf}
@@ -138,7 +139,7 @@ Atribut \emph{otproni} znači da se može ponovno rekonstruirati u slučaju da s
 \label{fig:spark-stack}
 \end{figure}
 \pagebreak
-Tehnologija se sastoji od nekoliko ključnih elemenata koji su u tablici \ref{tbl:gradivniElementi} samo nabrojani i opisani rečenicom ili dvije. Detaljnije objašnjenje nalazi se u kasnijim poglavljima. Slika \ref{fig:spark-stack} predstavlja osnovne elemente tehnologije \emph{Apache Spark}.
+Tehnologija se sastoji od nekoliko ključnih elemenata koji su u tablici \ref{tbl:gradivniElementi} samo nabrojani i opisani rečenicom ili dvije. Detaljnije objašnjenje nalazi se u službenoj dokumentaciji \cite{officialDocumentation}. Slika \ref{fig:spark-stack} predstavlja osnovne elemente tehnologije \emph{Apache Spark}.
 
 \begin{table}[htb]
 \caption{Dio datoteka i direktorija dobivenih instalacijom.}
@@ -161,7 +162,7 @@ U ovom poglavlju opisano je kako napisati osnovni program koristeći tehnologiju
 
 \section{Postavljanje temelja}
 \subsection{Osnovni elementi aplikacije}
-Općenito govoreći, svaka se Spark aplikacija sastoji  od nekoliko komponenata. Prva komponenta koju ćemo spomenuti je program koji se izvršava - onaj čija je \texttt{main} metoda pokrenuta, odnosno onaj koji pokreće obradu podataka. Taj program naziva se pozivajući program \engl{driver}. Pozivajući program s podatcima priča kroz "tunel" koji se naziva \emph{SparkContext}.
+Općenito govoreći, svaka se Spark aplikacija sastoji  od nekoliko komponenata. Prva komponenta koju ćemo spomenuti je program koji se izvršava - onaj čija je \texttt{main} metoda pokrenuta, odnosno onaj koji pokreće obradu podataka. Taj program naziva se pozivajući program \engl{driver}. Pozivajući program vrši obradu podataka kroz  \emph{SparkContext}.
 
 \begin{figure}[htb]
 \centering
@@ -174,7 +175,8 @@ Budući da je tehnologija \emph{Apache Spark} namijenjena za paralelnu obradu po
 Opisana struktura prikazana je na slici \ref{fig:cluster-overview}.
 
 \subsection{Korištenje tehnologije Apache Spark kroz programski jezik Java}
-Kako bi mogli pisati Spark programe u programskom jeziku Java, potrebno je povezati svoju aplikaciju s \texttt{spark-core} artefaktom s Mavena. Za postavljanje i instalaciju Mavena konzultirati \url{https://maven.apache.org/install.html} i knjigu \cite{marcupic}. Za vrijeme pisanja ovog rada, najnovija verzija Sparka je 1.6.1, a odgovarajuće Maven koordinate su:
+Kako bi mogli pisati Spark programe u programskom jeziku Java, potrebno je imati biblioteke koje nisu sastavni dio platforme JDK.
+Jedna mogućnost je potražiti ih na internetu te ih ručno dohvatiti, raspakirati i uvesti u projekt. Druga, mogućnost je koristiti automatizaciju razvojnog ciklusa. Jedan od alata koji to omogućuje je Maven. Za postavljanje i instalaciju Mavena konzultirati \url{https://maven.apache.org/install.html} i knjigu \cite{marcupic}. Za vrijeme pisanja ovog rada, najnovija verzija Sparka je 1.6.1, a odgovarajuće Maven koordinate su:
 \begin{lstlisting}[language=bash, basicstyle=\small]
 groupId = org.apache.spark
 artifactId = spark-core_2.10
@@ -183,7 +185,7 @@ version = 1.6.1
 
 Odgovarajuća \texttt{pom.xml} datoteka nalazi se u dodatku \ref{ch:datotekapomXML}.
 Jednom kada je \texttt{pom.xml} datoteka namještena i projekt uspješno povezan sa \texttt{spark-core}, sve što je još potrebno jest inicijalizirati \emph{SparkContext} i napisati prvu aplikaciju. U primjeru \ref{lst:brojanjeRijeci} nalazi se jednostavna aplikacija koja jedino što radi je broji koliko puta se pojedina riječ pojavljuje u tekstualnoj datoteci.
-\begin{lstlisting}[numbers=left, label={lst:brojanjeRijeci}, caption={Program koji broji koliko se puta koja riječ pojavljuje u datoteci.}]
+\begin{lstlisting}[numbers=left, label={lst:brojanjeRijeci}, caption={Program koji broji koliko se puta koja riječ pojavljuje u datoteci.}, escapechar=|]
 package hr.fer.zemris;
 
 import java.util.Arrays;
@@ -226,19 +228,22 @@ public class BrojanjeRijeci {
 		String izlazniDirektorij = args[1];
 
 		// inicijalizacija SparkContext-a
-		SparkConf conf = new SparkConf().setMaster("local")
-		.setAppName("Brojanje rijeci");
+		SparkConf conf = new SparkConf()
+						.setMaster("local")
+						.setAppName("Brojanje rijeci");
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
 		// učitavanje podataka
 		JavaRDD<String> ulaz = sc.textFile(ulaznaDatoteka);
 
-		// razmak se koristi da bi razdvojio dvije riječi
-		JavaRDD<String> rijeci = ulaz.flatMap(new FlatMapFunction<String, String>() {
-			public Iterable<String> call(String redak) {
-				return Arrays.asList(redak.split(" "));
+		// razmak se koristi da bi razdvojio dvije riječi |\label{line:pocetakBR}|
+		JavaRDD<String> rijeci = ulaz.flatMap(
+			new FlatMapFunction<String, String>() {
+				public Iterable<String> call(String redak) {
+					return Arrays.asList(redak.split(" "));
+				}
 			}
-		});
+		);
 
 		// transformiraj u parove (rijec,1) i broji
 		JavaPairRDD<String, Integer> brojRijeci = rijeci
@@ -246,15 +251,17 @@ public class BrojanjeRijeci {
 			public Tuple2<String, Integer> call(String rijec) {
 				return new Tuple2<String, Integer>(rijec, 1);
 			}
-		}).reduceByKey(new Function2<Integer, Integer, Integer>() {
-			public Integer call(Integer x, Integer y) {
-				return x + y;
+		}).reduceByKey(
+			new Function2<Integer, Integer, Integer>() {
+				public Integer call(Integer x, Integer y) {
+					return x + y;
+				}
 			}
-		});
+		);|\label{line:krajBR}|
 
 		// spremi rezultat u izlaznu datoteku
 		brojRijeci.saveAsTextFile(izlazniDirektorij);
-		// zatvori "tunel" odnosno SparkContext
+		// zatvori SparkContext
 		sc.close();
 	}
 }
@@ -263,24 +270,30 @@ public class BrojanjeRijeci {
 
 Analizirajmo što smo napravili. Inicijalizirali smo \emph{SparkContext} tako što smo rekli da se odvija na lokalnom računalu i zadali smo ime aplikacije. Zatim smo kreirali RDD iz tekstualne datoteke koja je predana kao argument naredbenog retka. Taj skup podataka nam je poslužio za kreiranje novog skupa podataka koji je nastao tako što smo svaki redak razdvojili po razmaku i kreirali uređeni par (\emph{riječ}, 1). U tom uređenom paru, koji je oblika (\emph{ključ}, \emph{vrijednost}), \emph{riječ} nam predstavlja ključ, a 1 predstavlja vrijednost. Zatim smo iz tako uređenih parova, one parove koji imaju jednaki ključ zbrojili po vrijednostima i u tom trenutku\footnote{U tom trenutku se ništa dogodilo nego tek nakon poziva metode \texttt{saveAsTextFile()}, ali \emph{lijena evaluacija} \engl{lazy evaluation} opisana je tek kasnije.} nije više postojalo dva ili više uređena para koja imaju jednake ključeve. Na kraju smo rezultat zapisali i eksplicitno zatvorili \emph{SparkContext}. 
 
-Kako je ovo bio početni primjer, \emph{lambda} izrazi koji su uobičajeni za programski jezik \emph{Java 8} nisu korišteni iz razloga da bi se lakše shvatilo što se sve treba implementirati. Odgovarajući kod koristeći lambda izraze dan je u primjeru \ref{lst:lambdaBrojanjeRijeci}.
+Kako je ovo bio početni primjer, \emph{lambda} izrazi koji su uobičajeni za inačicu 8 programskog jezika \emph{Java} nisu korišteni iz razloga da bi se lakše shvatilo što se sve treba implementirati. Kod iz primjera \ref{lst:brojanjeRijeci} od retka \ref{line:pocetakBR} do retka \ref{line:krajBR} koristeći lambda izraze dan je u primjeru \ref{lst:lambdaBrojanjeRijeci}.
 \vspace{5mm}
 \begin{lstlisting}[label={lst:lambdaBrojanjeRijeci}, caption={Brojanje riječi koristeći lambda izraze.}]
 // razmak se koristi da bi razdvojio dvije riječi
-JavaRDD<String> rijeci = ulaz.flatMap(redak -> Arrays.asList(" "));
+JavaRDD<String> rijeci = ulaz
+				.flatMap(
+					redak -> Arrays.asList(" ")
+				);
 
 // transformiraj u parove (rijec,1) i broji
-		JavaPairRDD<String, Integer> brojRijeci = rijeci.mapToPair(
+JavaPairRDD<String, Integer> brojRijeci = rijeci
+				.mapToPair(
 				 	rijec -> new Tuple2<String, Integer>(rijec, 1)
-				 ).reduceByKey(
+				).reduceByKey(
 					 (x, y) -> x + y
-				 );
+				);
 \end{lstlisting}
 \vspace{5mm}
 
 
 \section{Otporni raspodijeljeni skup podataka}
-\emph{Otporni raspodijeljeni skup podataka} (engl. \emph{resilient distributed dataset}, kratica RDD) je osnovna podatkovna struktura tehnologije Apache Spark. To je \emph{nepromjenjiva}, \emph{samo za čitanje} \engl{immutable, read-only} kolekcija podataka. Iz toga proizlazi da se iz jednog skupa podataka može jedino napraviti drugi skup podataka, a ne može se promijeniti postojeći. U prethodnom primjeru to je vidljivo pri pozivu metode \texttt{flatMap}. Ta metoda transformira \texttt{ulaz} u  \texttt{rijeci}. Sličnu transformaciju radi i metoda \texttt{mapToPair}. Drugim riječima, \emph{transformacija} \engl{transformation} je svaka metoda koja iz jednog skupa podataka kreira novi skup. Uz transformacije, postoje i \emph{akcije} \engl{actions}. Akcije se razlikuju od transformacija po tome što ne vraćaju novi skup podataka nego prvenstveno služe za dohvat jednog ili više elemenata iz nekog skupa. Dodatno, imaju mogućnost zapisivanja podataka kao što je prikazano u primjeru \ref{lst:brojanjeRijeci} - metoda \texttt{saveAsTextFile}.
+\emph{Otporni raspodijeljeni skup podataka} (engl. \emph{resilient distributed dataset}, kratica RDD) je osnovna podatkovna struktura tehnologije Apache Spark. To je \emph{nepromjenjiva} \engl{immutable, read-only} kolekcija podataka. Iz toga proizlazi da se iz jednog skupa podataka može jedino napraviti drugi skup podataka, a ne može se promijeniti postojeći.
+
+U prethodnom primjeru to je vidljivo pri pozivu metode \texttt{flatMap}. Ta metoda transformira \texttt{ulaz} u  \texttt{rijeci}. Sličnu transformaciju radi i metoda \texttt{mapToPair}. Drugim riječima, \emph{transformacija} \engl{transformation} je svaka metoda koja iz jednog skupa podataka kreira novi skup. Uz transformacije, postoje i \emph{akcije} \engl{actions}. Akcije se razlikuju od transformacija po tome što ne vraćaju novi skup podataka nego prvenstveno služe za dohvat jednog ili više elemenata iz nekog skupa. Dodatno, imaju mogućnost zapisivanja podataka kao što je prikazano u primjeru \ref{lst:brojanjeRijeci} - metoda \texttt{saveAsTextFile}.
 
 U tablici \ref{tbl:transformacije} mogu se naći neke od mogućih transformacija i njihovi opisi, a u tablici \ref{tbl:akcije} nalaze se akcije koje je moguće pozvati zajedno s odgovarajućim opisima.
 \begin{table}[htb]
@@ -300,11 +313,35 @@ Transformacija & Opis\\
 \end{tabular}
 \end{table}
 
-Za detaljnije objašnjenje ovih i ostalih transformacija, pogledati \url{http://spark.apache.org/docs/latest/programming-guide.html#transformations}.
+Detaljnije objašnjenje ovih i ostalih transformacija potražiti na poveznici\footnote{\url{http://spark.apache.org/docs/latest/programming-guide.html#transformations}}.
 \\
 \\
-Budući da se radi o velikoj količini podataka, evaluacija transformacija je \emph{lijena} \engl{lazy evaluation}. To znači da Spark samo pamti koje sve transformacije treba napraviti nad skupovima, ali ne i da ih odmah odradi. Sve potrebne transformacije budu napravljene na zahtjev, odnosno tek pozivom prve akcije. 
-\newpage
+Budući da se radi o velikoj količini podataka, evaluacija transformacija je \emph{lijena} \engl{lazy evaluation}. Lijena evaluacija potječe iz funkcijskih jezika. O korisnosti lijene evaluacije kao programskog alata raspravljeno je u [Friedman i Wise, 1976; Henderson i Morris, 1976; Henderson, 1980; Hudak, 1989; Bird i Wadler, 1988; Field i Harrison, 1988; O'Donnell, 1985]. Lijena evaluacija je \emph{na zahtjev} - obavlja se računanje samo onda i onoliko koliko je potrebno da se dobije traženi izlaz. Programer može definirati ogromne strukture podataka kao međurezultate i računati na implementaciju jezika u kojem programira da će se zapravo računati samo potrebni dijelovi tih struktura podataka. To znači da Spark samo pamti koje sve transformacije treba napraviti nad skupovima, ali ne i da ih odmah odradi. Sve potrebne transformacije rade se na zahtjev, odnosno tek pozivom prve akcije. 
+
+Kao primjer lijene evaluacije, može poslužiti jedna od čestih implementacija oblikovnog obrasca \emph{jedinstveni objekt} \engl{singleton}. Takva implementacija prikazana je u primjeru \ref{lst:singleton}. Ono što je ovdje \emph{lijeno} je kreiranje instance razreda \texttt{MySingleton} - kreirana je tek na zahtjev tj. prilikom prvog poziva metode \texttt{getInstance()}.
+
+\vspace{5mm}
+\begin{lstlisting}[numbers=left, label={lst:singleton}, caption={Lijena evaluacija u oblikovnom obrascu \emph{jedinstveni objekt}.}, escapechar=|]
+package hr.fer.zemris.prviProgrami;
+
+public class MySingleton {
+	private static MySingleton instanca;
+
+	private MySingleton() {
+		// privatni konstruktor
+	}
+
+	public static MySingleton getInstance() {
+		if (instanca == null) { |\label{line:instancaNULL}|
+			instanca = new MySingleton(); |\label{line:instancaNEW}|
+		}
+		return instanca;
+	}
+}
+\end{lstlisting}
+
+Treba uzeti u obzir da ovakva implementacija oblikovnog obrasca \emph{jedinstveni objekt} \textbf{nije sigurna} za višedretveno okruženje. Može se dogoditi scenarij gdje jedna dretva taman završi s provjerom na liniji \ref{line:instancaNULL} i kao rezultat dobije \texttt{true} tj. krene s izvršavanjem linije \ref{line:instancaNEW}. Prije nego je linija \ref{line:instancaNEW} izvršena, druga dretva uspješno prođe kroz provjeru u retku \ref{line:instancaNULL} i isto tako krene izvršavati redak \ref{line:instancaNEW}. Posljedica je da su kreirane dvije instance razreda, a to se krši s osnovnim načelom ovog oblikovnog obrasca - smije postojati samo jedna instanca razreda.
+
 \begin{table}[htb]
 \caption{Akcije primjenjive nad otpornim raspodijeljenim skupom podataka}
 \label{tbl:akcije}
@@ -321,7 +358,7 @@ Akcija & Opis \\
 \hline
 \end{tabular}
 \end{table}
-Za detaljnije objašnjenje ovih i ostalih akcija, pogledati \url{http://spark.apache.org/docs/latest/programming-guide.html#actions}.
+Detaljnije objašnjenje ovih i ostalih akcija potražiti na poveznici\footnote{\url{http://spark.apache.org/docs/latest/programming-guide.html#actions}}.
 \\
 
 U nastavku slijedi primjer \ref{lst:primjer3} koji obrađuje datoteku \texttt{logfile.txt}.
@@ -343,7 +380,8 @@ import org.apache.spark.api.java.JavaSparkContext;
 public class Primjer3 {
 	public static void main(String[] args) {
 		// inicijalizacija SparkContext-a
-		SparkConf conf = new SparkConf().setMaster("local")
+		SparkConf conf = new SparkConf()
+				.setMaster("local")
 				.setAppName("Brojanje rijeci");
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
@@ -377,7 +415,7 @@ public class Primjer3 {
 \end{lstlisting}
 \vspace{5mm}
 
-Ovdje imamo 4 skupa podataka: \texttt{ulaz}, \texttt{burze}, \texttt{indexi} i \texttt{burzeUnijaIndexi}. Skupovi podataka \texttt{burze} i \texttt{indexi} su kreirani na temelju skupa podataka \texttt{ulaz}, a \texttt{unijaBI} je kreiran na temelju \texttt{burze} i na temelju \texttt{indexi}. Na slici \ref{fig:burzeUnijaIndexiRDD} nalazi se graf koji to opisuje.
+Ovdje imamo 4 skupa podataka: \texttt{ulaz}, \texttt{burze}, \texttt{indexi} i \texttt{unijaBI}. Skupovi podataka \texttt{burze} i \texttt{indexi} su kreirani na temelju skupa podataka \texttt{ulaz}, a \texttt{unijaBI} je kreiran na temelju \texttt{burze} i na temelju \texttt{indexi}. Na slici \ref{fig:burzeUnijaIndexiRDD} nalazi se graf koji to opisuje.
 
 \begin{figure}[htb]
 \centering
@@ -386,8 +424,8 @@ Ovdje imamo 4 skupa podataka: \texttt{ulaz}, \texttt{burze}, \texttt{indexi} i \
 \label{fig:burzeUnijaIndexiRDD}
 \end{figure}
 
-Tek prilikom poziva akcije \texttt{burzaUnijaIndexi.count()} se zapravo kreira  \texttt{ulaz}, na temelju njega \texttt{burza} i \texttt{indexi} i onda tek na temelju njih se kreira \texttt{unijaBI}. Iz  \texttt{unijaBI} ukupni broj linija dohvati se pozivom \texttt{unijaBI.count()}. 
-Nakon što se to izračuna, svi skupovi podataka nestaju iz memorije.  Prilikom poziva akcije \texttt{unijaBI.first()} \textbf{ponovno} se kreiraju prethodno navedeni skupovi podataka i sve ide iz početka.
+Tek prilikom poziva akcije \texttt{unijaBI.count()} se zapravo kreira  \texttt{ulaz}, na temelju njega \texttt{burza} i \texttt{indexi} i onda tek na temelju njih se kreira \texttt{unijaBI}. Iz  \texttt{unijaBI} ukupni broj linija dohvati se pozivom \texttt{unijaBI.count()}. 
+Nakon što se to izračuna, svi skupovi podataka nestaju iz memorije.  Prilikom poziva akcije \texttt{unijaBI.first()} \textbf{ponovno} kreće obrada podataka gore navedenim redosljedom i sve ide iz početka.
 
 Na prvi pogled ovo izgleda kao loša implementacija, ali budući da se ovdje radi o velikoj količini podataka i ne možemo ih nikako sve pohraniti u memoriju, ovo je zapravo logična implementacija. 
 Ukoliko ne želimo svaki puta iz početka računati i kreirati \texttt{unijaBI}, trebamo ga pohraniti pozivom metode \texttt{persist()} i predavanjem odgovarajućeg parametra. Tablica \ref{tbl:razinePerzistencije} sadrži usporedbu različitih parametara koji se mogu predati metodi \texttt{persist()}.
@@ -410,7 +448,7 @@ Razina & Prostorno zauzeće & Procesorsko vrijeme & U memoriji & Na disku\\
 \end{tabular}
 \end{table}
 
-Iz tablice \ref{tbl:razinePerzistencije} očito je da postoje dvije osi usporedbe: spremanje na disk - spremanje u memoriju i spremanje u serijaliziranom obliku - spremanje u neserijaliziranom obliku. Postoji i parametar \texttt{MEMORY\_AND\_DISK} koji prvo podatke sprema u memoriju dok se memorija ne napuni, a kada se napuni, ostatak podataka se sprema na disk. Ono što razlikuje parametre koji sadrže postfiks \texttt{SER} i one koji ga ne sadrže je to što parametri s postfiksom \texttt{SER} spremaju podatke u serijaliziranom obliku, a drugi ne.
+Iz tablice \ref{tbl:razinePerzistencije} očito je da postoje dvije osi usporedbe: spremanje na disk - spremanje u memoriju i spremanje u serijaliziranom obliku - spremanje u neserijaliziranom obliku. Postoji i parametar \texttt{MEMORY\_AND\_DISK} koji prvo podatke sprema u memoriju dok se memorija ne napuni, a kada se napuni, ostatak podataka se sprema na disk. Ono što razlikuje parametre koji sadrže sufiks \texttt{SER} i one koji ga ne sadrže je to što parametri sa sufiksom \texttt{SER} spremaju podatke u serijaliziranom obliku, a drugi ne.
 
 
 \chapter{Napredno programiranje}
@@ -419,9 +457,9 @@ U ovom poglavlju opisane su neke napredne tehnike za rad s tehnologijom \emph{Ap
 Zanimljivo je pitanje kako je \emph{Google} toliko dobar u rezultatima koje korisnik dobije na svoj upit, točnije, kako ispravno sortira po relevantnosti stranice od važnije prema manje važnoj? Odgovor na to daje algoritam \emph{PageRank} koji je dobio ime po jednom od osnivača \emph{Googlea}, Larry Pageu. Ovo potpoglavlje analizira upravo algoritam \emph{PageRank}. U nastavku je iznesena pojednostavljena verzija algoritma, a više informacija o samom algoritmu nalazi se na \url{https://en.wikipedia.org/wiki/PageRank}. 
 
 \subsection{Upoznavanje s algoritmom}
-Algoritam računa koliko je koja stranica važna po tome koliko drugih stranica upućuje na nju. Ideja je jednostavna: što više stranica ima poveznicu na neku stranicu \texttt{N}, to je stranica \texttt{N} važnija i time bolje rangirana. U obzir se uzima i koja stranica pokazuje na stranicu \texttt{N} (je li to stranica na koju sve ostale stranice pokazuju ili je to neka stranica na koju nitko ne pokazuje) kao i na koliko ostalih stranica ta stranica sadrži poveznice (nije isto ako je na cijeloj stranici samo jedna poveznica i ako na cijeloj stranici ima 1000 poveznica). Stranice na koje neka stranica \texttt{M} sadrži poveznice nazivamo \emph{susjedima}.
+Algoritam računa koliko je koja stranica važna po tome koliko drugih stranica upućuje na nju. Ideja je jednostavna: što više stranica ima poveznicu na neku stranicu \texttt{N}, to je stranica \texttt{N} važnija i time bolje rangirana. U obzir se uzima i koja stranica pokazuje na stranicu \texttt{N} (je li to stranica na koju sve ostale stranice pokazuju ili je to neka stranica na koju nitko ne pokazuje) kao i na koliko ostalih stranica ta stranica sadrži poveznice (nije isto ako je na cijeloj stranici samo jedna poveznica i ako na cijeloj stranici ima 1000 poveznica) i koliko su one same važne. Stranice na koje neka stranica \texttt{M} sadrži poveznice nazivamo \emph{susjedima}.
+Pojednostavljena izvedba prikazana je u nastavku.
 
-Pojednostavljena izvedba algoritma je sljedeća:
 \begin{enumerate}[label*=\arabic*.]
 \item Početni rang svake stranice postavi se na $1.0$.
 \item Ponavljaj \texttt{P} puta:
@@ -431,7 +469,7 @@ Pojednostavljena izvedba algoritma je sljedeća:
 \end{enumerate}
 \end{enumerate}
 
-Kako bi se dobio što brže dobio što precizniji rezultat, važno je parametar \texttt{P} postaviti na \emph{ispravnu} vrijednost. U praksi je dovoljno \texttt{P} postaviti na 10. 
+Kako bi se što brže dobio što precizniji rezultat, važno je broj ponavljanja algoritma  \texttt{P} postaviti na prikladnu vrijednost. U praksi je dovoljno \texttt{P} postaviti na 10. 
 
 Pretpostavimo raspored stranica kao na slici \ref{fig:pageRankSusjedi}.
 
@@ -466,7 +504,7 @@ G & $1.0$ & D\\
 \end{table}
 
 Sada se ponavljaju koraci 2.1 i 2.2 \texttt{P} puta. Ovdje je ponovljeno 2 puta i to bi trebalo biti dovoljno za razumjevanje algoritma.
-Iz koraka 2.1 računa se doprinos koja šalje svaka od stranica. Doprinos stranice \texttt{A} koji šalje drugima iznosi $1.0 / 2 = 0.5$. Doprinos stranice \texttt{B} koji šalje drugima je $1.0 / 2 = 0.5$. Doprinos stranice \texttt{C} jednak je kao i doprinos stranica \texttt{A} i \texttt{B} jer imaju jednak rang i broj susjeda. Doprinos stranica \texttt{D}, \texttt{E}, \texttt{F} i \texttt{G} iznosi $1.0 / 1 = 1.0$. Rezultati za svaku od stranica prikazani su u tablici \ref{tbl:pageRankKorak21p1}.
+Iz koraka 2.1 računa se doprinos koja šalje svaka od stranica. Doprinos stranice \texttt{A} koji ona šalje drugima iznosi $1.0 / 2 = 0.5$. Doprinos stranice \texttt{B} koji ona šalje drugima je $1.0 / 2 = 0.5$. Doprinos stranice \texttt{C} jednak je kao i doprinos stranica \texttt{A} i \texttt{B} jer imaju jednak rang i broj susjeda. Doprinos stranica \texttt{D}, \texttt{E}, \texttt{F} i \texttt{G} iznosi $1.0 / 1 = 1.0$. Rezultati za svaku od stranica prikazani su u tablici \ref{tbl:pageRankKorak21p1}.
 
 \begin{table}[htb]
 \caption{Izračun doprinosa koji šalje svaka od stranica.}
@@ -487,7 +525,7 @@ G & $1.0$ & D & 1.0\\
 \end{tabular}
 \end{table}
 
-Sada, za svaku od stranica se računa ukupna suma koju je ta stranica dobila od svojih susjeda po formuli dana u koraku 2.2.
+Sada, za svaku od stranica se računa ukupna suma koju je ta stranica dobila od svojih susjeda po formuli danoj u koraku 2.2.
 Budući da je stranica \texttt{A} susjed samo od stranice \texttt{D}, ukupni primljeni doprinos koji je primila stranica \texttt{A} je upravo doprinos koji stranica \texttt{D} može dati drugima, a to je $1.0$. Stranica \texttt{B} je susjed jedino stranici \texttt{A} i doprinos koji prima je upravo doprinos koji stranica \texttt{A} može u ovom trenutku dati drugima, a to je $0.5$. Stranica \texttt{C} je susjed jedino stranici \texttt{B} i zbog toga je njen ukupni primljeni doprinos $0.5$. Stranica \texttt{D} je susjed stranicama \texttt{B}, \texttt{C}, \texttt{F} i \texttt{G} pa je njen ukupni primljeni doprinos $0.5 + 0.5 + 1.0 + 1.0 = 3.0$. Ukupan primljeni doprinos za svaku od stranica nalazi se u tablici \ref{tbl:pageRankKorak22ap1}.
 \pagebreak
 \begin{table}[htb]
@@ -558,7 +596,7 @@ G & $1.0$ & D & 1.0\\
 Sada se ponovno računa ukupni primljeni doprinos svake od stranica. Tako za stranicu \texttt{A} se dobije da ukupni primljeni doprinos iznosi $2.7$ jer je ona jedino susjed stranici D. Ukupni primljeni doprinos stranice \texttt{B} je $0.5$ jer je upravo to iznos koliko stranica \texttt{A} doprinosi drugima, a stranica \texttt{B} je jedino susjed od stranice \texttt{A}. Stranica \texttt{C} ima ukupni primljeni doprinos $0.2875$ jer je upravo to iznos doprinosa stranice \texttt{B}, a stranica \texttt{C} je susjed jedino stranici \texttt{B}. Stranica \texttt{D} prima zbroj doprinosa svih stranica kojima je susjed odnosno zbroj doprinosa stranica \texttt{B}, \texttt{C}, \texttt{F} i \texttt{G}. Iz toga proizlazi da je ukupni primljeni doprinos stranice \texttt{D} $0.2875 + 0.2875 + 0.575 + 1.0 = 2.15$. Ukupni primljeni doprinos za svaku od stranica nalazi se u tablici \ref{tbl:pageRankKorak22ap2} 
 
 \begin{table}[htb]
-\caption{Ukupni primljeni doprinos svake od stranica u drugoj tablici.}
+\caption{Ukupni primljeni doprinos svake od stranica u drugoj iteraciji.}
 \label{tbl:pageRankKorak22ap2}
 \centering
 \begin{tabular}{lllll} 
@@ -580,7 +618,7 @@ Nakon što je i u drugoj iteraciji izračunat ukupni primljeni doprinos, vrijeme
 Rang stranice \texttt{E} je $0.15 + 0.85 * 0.5 = 0.575$, a rang stranice \texttt{F} iznosi $0.15 + 0.85 * 0.2875 = 0.394375$. Konačno, rang stranice \texttt{G} je $0.15 + 0.85 * 0.575 = 0.63875$. Nakon što se postavi novi rang za svaku od stranica, nastupi situacija kao u tablici \ref{tbl:pageRankStanje2}
 
 \begin{table}[htb]
-\caption{Rang svake od stranica nakon prve iteracije.}
+\caption{Rang svake od stranica nakon druge iteracije.}
 \label{tbl:pageRankStanje2}
 \centering
 \begin{tabular}{lll} 
@@ -643,7 +681,8 @@ public class AlgoritamPageRank {
 
 	public static void main(String[] args) {
 		// Inicijalizacija SparkContext-a.
-		SparkConf conf = new SparkConf().setMaster("local") |\label{line:initStart}|
+		SparkConf conf = new SparkConf() |\label{line:initStart}|
+				.setMaster("local") 
 				.setAppName("Algoritam PageRank");
 		JavaSparkContext sc = new JavaSparkContext(conf); |\label{line:initEnd}|
 
@@ -654,8 +693,12 @@ public class AlgoritamPageRank {
 		JavaPairRDD<String, Iterable<String>> linkovi = ulaz.mapToPair(|\label{line:susjediInitStart}|
 				redak -> {
 					String[] elementi = redak.split("\\s+");
-					return new Tuple2<String, String>(elementi[0], elementi[1]);
-				}).distinct().groupByKey().cache(); |\label{line:susjediInitEnd}|
+					return new Tuple2<String, String>(
+						elementi[0],
+						elementi[1]
+						);
+				}
+			).distinct().groupByKey().cache(); |\label{line:susjediInitEnd}|
 		// Svako ime susjeda zamijeni s 1.0 i vrati novi skup podataka.
 		JavaPairRDD<String, Double> rangovi = linkovi.mapValues(value -> 1.0); |\label{line:initRangovi}|
 
@@ -667,24 +710,33 @@ public class AlgoritamPageRank {
 				linkoviRang -> { 	|\label{line:linkoviRangPocetak}|
 			
 					int brojSusjeda = Iterables.size(linkoviRang._1); |\label{line:brojSusjeda}|
-					List<Tuple2<String, Double>> rezultati = new ArrayList<Tuple2<String, Double>>();
+					List<Tuple2<String, Double>> rezultati = 
+					new ArrayList<Tuple2<String, Double>>();
 					
 						for (String susjed : linkoviRang._1) { |\label{line:petljaStart}|
 							rezultati.add(new Tuple2<String, Double>(
-							susjed, linkoviRang._2 / brojSusjeda));
+								susjed,
+								linkoviRang._2 / brojSusjeda
+								)
+							);
 						} |\label{line:petljaKraj}|
 						
 						return rezultati; |\label{line:linkoviRangKraj}|					
 				}
 			);
-			rangovi = doprinosi.reduceByKey((v1, v2) -> v1 + v2) |\label{line:zbrojPoKljucu}|
+			rangovi = doprinosi
+					.reduceByKey((v1, v2) -> v1 + v2) |\label{line:zbrojPoKljucu}|
 					.mapValues(suma -> 0.15 + suma * 0.85); |\label{line:postaviRang}|
 		} |\label{line:brIteracijaKraj}|
 		// spremi u memoriju
 		List<Tuple2<String, Double>> rangoviFinal = rangovi.collect(); |\label{line:spremanjePodataka}|
 		// ispis
 		for (Tuple2<String, Double> entry : rangoviFinal) {
-			System.out.printf("Stranica %s ima rang %.2f\n", entry._1, entry._2);
+			System.out.printf(
+				"Stranica %s ima rang %.2f\n",
+				 entry._1,
+				 entry._2
+			);
 		}
 		sc.close();
 	}
@@ -698,7 +750,9 @@ Od linije \ref{line:initStart} do linije \ref{line:initEnd} inicijalizira se gla
 
 Linija \ref{line:ucitavanje} obavlja inicijalizaciju \emph{otpornog raspodijeljenog skupa podataka} čitajući podatke iz datoteke čija je putanja zadana varijablom \texttt{ULAZNA\_DATOTEKA}.
 
-Od linije \ref{line:susjediInitStart} do linije \ref{line:susjediInitEnd} obavlja se pridruživanje susjeda svakoj stranici. Svaki se redak iz skupa \texttt{ulaz} podijeli na dva elementa - element prije i element poslije razmaka. Ta dva elementa predstavljaju uređeni par (\emph{ključ}, \emph{vrijednost}) gdje je stranica koja je prije razmaka \emph{ključ}, a stranica nakon razmaka \emph{vrijednost}. To znači da je stranica \emph{vrijednost} susjed od stranice \emph{ključ}. Budući da su dozvoljeni duplikati u ulaznom skupu podataka tj. može postojati dva identična retka koja govore kako stranica \emph{N} ima susjeda \emph{M}, to se mora uzeti u obzir. Za rangiranje stranice nije bitno koliko poveznica stranica \emph{N} sadrži na stranicu \emph{M}. U ovoj implementaciji, svejedno je radi li se o 1 ili 1000 poveznica jer su to sve iste poveznice. Da bi se osiguralo da ne postoji niti jedan duplikat, poziva se metoda \texttt{distinct()}. Pozivom metode \texttt{groupByKey()} obavlja se \emph{spajanje} uređenih parova s istim ključem, a njihove vrijednosti spremamo u listu. Primjerice, postoje li kolekcija uređenih parova (\emph{A}, \emph{B}), (\emph{A}, \emph{C}), (\emph{A}, \emph{D}) i nad tom kolekcijom pozove se \texttt{groupByKey()} rezultat će biti uređeni par (\emph{A}, \{\emph{B}, \emph{C}, \emph{D}\}). \emph{Vrijednost} tog uređenog para je iterabilna (implementira sučelje \texttt{Iterable}) i zbog toga je povratna vrijednost u obliku \texttt{JavaPairRDD<String, Iterable<String>{}>}. Rezultat je skup podataka \texttt{linkovi} predstavljen uređenim parovima gdje su \emph{ključevi} stranice, a \emph{vrijednosti} susjedi tih stranica. Konačno, kako se ne bi ovo moralo svaki puta ispočetka računati, rezultat se pohranjuje u memoriju pozivom metode \texttt{cache()}.
+Od linije \ref{line:susjediInitStart} do linije \ref{line:susjediInitEnd} obavlja se pridruživanje susjeda svakoj stranici. Svaki se redak iz skupa \texttt{ulaz} podijeli na dva elementa - element prije i element poslije razmaka. Ta dva elementa predstavljaju uređeni par (\emph{ključ}, \emph{vrijednost}) gdje je stranica koja je prije razmaka \emph{ključ}, a stranica nakon razmaka \emph{vrijednost}. To znači da je stranica \emph{vrijednost} susjed od stranice \emph{ključ}. Budući da su dozvoljeni duplikati u ulaznom skupu podataka tj. može postojati dva identična retka koja govore kako stranica \emph{N} ima susjeda \emph{M}, to se mora uzeti u obzir. Za rangiranje stranice nije bitno koliko poveznica stranica \emph{N} sadrži na stranicu \emph{M}. U ovoj implementaciji, svejedno je radi li se o 1 ili 1000 poveznica jer su to sve iste poveznice. Da bi se osiguralo da ne postoji niti jedan duplikat, poziva se metoda \texttt{distinct()}.
+
+Pozivom metode \texttt{groupByKey()} obavlja se \emph{spajanje} uređenih parova s istim ključem, a njihove vrijednosti spremamo u listu. Primjerice, postoje li kolekcija uređenih parova (\emph{A}, \emph{B}), (\emph{A}, \emph{C}), (\emph{A}, \emph{D}) i nad tom kolekcijom pozove se \texttt{groupByKey()} rezultat će biti novi skup podataka predstavljen uređenim parom (\emph{A}, \{\emph{B}, \emph{C}, \emph{D}\}). \emph{Vrijednost} tog uređenog para je iterabilna (implementira sučelje \texttt{Iterable}) i zbog toga je povratna vrijednost u obliku \texttt{JavaPairRDD<String, Iterable<String>{}>}. Rezultat je skup podataka \texttt{linkovi} predstavljen uređenim parovima gdje su \emph{ključevi} stranice, a \emph{vrijednosti} susjedi tih stranica. Konačno, kako se ne bi ovo moralo svaki puta ispočetka računati, rezultat se pohranjuje u memoriju pozivom metode \texttt{cache()}.
 
 Linija \ref{line:initRangovi} iz skupa podataka \texttt{linkovi} "provuče" svaku od \emph{vrijednosti} (čitava kolekcija je zapravo jedna \emph{vrijednost}) kroz funkciju koja tu čitavu kolekciju samo preslika u \emph{vrijednost} $1.0$. Sada je nastao novi skup uređenih parova koji za \emph{ključ} imaju stranicu, a za \emph{vrijednost} $1.0$. Ovim postupkom je zapravo postavljen rang svake stranice na početnu vrijednost.
 
@@ -724,7 +778,7 @@ Konačno, u \texttt{for} petlji iteriramo po elementima liste \texttt{rezultatiF
 
 
 \section{Skupovi podataka kao uređeni parovi}
-U primjeru \ref{lst:pagerank} već je uveden pojam skupa podataka koji je predstavljen uređenim parom (\emph{ključ}, \emph{vrijednost}). U ovoj tehnologiji takav skup podataka nije rijetkost i zbog toga postoji niz transformacija nad upravo tim oblikom skupa podataka, a neke od njih su već objašnjene u potpoglavlju \ref{ssec:implAnalizaPRalg}. Osnovne informacije mogu se pronaći u tablicama \ref{tbl:transformacijeJedanPairRDD} i \ref{tbl:transformacijeDvaPairRDD}, a za više informacija, konzultirati službenu dokumentaciju \url{http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/api/java/JavaPairRDD.html}.
+U primjeru \ref{lst:pagerank} već je uveden pojam skupa podataka koji je predstavljen uređenim parom (\emph{ključ}, \emph{vrijednost}). U ovoj tehnologiji takav skup podataka nije rijetkost i zbog toga postoji niz transformacija nad upravo tim oblikom skupa podataka, a neke od njih su već objašnjene u potpoglavlju \ref{ssec:implAnalizaPRalg}. Osnovne informacije mogu se pronaći u tablicama \ref{tbl:transformacijeJedanPairRDD} i \ref{tbl:transformacijeDvaPairRDD}, a za više informacija, konzultirati službenu dokumentaciju \cite{officialDocumentation}.
 
 \begin{table}[htb]
 \caption{Neke od transformacija nad jednim skupom podataka koji predstavljen uređenim parovima. Primjer: \{(1, 2), (3, 4), (3, 6)\}.}
@@ -773,9 +827,9 @@ Ono što je još često potrebno, a nije već spomenuto jest sortiranje podataka
 \section{Čitanje i spremanje podataka }
 U ranijim primjerima prikazano je kako ostvariti čitanje podataka iz tekstualne datoteke kao i kako zapisati rezultat u neku tekstualnu datoteku. Neki od podržanih oblika tekstualnih datoteka su JSON, CSV i TSV oblik. Tehnologija \emph{Apache Spark} omogućuje i puno više. Između ostalog, moguće je čitati i pisati direktno u bazu podataka (Cassandra, HBase, Elasticsearch, JDBC), strukturirane izvore uključujući JSON i Apache Hive, a isto tako moguće je čitati i podatke koji su spremljeni na raspodijeljenom sustavu datoteka poput NFS, HDFS ili Amazon S3.
 
-Datoteke u JSON obliku se učitaju poput tekstualne datoteke, a zatim se parsira JSON format. Za parsiranje JSON formata se u pravilu koriste gotove biblioteke, a popularna biblioteka za Javu naziva se \emph{Jackson}. Više informacija o tim bibliotekama može se pronaći na \url{http://geokoder.com/java-json-libraries-comparison}. 
+Datoteke u JSON obliku se učitaju poput tekstualne datoteke, a zatim se parsira JSON format. Za parsiranje JSON formata se u pravilu koriste gotove biblioteke, a popularna biblioteka za Javu naziva se \emph{Jackson}. Više informacija o tim bibliotekama može se pronaći na poveznici \footnote{\url{http://geokoder.com/java-json-libraries-comparison}}. 
 
-Više informacija o čitanju i spremanju podataka potražiti u poglavlju \emph{Loading and saving your data}\cite{learningSpark}.
+Više informacija o čitanju i spremanju podataka potražiti u poglavlju \emph{Loading and saving your data} \cite{learningSpark}.
 
 \section{Dijeljene varijable}
 Funkcija koju predamo metodi \texttt{map()} vidi varijable koje su definirane u \emph{pozivajućem programu}, ali svaki \emph{zadatak} \engl{task} koji se vrti na \emph{grozdu} dobije svoju kopiju vrijednosti tih varijabli, a nove vrijednosti tih varijabli nisu propagirane \emph{pozivajućem programu}. Riješenje ovog problema su dijeljene varijable \engl{shared variables}. Ime su dobile po tome što je njihova \emph{ispravna} vrijednost vidljiva svuda u grozdu.
@@ -783,7 +837,7 @@ Funkcija koju predamo metodi \texttt{map()} vidi varijable koje su definirane u 
 \subsection{Odašiljatelji}
 Ukoliko je potrebno dohvaćati vrijednost neke varijable na cijelom grozdu, potrebna je \emph{varijabla odašiljatelj} \engl{broadcast variable}. Ta varijabla se pohranjuje u memoriji i zbog toga ne smije zauzimati puno prostora. Također, takva varijabla je nepromjenjiva \engl{immutable}. Moguće je slati i promjenjivu varijablu, ali ta promjena će biti jedino vidljiva na tom čvoru koji je promjenu napravio, a takvo ponašanje u pravilu nije poželjno. 
 
-Kao što je navedeno u \cite{officialDocumentation}, \emph{odašiljatelji} se mogu koristiti kao statičke lookup tablice \engl{lookup table}. 
+Kao što je navedeno u \cite{officialDocumentation}, \emph{odašiljatelji} se mogu koristiti kao nepromjenjive pregledne tablice \engl{lookup table}. 
 Pretpostavimo da radimo na aplikaciji koja u bazi ima dvije tablice, tablicu koja pamti identifikator i ime naselja te tablicu koja pamti identifikator korisnika koji se prijavio i identifikator naselja gdje se prijavio. Primjer takvih tablica su tablice \ref{tbl:naselja} i \ref{tbl:prijave}.
 
 \begin{table}[htb]
@@ -805,7 +859,7 @@ Pretpostavimo da radimo na aplikaciji koja u bazi ima dvije tablice, tablicu koj
 
 Zadatak je saznati ime naselje za svaku od prijava. Pretpostavka je da postoji jako puno prijava, a ne previše naselja tj. prijave su u nekoj velikoj tablici, a naselja su u maloj tablici. Pri obavljanju klasične transformacije \texttt{join}, podatci obje tablice bi putovali svuda po mreži i to bi uzelo puno vremena i mrežnih resursa. Ukoliko je potrebno napraviti \texttt{join} male i velike tablice, bolje rješenje je malu tablicu (koja stane u memoriju i ne mijenja se) postaviti kao varijablu \emph{odašiljatelj}. Na taj način, jedino će mala tablica putovati preko mreže. U ovom primjeru, mala tablica je tablica \texttt{naselja} \ref{tbl:naselja}, a velika tablica je tablica \texttt{prijave} \ref{tbl:prijave}. 
 
-Varijable koje su postavljene kao \emph{odašiljatelj} preko mreže se prenose bittorent protokolom. To znači da što više čvorova treba tu varijablu, ta varijabla se brže širi po mreži\footnote{Više informacija o bittorent protokolu na stranici \url{http://www.bittorrent.org/}}. 
+Varijable koje su postavljene kao \emph{odašiljatelj} preko mreže se prenose protokolom \emph{bittorrent}. To znači da što više čvorova treba tu varijablu, ta varijabla se brže širi po mreži\footnote{Više informacija o bittorent protokolu na stranici \url{http://www.bittorrent.org/}}. 
 
 \vspace{5mm}
 \begin{lstlisting}[numbers=left, label={lst:odasiljateljPrimjer}, caption={Korištenje odašiljatelja.}, escapechar=|]
@@ -823,29 +877,38 @@ import scala.Tuple2;
 public class Primjer5 {
 	public static void main(String[] args) {
 		// Inicijalizacija SparkContext-a.
-		SparkConf conf = new SparkConf().setMaster("local")
+		SparkConf conf = new SparkConf()
+				.setMaster("local")
 				.setAppName("Razasiljane varijable");
 				
 		try (JavaSparkContext sc = new JavaSparkContext(conf)) {
 		
 			// inicijalizacija naselja
 			JavaPairRDD<String, String> naseljaRDD = sc
-				.textFile("tblNaselja.txt").mapToPair(
+				.textFile("tblNaselja.txt")
+				.mapToPair(
 					redakTablice -> {
 						String[] redak = redakTablice.split(",");
-						return new Tuple2<String, String>(redak[0], redak[1]);
-					});
+						return new Tuple2<String, String>(
+							redak[0], redak[1]
+							);
+					}
+				);
 					
 			// prijave
 			JavaPairRDD<String, String> prijaveRDD = sc
-					.textFile("tblPrijave.txt").mapToPair(redakTablice -> {
+					.textFile("tblPrijave.txt")
+					.mapToPair(redakTablice -> {
 						String[] redak = redakTablice.split(",");
-						return new Tuple2<String, String>(redak[0], redak[1]);
-					});
+						return new Tuple2<String, String>(
+							redak[0], redak[1]
+							);
+						}
+					);
 							
 			// odasiljanje read only varijable "naselja" kroz grozd
-			final Broadcast<Map<String, String>> naselja = sc
-					.broadcast(naseljaRDD.collectAsMap());
+			final Broadcast<Map<String, String>> naselja = 
+				sc.broadcast(naseljaRDD.collectAsMap());
 
 			
 			JavaPairRDD<String, Tuple2<String, String>> imenovanePrijave = prijaveRDD
@@ -859,10 +922,13 @@ public class Primjer5 {
 							)
 						);
 			//ispis
-			for (Tuple2<String, Tuple2<String, String>> element : imenovanePrijave
-					.collect()) {
-				System.out.printf("Id prijave: %s \t Ime naselja: %s\n",
-						element._1, element._2._2);
+			for (Tuple2<String, Tuple2<String, String>> element :
+			 	imenovanePrijave.collect()) {
+				System.out.printf(
+					"Id prijave: %s \t Ime naselja: %s\n",
+						element._1,
+						element._2._2
+					);
 			}
 		}
 	}
@@ -872,7 +938,7 @@ public class Primjer5 {
 
 U primjeru \ref{lst:odasiljateljPrimjer} pokazano je korištenje odašiljatelja. Osim toga, u tom primjeru je \emph{SparkContext} inicijaliziran u \emph{try-catch} bloku naredbi. Budući da \emph{SparkContext} implementira sučelje \texttt{Closeable}, to je garancija da ako ga otvorimo \emph{try-catch} inicijalizacijskom bloku da će biti i pravovremeno zatvoren.
 
-Program čita iz datoteke \texttt{tblNaselja.txt} podatke o naseljima koji su zapisani u obliku \emph{id\_naselja,ime\_naselja}. Podatci o prijavama imaju oblik \emph{id\_prijave,id\_naselja} i čitaju se iz datoteke \texttt{tblPrijave.txt}. Podatci u tim datotekama jednaki su podatcima iz tablica \ref{tbl:naselja} i \ref{tbl:prijave}. Nakon što su podatci učitani, kreirani su skupovi podataka. Zatim se skup podataka koji predstavlja tablicu \ref{tbl:naselja} pretvorio u mapu gdje je \emph{ključ} identifikator naselja, a \emph{vrijednost} ime naselja. Takva mapa je \emph{odaslana} svuda po mreži. 
+Program čita iz datoteke \texttt{tblNaselja.txt} podatke o naseljima koji su zapisani u obliku \emph{id\_naselja, ime\_naselja}. Podatci o prijavama imaju oblik \emph{id\_prijave,id\_naselja} i čitaju se iz datoteke \texttt{tblPrijave.txt}. Podatci u tim datotekama jednaki su podatcima iz tablica \ref{tbl:naselja} i \ref{tbl:prijave}. Nakon što su podatci učitani, kreirani su skupovi podataka. Zatim se skup podataka koji predstavlja tablicu \ref{tbl:naselja} pretvorio u mapu gdje je \emph{ključ} identifikator naselja, a \emph{vrijednost} ime naselja. Takva mapa je \emph{odaslana} svuda po mreži. 
 
 \begin{table}[htb]
 \caption{Tablica \texttt{prijave}.}
@@ -907,7 +973,7 @@ Id prijave: 537893 	 Ime naselja: Siget
 \subsection{Akumulatori}
 Ako se odašiljatelje gleda kao globalne \emph{gettere}, \emph{akumulatore} \engl{accumulators} se može gledati kao na globalne \emph{settere}. Za razliku od odašiljatelja koji svim čvorovima dojavljuju vrijednost, akumulatori akumuliraju, odnosno dohvaćaju vrijednost svakog čvora. Ideja je jednostavna, ako je potrebno s iz više radnih čvorova mijenjati nekakvu globalnu varijablu, ta varijabla se postavi kao akumulator.
 
-U datoteci \texttt{log.txt} pohranjeni su zapisi pristupanju na server. Svaki zapis je u novom retku. Ukoliko u nekom retku postoji riječ \texttt{error}, taj zapis nije valjan. Svaki drugi zapis je valjan. Zadatak je izbrojati koliko postoji valjanih zapisa i koliko postoji zapisa koji nisu valjani. Jedno od riješenja je koristiti dva akumulatora: jedan za valjane zapise i drugi za zapise koji nisu valjani. Programska implementacija tog rješenja dana je u primjeru \ref{lst:akumulatoriPrimjer}.
+U datoteci \texttt{log.txt} pohranjeni su zapisi pristupanju na poslužitelj. Svaki zapis je u novom retku. Ukoliko u nekom retku postoji riječ \texttt{error}, taj zapis nije valjan. Svaki drugi zapis je valjan. Zadatak je izbrojati koliko postoji valjanih zapisa i koliko postoji zapisa koji nisu valjani. Jedno od riješenja je koristiti dva akumulatora: jedan za valjane zapise i drugi za zapise koji nisu valjani. Programska implementacija tog rješenja dana je u primjeru \ref{lst:akumulatoriPrimjer}.
 
 \begin{lstlisting}[numbers=left, label={lst:akumulatoriPrimjer}, caption={Korištenje akumulatora.}, escapechar=|]
 package hr.fer.zemris.naprednoProgramiranje;
@@ -949,7 +1015,7 @@ public class Primjer6 {
 
 Primjer \ref{lst:akumulatoriPrimjer} učita novi skup podataka, inicijalizira akumulatore te za svaki redak, ovisno sadrži li redak riječ \emph{error} ili ne, poveća vrijednost odgovarajućeg akumulatora.
 
-U primjeru \ref{lst:akumulatoriPrimjer} korišteni su cjelobrojni akumulatori. Osim \emph{Integer} tipa podataka, postoje akumulatori i za \emph{Long}, \emph{Double} te \emph{Float} tip podataka. Ukoliko je potrebno, moguće je kreirati i akumulator za svoj vlastiti tip podataka. Za više informacija, konzultirati \url{http://www.programcreek.com/java-api-examples/index.php?api=org.apache.spark.Accumulator}.
+U primjeru \ref{lst:akumulatoriPrimjer} korišteni su cjelobrojni akumulatori. Osim \emph{Integer} tipa podataka, postoje akumulatori i za \emph{Long}, \emph{Double} te \emph{Float} tip podataka. Ukoliko je potrebno, moguće je kreirati i akumulator za svoj vlastiti tip podataka. Za više informacija, konzultirati poveznicu\footnote{\url{http://www.programcreek.com/java-api-examples/index.php?api=org.apache.spark.Accumulator}}.
 \chapter{Zaključak} 
 Zaključak.
 
