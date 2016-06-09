@@ -16,7 +16,7 @@
 \contentsline {section}{\numberline {3.4}Dijeljene varijable}{29}
 \contentsline {subsection}{\numberline {3.4.1}Oda\IeC {\v s}iljatelji}{29}
 \contentsline {subsection}{\numberline {3.4.2}Akumulatori}{33}
-\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{35}
-\contentsline {chapter}{Literatura}{36}
-\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{38}
-\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{40}
+\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{36}
+\contentsline {chapter}{Literatura}{37}
+\contentsline {chapter}{Dodatak \numberline {A}Instalacija}{39}
+\contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{41}

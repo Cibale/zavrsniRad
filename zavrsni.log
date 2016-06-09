@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  31 MAY 2016 13:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.6)  9 JUN 2016 21:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -538,19 +538,19 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (./zavrsni.aux)
 \openout1 = `zavrsni.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 57.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 58.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
@@ -636,32 +636,32 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count129
-LaTeX Font Info:    Try loading font information for T1+phv on input line 68.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 68.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 69.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 68.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 69.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 68.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 69.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 68.
-LaTeX Font Info:    Try loading font information for U+msa on input line 68.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 69.
+LaTeX Font Info:    Try loading font information for U+msa on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 68.
+LaTeX Font Info:    Try loading font information for U+msb on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 71.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
@@ -678,34 +678,34 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 79.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 80.
 
-Overfull \hbox (3.33873pt too wide) in paragraph at lines 81--82
+Overfull \hbox (3.33873pt too wide) in paragraph at lines 82--83
 \T1/ptm/m/n/12 Dana²nji mo-bilni ure-žaji imaju puno vi²e mogu¢nosti. Osim ²to 
 je zadrºana funkcional-
  []
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 84.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 85.
 
-Underfull \hbox (badness 1052) in paragraph at lines 92--93
+Underfull \hbox (badness 1052) in paragraph at lines 93--94
 []\T1/ptm/m/n/12 Mehani£ki sen-zor za mjerenje at-mos-fer-skog
  []
 
 
-Overfull \hbox (2.9077pt too wide) in paragraph at lines 107--109
+Overfull \hbox (2.9077pt too wide) in paragraph at lines 108--110
 \T1/ptm/m/n/12 omogu¢ava pisanje pro-grama za obradu po-dataka u tri pro-gram-s
 kih jezika: Java, Python
  []
 
 
-Overfull \hbox (9.20805pt too wide) in paragraph at lines 107--109
+Overfull \hbox (9.20805pt too wide) in paragraph at lines 108--110
 \T1/ptm/m/n/12 U okviru ovog rada prou£eni su neki djelovi ove tehnologije, raz
 raženo neko-liko konkret-
  []
 
 
-Overfull \hbox (0.42339pt too wide) in paragraph at lines 107--109
+Overfull \hbox (0.42339pt too wide) in paragraph at lines 108--110
 \T1/ptm/m/n/12 nih prim-jera obrade po-dataka te ost-varena pro-gram-ska rje²en
 ja koja obavl-jaju tu obradu
  []
@@ -713,12 +713,12 @@ ja koja obavl-jaju tu obradu
 [1
 
 ]
-Underfull \hbox (badness 2409) in paragraph at lines 125--126
+Underfull \hbox (badness 2409) in paragraph at lines 126--127
 []\T1/ptm/m/n/12 Sadrºi kratke in-struk-cije za up-oz-na-vanje s
  []
 
 
-Underfull \hbox (badness 1152) in paragraph at lines 126--127
+Underfull \hbox (badness 1152) in paragraph at lines 127--128
 \T1/ptm/m/n/12 nije nau£i ko-ris-titi pro-gram-sko su£elje koje
  []
 
@@ -726,7 +726,7 @@ Underfull \hbox (badness 1152) in paragraph at lines 126--127
 File: img/gradivniElementiCropped.pdf Graphic file (type pdf)
 
 <use img/gradivniElementiCropped.pdf>
-Package pdftex.def Info: img/gradivniElementiCropped.pdf used on input line 137
+Package pdftex.def Info: img/gradivniElementiCropped.pdf used on input line 138
 .
 (pdftex.def)             Requested size: 284.52756pt x 151.92178pt.
  [3 <./img/gradivniElementiCropped.pdf>]
@@ -737,7 +737,7 @@ File: img/elementiAplikacijeCropped.pdf Graphic file (type pdf)
 
 <use img/elementiAplikacijeCropped.pdf>
 Package pdftex.def Info: img/elementiAplikacijeCropped.pdf used on input line 1
-69.
+70.
 (pdftex.def)             Requested size: 283.21115pt x 225.17595pt.
  [5
 
@@ -748,62 +748,55 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-Overfull \hbox (2.5936pt too wide) in paragraph at lines 186--188
+Overfull \hbox (2.5936pt too wide) in paragraph at lines 187--189
 []\T1/ptm/m/n/12 Odgovaraju¢a \T1/pcr/m/n/12 pom.xml \T1/ptm/m/n/12 da-toteka n
 alazi se u do-datku B[]. Jed-nom kada je \T1/pcr/m/n/12 pom.xml
  []
 
 
-Overfull \hbox (8.67996pt too wide) in paragraph at lines 186--188
+Overfull \hbox (8.67996pt too wide) in paragraph at lines 187--189
 \T1/ptm/m/n/12 da-toteka nam-je²tena i pro-jekt us-p-je²no povezan sa \T1/pcr/m
 /n/12 spark-core\T1/ptm/m/n/12 , sve ²to je jo² potrebno
  []
 
 [6] [7] [8]
-Overfull \hbox (15.66396pt too wide) in paragraph at lines 294--295
+Overfull \hbox (15.66396pt too wide) in paragraph at lines 295--296
 \T1/ptm/m/n/12 je os-novna po-datkovna struk-tura tehnologije Apache Spark. To 
 je \T1/ptm/m/it/12 ne-prom-jen-jiva \T1/ptm/m/n/12 (engl. \T1/ptm/m/it/12 im-
  []
 
 [9]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <12> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 307.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 308.
 
-Underfull \hbox (badness 2088) in paragraph at lines 308--309
+Underfull \hbox (badness 2088) in paragraph at lines 309--310
 \T1/ptm/m/n/12 skupa preuzeti samo oni el-e-menti za koje
  []
 
 
-Overfull \hbox (4.71693pt too wide) in paragraph at lines 303--314
+Overfull \hbox (4.71693pt too wide) in paragraph at lines 304--315
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 316--316
+Underfull \hbox (badness 10000) in paragraph at lines 317--317
 [][]$\T1/pcr/m/n/10 http : / / spark . apache . org / docs / latest / programmi
 ng-[]guide . html #
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 316--320
+Underfull \hbox (badness 10000) in paragraph at lines 317--321
 
- []
-
-
-Overfull \hbox (14.12642pt too wide) in paragraph at lines 316--320
-\T1/ptm/m/n/12 Budu¢i da se radi o ve-likoj koli£ini po-dataka, eval-u-acija tr
-ans-for-ma-cija je \T1/ptm/m/it/12 li-jena \T1/ptm/m/n/12 (engl. \T1/ptm/m/it/1
-2 lazy
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 361--361
+Underfull \hbox (badness 10000) in paragraph at lines 339--339
 [][]$\T1/pcr/m/n/10 http : / / spark . apache . org / docs / latest / programmi
 ng-[]guide . html #
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--363
+Underfull \hbox (badness 10000) in paragraph at lines 339--341
 
  []
 
@@ -812,50 +805,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 361--363
 File: img/transformacijeCropped.pdf Graphic file (type pdf)
 
 <use img/transformacijeCropped.pdf>
-Package pdftex.def Info: img/transformacijeCropped.pdf used on input line 422.
+Package pdftex.def Info: img/transformacijeCropped.pdf used on input line 426.
 (pdftex.def)             Requested size: 424.60446pt x 322.46274pt.
 
-Overfull \hbox (12.03949pt too wide) in paragraph at lines 422--423
+Overfull \hbox (12.03949pt too wide) in paragraph at lines 426--427
  [][] 
  []
 
 
-Overfull \hbox (9.69736pt too wide) in paragraph at lines 427--429
+Overfull \hbox (9.69736pt too wide) in paragraph at lines 431--433
 []\T1/ptm/m/n/12 Tek pri-likom poziva ak-cije \T1/pcr/m/n/12 unijaBI.count() \T
 1/ptm/m/n/12 se za-pravo kreira \T1/pcr/m/n/12 ulaz\T1/ptm/m/n/12 , na temelju
  []
 
 
-Overfull \hbox (5.89574pt too wide) in paragraph at lines 427--429
+Overfull \hbox (5.89574pt too wide) in paragraph at lines 431--433
 \T1/ptm/m/n/12 svi skupovi po-dataka nes-taju iz mem-o-rije. Pri-likom poziva a
 k-cije \T1/pcr/m/n/12 unijaBI.first()
  []
 
 [14 <./img/transformacijeCropped.pdf>] [15]
 Chapter 3.
-
-Overfull \hbox (63.61633pt too wide) in paragraph at lines 467--468
-[]\T1/ptm/m/n/12 Svaka stran-ica \T1/pcr/m/sl/12 n \T1/ptm/m/n/12 svim svo-jim 
-sus-jed-ima ²alje do-pri-nos \T1/pcr/m/n/12 rang(\T1/pcr/m/sl/12 n\T1/pcr/m/n/1
-2 )/brojSusjeda(\T1/pcr/m/sl/12 n\T1/pcr/m/n/12 )\T1/ptm/m/n/12 . 
- []
-
-
-Overfull \hbox (41.74028pt too wide) in paragraph at lines 468--469
-[]\T1/ptm/m/n/12 Postavi ukupni rang stran-ice prema for-muli: $\OT1/cmr/m/n/12
- 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 15 + 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 85 
-\OMS/cmsy/m/n/12 ^^C []$\T1/ptm/m/n/12 . 
- []
-
 [16
 
 ]
-<img/algoritamPageRankRucnoCropped.pdf, id=130, 464.27855pt x 657.37593pt>
+<img/algoritamPageRankRucnoCropped.pdf, id=128, 464.27855pt x 657.37593pt>
 File: img/algoritamPageRankRucnoCropped.pdf Graphic file (type pdf)
 
 <use img/algoritamPageRankRucnoCropped.pdf>
 Package pdftex.def Info: img/algoritamPageRankRucnoCropped.pdf used on input li
-ne 478.
+ne 483.
 (pdftex.def)             Requested size: 232.1387pt x 328.68715pt.
  [17 <./img/algoritamPageRankRucnoCropped.pdf>] [18] [19] [20]
 <img/grafPageRankStraniceCropped.pdf, id=153, 556.73596pt x 428.71667pt>
@@ -863,193 +842,170 @@ File: img/grafPageRankStraniceCropped.pdf Graphic file (type pdf)
 
 <use img/grafPageRankStraniceCropped.pdf>
 Package pdftex.def Info: img/grafPageRankStraniceCropped.pdf used on input line
- 645.
+ 652.
 (pdftex.def)             Requested size: 278.3673pt x 214.3578pt.
- [21 <./img/grafPageRankStraniceCropped.pdf>] [22] [23] [24]
-Overfull \hbox (10.60173pt too wide) in paragraph at lines 759--760
+ [21] [22 <./img/grafPageRankStraniceCropped.pdf>] [23] [24] [25]
+Overfull \hbox (10.60173pt too wide) in paragraph at lines 766--767
 \T1/ptm/m/n/12 re£eno, \T1/pcr/m/n/12 join(\T1/pcr/m/sl/12 drugiSkupPodataka\T1
 /pcr/m/n/12 ) \T1/ptm/m/n/12 ako je poz-van nad skupovima ure-ženih parova
  []
 
-[25]
-Overfull \hbox (4.12828pt too wide) in paragraph at lines 761--762
+
+Overfull \hbox (4.12828pt too wide) in paragraph at lines 768--769
 []\T1/ptm/m/n/12 Od lin-ije 56[] do lin-ije 70[] obražuju se po-datci koji su p
 red-stavl-jeni ure-ženim parovima
  []
 
 
-Overfull \hbox (2.14854pt too wide) in paragraph at lines 763--764
+Overfull \hbox (2.14854pt too wide) in paragraph at lines 770--771
 []\T1/ptm/m/n/12 Linija 58[] za-pravo do-hva¢a veli£inu kolek-cije koja je pred
 -stavl-jena \T1/ptm/m/it/12 klju£em\T1/ptm/m/n/12 , odnosno
  []
 
-
-Overfull \hbox (10.29625pt too wide) in paragraph at lines 777--778
+[26]
+Overfull \hbox (10.29625pt too wide) in paragraph at lines 784--785
 []\T1/ptm/m/n/12 Kona£no, u \T1/pcr/m/n/12 for \T1/ptm/m/n/12 petlji iteri-ramo
  po el-e-men-tima liste \T1/pcr/m/n/12 rezultatiFinal \T1/ptm/m/n/12 te ispi²em
 o
  []
 
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 792--792
+
+Underfull \hbox (badness 10000) in paragraph at lines 799--799
 []\T1/ptm/m/n/12 Kombinira vri-
  []
 
 
-Underfull \hbox (badness 4353) in paragraph at lines 792--792
+Underfull \hbox (badness 4353) in paragraph at lines 799--799
 \T1/ptm/m/n/12 jed-nosti s is-tim
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 792--792
+Underfull \hbox (badness 10000) in paragraph at lines 799--799
 []\T1/ptm/m/n/12 rdd.reduceByKey((x,y)
  []
 
 
-Underfull \hbox (badness 4366) in paragraph at lines 792--793
+Underfull \hbox (badness 4366) in paragraph at lines 799--800
 []\T1/ptm/m/n/12 {(1, 2),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 794--794
+Underfull \hbox (badness 10000) in paragraph at lines 801--801
 []\T1/ptm/m/n/12 Grupira vri-jed-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 794--794
+Underfull \hbox (badness 10000) in paragraph at lines 801--801
 \T1/ptm/m/n/12 nosti s is-tim
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 794--795
+Underfull \hbox (badness 10000) in paragraph at lines 801--802
 \T1/ptm/m/n/12 (3, [4,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 796--796
+Underfull \hbox (badness 10000) in paragraph at lines 803--803
 \T1/ptm/m/n/12 nad svakom
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 796--796
+Underfull \hbox (badness 10000) in paragraph at lines 803--803
 \T1/ptm/m/it/12 vri-jed-nosti \T1/ptm/m/n/12 u
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 796--796
+Underfull \hbox (badness 10000) in paragraph at lines 803--803
 \T1/ptm/m/n/12 ure-ženom paru,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 796--796
+Underfull \hbox (badness 10000) in paragraph at lines 803--803
 \T1/ptm/m/it/12 klju£ \T1/ptm/m/n/12 os-taje
  []
 
 
-Underfull \hbox (badness 3977) in paragraph at lines 796--797
+Underfull \hbox (badness 3977) in paragraph at lines 803--804
 \T1/ptm/m/n/12 (3, 14),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 799--799
+Underfull \hbox (badness 10000) in paragraph at lines 806--806
 \T1/ptm/m/n/12 sas-toji od svih
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 802--802
+Underfull \hbox (badness 10000) in paragraph at lines 809--809
 \T1/ptm/m/n/12 sas-toji od svih
  []
 
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 818--818
+
+Underfull \hbox (badness 10000) in paragraph at lines 825--825
 []\T1/ptm/m/n/12 Bri²e parove
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 818--818
+Underfull \hbox (badness 10000) in paragraph at lines 825--825
 \T1/ptm/m/n/12 koji imaju iste
  []
 
 
-Overfull \hbox (10.01602pt too wide) in paragraph at lines 818--818
+Overfull \hbox (10.01602pt too wide) in paragraph at lines 825--825
 []\T1/ptm/m/n/12 rdd.subtractByKey(drugi)| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 820--820
+Underfull \hbox (badness 10000) in paragraph at lines 827--827
 \T1/ptm/m/it/12 prirodnog spa-
  []
 
 
-Underfull \hbox (badness 4366) in paragraph at lines 820--821
+Underfull \hbox (badness 4366) in paragraph at lines 827--828
 []\T1/ptm/m/n/12 {(3, (4,
  []
 
 
-Underfull \hbox (badness 7981) in paragraph at lines 820--821
+Underfull \hbox (badness 7981) in paragraph at lines 827--828
 \T1/ptm/m/n/12 9)), (3,
  []
 
-
-Overfull \hbox (21.63594pt too wide) in paragraph at lines 825--826
-[]\T1/ptm/m/n/12 Ono ²to je jo² £esto potrebno, a nije ve¢ spomenuto jest sor-t
-i-ranje po-dataka. Tehnologija
- []
-
-[28] [29] [30] [31]
-Overfull \hbox (3.63881pt too wide) in paragraph at lines 941--942
-\T1/ptm/m/n/12 u ob-liku \T1/ptm/m/it/12 id_naselja, ime_naselja\T1/ptm/m/n/12 
-. Po-datci o pri-javama imaju ob-lik \T1/ptm/m/it/12 id_prijave,id_naselja
- []
-
-[32] [33]
-Underfull \hbox (badness 10000) in paragraph at lines 1018--1018
-[][]$\T1/pcr/m/n/10 http : / / www . programcreek . com / java-[]api-[]examples
- / index . php ? api = org .
- []
-
-[34]
+[27] [28] [29] [30] [31] [32] [33] [34] [35]
 Chapter 4.
-[35
 
-] [36
+Overfull \hbox (6.32361pt too wide) in paragraph at lines 1031--1032
+[]\T1/ptm/m/n/12 Kao nas-tavak ovog rada pred-laºe se is-traºiti kako in-stali-
+rati i ko-ris-titi ovu tehnologiju
+ []
+
+[36
 
 ] [37
 
+] [38
+
 ]
 Dodatak A.
+[39
 
-Overfull \hbox (4.43343pt too wide) in paragraph at lines 1048--1049
-\T1/ptm/m/n/12 stran-ice: $\T1/pcr/m/n/12 https : / / spark . apache . org / do
-wnloads . html$\T1/ptm/m/n/12 , odabrati na-jnoviju
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1061
-
- []
-
-[38
-
-] [39]
+] [40]
 Dodatak B.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-) [40
+) [41
 
-] [41]
+] [42]
 (./zavrsni.aux) ) 
 Here is how much of TeX's memory you used:
- 8311 strings out of 494957
- 115232 string characters out of 6180029
- 238213 words of memory out of 5000000
- 11357 multiletter control sequences out of 15000+600000
+ 8313 strings out of 494957
+ 115265 string characters out of 6180029
+ 238224 words of memory out of 5000000
+ 11359 multiletter control sequences out of 15000+600000
  83476 words of font info for 108 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 43i,11n,51p,1650b,1753s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,11n,51p,1650b,1761s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texl
@@ -1061,10 +1017,10 @@ r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on zavrsni.pdf (45 pages, 273317 bytes).
+Output written on zavrsni.pdf (46 pages, 274760 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 179 compressed objects within 2 object streams
+ 268 PDF objects out of 1000 (max. 8388607)
+ 181 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
