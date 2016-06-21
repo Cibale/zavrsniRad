@@ -1,22 +1,21 @@
 \select@language {english}
 \contentsline {chapter}{\numberline {1}Uvod}{1}
-\contentsline {section}{\numberline {1.1}Motivacija}{1}
-\contentsline {section}{\numberline {1.2}Osnovni gradivni elementi}{2}
-\contentsline {chapter}{\numberline {2}Prvi programi}{5}
-\contentsline {section}{\numberline {2.1}Postavljanje temelja}{5}
-\contentsline {subsection}{\numberline {2.1.1}Osnovni elementi aplikacije}{5}
-\contentsline {subsection}{\numberline {2.1.2}Kori\IeC {\v s}tenje tehnologije Apache Spark kroz programski jezik Java}{6}
-\contentsline {section}{\numberline {2.2}Otporni raspodijeljeni skup podataka}{9}
-\contentsline {chapter}{\numberline {3}Napredno programiranje}{16}
-\contentsline {section}{\numberline {3.1}Primjer: Algoritam PageRank}{16}
-\contentsline {subsection}{\numberline {3.1.1}Upoznavanje s algoritmom}{16}
-\contentsline {subsection}{\numberline {3.1.2}Implementacija i analiza}{22}
-\contentsline {section}{\numberline {3.2}Skupovi podataka kao ure\IeC {\dj }eni parovi}{27}
-\contentsline {section}{\numberline {3.3}\IeC {\v C}itanje i spremanje podataka }{28}
-\contentsline {section}{\numberline {3.4}Dijeljene varijable}{29}
-\contentsline {subsection}{\numberline {3.4.1}Oda\IeC {\v s}iljatelji}{29}
-\contentsline {subsection}{\numberline {3.4.2}Akumulatori}{33}
-\contentsline {chapter}{\numberline {4}Zaklju\IeC {\v c}ak}{36}
+\contentsline {chapter}{\numberline {2}Osnovni gradivni elementi}{2}
+\contentsline {chapter}{\numberline {3}Prvi programi}{5}
+\contentsline {section}{\numberline {3.1}Postavljanje temelja}{5}
+\contentsline {subsection}{\numberline {3.1.1}Osnovni elementi aplikacije}{5}
+\contentsline {subsection}{\numberline {3.1.2}Kori\IeC {\v s}tenje tehnologije Apache Spark kroz programski jezik Java}{6}
+\contentsline {section}{\numberline {3.2}Otporni raspodijeljeni skup podataka}{9}
+\contentsline {chapter}{\numberline {4}Napredno programiranje}{16}
+\contentsline {section}{\numberline {4.1}Primjer: Algoritam PageRank}{16}
+\contentsline {subsection}{\numberline {4.1.1}Upoznavanje s algoritmom}{16}
+\contentsline {subsection}{\numberline {4.1.2}Implementacija i analiza}{22}
+\contentsline {section}{\numberline {4.2}Skupovi podataka kao ure\IeC {\dj }eni parovi}{27}
+\contentsline {section}{\numberline {4.3}\IeC {\v C}itanje i spremanje podataka }{28}
+\contentsline {section}{\numberline {4.4}Dijeljene varijable}{29}
+\contentsline {subsection}{\numberline {4.4.1}Oda\IeC {\v s}iljatelji}{29}
+\contentsline {subsection}{\numberline {4.4.2}Akumulatori}{33}
+\contentsline {chapter}{\numberline {5}Zaklju\IeC {\v c}ak}{36}
 \contentsline {chapter}{Literatura}{37}
 \contentsline {chapter}{Dodatak \numberline {A}Instalacija}{39}
 \contentsline {chapter}{Dodatak \numberline {B}Postavljanje datoteke pom.xml}{41}

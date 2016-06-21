@@ -1,6 +1,7 @@
 \documentclass[times, utf8, zavrsni, numeric]{fer}
 \usepackage{booktabs}
 \usepackage{listingsutf8}
+\usepackage[final]{pdfpages}
 \usepackage[titletoc,page]{appendix}
 \captionsetup[lstlisting]{position=bottom}
 \addto\captionsenglish{%
@@ -36,12 +37,6 @@
   breakatwhitespace=true,
   tabsize=3
 }
-%\lstset{language=Java,
-% basicstyle=\tiny\tt,
-% showspaces=false,
-% showstringspaces=false,
-% breaklines=true
-% }
 \lstset{
     literate=%
     {ć}{{\'c}}1
@@ -68,8 +63,7 @@
 
 \maketitle
 
-% Ispis stranice s napomenom o umetanju izvornika rada. Uklonite naredbu \izvornik ako želite izbaciti tu stranicu.
-\izvornik{Na ovoj stranici se nalazi izvornik.}
+\includepdf[pages=-]{img/izvornik.pdf}
 
 % Dodavanje zahvale ili prazne stranice. Ako ne želite dodati zahvalu, naredbu ostavite radi prazne stranice.
 \zahvala{Zahvaljujem se doc. dr. sc. Marku Čupiću na mentorstvu, pomoći i savjetima pruženim pri pisanju ovog završnog rada.}
@@ -77,27 +71,7 @@
 \tableofcontents
 
 \chapter{Uvod}
-\section{Motivacija}
-%Literatura: http://mob.hr/samsung-galaxy-s4-skrivene-mogucnosti-senzori-i-octa-5-benchmark/
-Skoro pa svaka osoba danas posjeduje mobilni uređaj, a neke osobe posjeduju i više njih. Pametni mobilni uređaji postaju neizostavan dodatak svakog modernog čovjeka. Prošlo je vrijeme kada su mobilni uređaji jedino služili za pozive i SMS poruke. Današnji mobilni uređaji imaju puno više mogućnosti. Osim što je zadržana funkcionalnost uspostavljanja poziva i slanja poruka, postoji mogućnost povezivanja na internet, orijentaciju u prostoru, mjerenje brzine itd. Da bi sve te stvari bile moguće, većina današnjih mobilnih uređaja u sebi sadrži senzore koji su navedeni i opisani u tablici \ref{tbl:senzori}.
-
-\begin{table}[htb]
-\caption{Neki od senzora u današnjim mobilnim uređajima.}
-\label{tbl:senzori}
-\centering
-\begin{tabular}{l p{8cm}}
-\hline
-Senzor & Opis \\
-\hline
-Akcelerometar & Elektromehanička komponenta koja mjeri sile ubrzanja. \\
-Barometar & Mehanički senzor za mjerenje atmosferskog pritiska (na trenutnoj lokaciji uređaja).\\
-Senzor svjetlosti & Mjeri intenzitet, tj. jačinu svjetlosti i uglavnom se nalazi s prednje strane uređaja, iznad ekrana. \\
-Žiroskop & Uređaj koji se koristi za navigaciju i mjerenje kutne brzine.\\
-Geomagnetski senzor & Mjeri okolno geomagnetsko polje za sve tri fizičke osi, odnosno služi kao kompas na mobilnim uređajima. \\
-\emph{Hall Sensor} & Magnetski senzor zadužen za prepoznavanje je li  maska telefona zatvorena ili otvorena. \\
-\hline
-\end{tabular}
-\end{table}
+Skoro pa svaka osoba danas posjeduje mobilni uređaj, a neke osobe posjeduju i više njih. Pametni mobilni uređaji postaju neizostavan dodatak svakog modernog čovjeka. Prošlo je vrijeme kada su mobilni uređaji jedino služili za pozive i SMS poruke. Današnji mobilni uređaji imaju puno više mogućnosti. Osim što je zadržana funkcionalnost uspostavljanja poziva i slanja poruka, postoji mogućnost povezivanja na internet, orijentaciju u prostoru, mjerenje brzine itd. Da bi sve te stvari bile moguće, većina današnjih mobilnih uređaja u sebi sadrži senzore poput akcelerometra, barometra, senzora svijetlosti, žiroskopa, geomagnetskog senzora itd.
 
 Pretpostavimo da je mobilni uređaj spojen na internet i da svakih nekoliko sekundi pošalje vrijednost koju u tom trenutku mjeri pojedini senzor. U samo jednom danu može se skupiti dosta podataka. A što kada to ne bi radili za jedan uređaj nego za sve izdane uređaje nekog modela? Količina podataka bi jako brzo narasla.
 
@@ -106,11 +80,11 @@ Kako količina podataka postaje sve veća, dolazimo do pojma \emph{Velika količ
 Tehnologija \emph{Apache Spark} je tehnologija otvorenog koda \engl{open source} koja omogućava pisanje programa za obradu podataka u tri programska jezika: Javi, Pythonu i Scali. Dodatno, postoji i mogućnost interaktivnog rada. \\
 U okviru ovog rada proučeni su neki djelovi ove tehnologije, razrađeno je nekoliko konkretnih primjera obrade podataka te ostvareno programsko rješenje koja obavljaju tu obradu koristeći tehnologiju \emph{Apache Spark}.
 
-Ostatak rada organiziran je kako slijedi.
-//TODO
+Ostatak rada organiziran je kako slijedi. U poglavlju 2 navedeni su osnovni gradivni elementi te su ukratko opisani. U poglavlju 3 opisana je osnovna struktura aplikacije. U poglavlju 4 obrađen je algoritam \emph{PageRank} te je uveden pojam dijeljenih varijabli. U poglavlju 5 nalazi se zaključak ovog rada. 
+
 Svi primjeri su napisani u programskom jeziku Java.
 
-\section{Osnovni gradivni elementi}
+\chapter{Osnovni gradivni elementi}
 Tehnologija \emph{Apache Spark} je pisana u programskom jeziku Scala i izvršava se na \emph{Javinom virtualnom stroju} (engl. \emph{Java Virtual Machine}, kratica JVM). Instalacija na osobno računalo je objašnjena u dodatku \ref{ch:instalacijaSpark}. Opisi nekih direktorija i datoteka koje se dobiju instalacijom dani su u tablici \ref{tbl:installPackage}. Zanimljivo je spomenuti da postoji interaktivna ljuska \emph{Spark shell}, ali isključivo za programske jezike Python i Scala. Datoteke u direktoriju \emph{bin} služe upravo za to. Budući da je ovaj rad ograničen isključivo na programski jezik Java, a u ovom trenutku takva interaktivna ljuska još ne postoji, interaktivna ljuska nije detaljnije obrađena. Više informacija o ljusci moguće je pronaći u \cite{learningSpark}.
 
 \begin{table}[htb]
@@ -130,7 +104,7 @@ Datoteka ili direktorij & Opis \\
 \end{table}
 
 Osnovna programska apstrakcija s kojom tehnologija \emph{Apache Spark} radi je \emph{otporni raspodijeljeni skup podataka} (engl. \emph{resilient distributed dataset}, kratica RDD) \cite{workingSets}.
-Atribut \emph{otporni} znači da se može ponovno rekonstruirati u slučaju da se particija uništi. \emph{Raspodijeljeni} znači da je to skup podataka koji se nalazi na računalima (jednom ili više njih) i moguće ga je paralelno obrađivati. \emph{Skup podataka} znači da predstavlja kolekciju podataka. Tehnologija \emph{Apache Spark} nudi bogato programsko sučelje za rad s takvim skupovima podataka.
+Atribut \emph{otporni} znači da se može ponovno rekonstruirati u slučaju da se particija uništi. Cijeli skup podataka je podijeljen u odgovarajući broj particija (koji se može, a i ne mora ručno zadati). Podatci su podijeljeni u particije na način da im je lakše i brže pristupati te ih obrađivati. Dobra praksa je imati 2-4 particije po raspoloživom procesoru na grozdu. \emph{Raspodijeljeni} znači da je to skup podataka koji se nalazi na računalima (jednom ili više njih) i moguće ga je paralelno obrađivati. \emph{Skup podataka} znači da predstavlja kolekciju podataka. Tehnologija \emph{Apache Spark} nudi bogato programsko sučelje za rad s takvim skupovima podataka.
 
 \vspace{5mm}
 \begin{figure}[htb]
@@ -139,24 +113,19 @@ Atribut \emph{otporni} znači da se može ponovno rekonstruirati u slučaju da s
 \caption{Osnovni elementi tehnologije \emph{Apache Spark}.}
 \label{fig:spark-stack}
 \end{figure}
-\pagebreak
-Tehnologija se sastoji od nekoliko ključnih elemenata koji su u tablici \ref{tbl:gradivniElementi} nabrojani i kratko opisani. Detaljnije objašnjenje nalazi se u službenoj dokumentaciji \cite{officialDocumentation}. Slika \ref{fig:spark-stack} prikazuje osnovne elemente tehnologije \emph{Apache Spark}.
 
-\begin{table}[htb]
-\caption{Dio datoteka i direktorija dobivenih instalacijom.}
-\label{tbl:gradivniElementi}
-\centering
-\begin{tabular}{l p{8cm}}
-\hline
-Komponenta & Opis \\
-\hline
-\emph{Spark SQL} & Omogućuje rad s bilo kakvim strukturiranim podatcima, primjerice \emph{JSON}. Također, nudi i mogućnost izvršavanja \emph{SQL} naredbi. \\
-\emph{Spark Streaming} & Komponenta zadužena za rad s tokovima podataka. \\
-\emph{MLib} & Koristi se za postupke strojnog učenja. \\
-\emph{GraphX} & Biblioteka za obradu grafova (npr. graf prijatelja na društvenoj mreži).\\
-\hline
-\end{tabular}
-\end{table}
+
+Tehnologija se sastoji od nekoliko ključnih elemenata koji su u nastavku nabrojani i kratko opisani. Detaljnije objašnjenje nalazi se u službenoj dokumentaciji \cite{officialDocumentation}. Slika \ref{fig:spark-stack} prikazuje osnovne elemente tehnologije \emph{Apache Spark}.
+
+Jezgra je odgovorna za upravljanje rasporedom zadataka \engl{task scheduling}, upravljanje memorijom, oporavak od pogreške i još mnogo toga. Jezgra je mjesto gdje se definira sučelje za otporni raspodijeljeni skup podataka. Ovdje se definiraju sve transformacije i akcije\footnote{Transformacije i akcije obrađene su u potpoglavlju \ref{RDD}}.   
+
+SparkSQL omogućuje rad s bilo kakvim strukturiranim podatcima, primjerice \emph{JSON}. Također, nudi i mogućnost izvršavanja \emph{SQL} naredbi. Nalazi se u ovoj tehnologiji od njene verzije 1.0. Njegova starija zamjena bio je Shark koji je bio projekt na Berkeleyu. On je radio potrebne modifikacije na Apache Hive-u kako bi se mogao vrtiti na Sparku.
+
+Spark Streaming je komponenta koja je zadužena za rad s tokovima podataka. Ti tokovi podataka mogu biti podatci koji nastaju u realnom vremenu. Primjer toka podataka u realnom vremenu mogu biti \emph{log} datoteke koje nastaju na nekom web-poslužitelju koji je u produkciji. Sučelje koje Spark Streaming pruža slično je sučelju koje pruža i otporni raspodijeljeni skup podataka, a to omogućava programerima da se brzo nauče koristiti ovu komponentu. 
+
+MLib koristi se za postupke strojnog učenja. Omogućava širok spektar algoritama za strojno učenje poput klasifikacije, regresije i  grupiranja. Također nudi funkcionalnost koja omogućava evaluaciju modela i učitavanje podataka. Nudi i jednostavnije algoritme strojnog učenja poput optimizacijskog algoritma gradijentnim spustom. Sve mogućnosti ove komponente napravljene su na način da se mogu skalirati na cijeli grozd.
+
+GraphX je biblioteka za obradu grafova (npr. graf prijatelja na društvenoj mreži). Poput komponenti SparkSQL i Spark Streaming,  ova komponenta također ima sučelje koje je vrlo slično sučelju za rad s otpornim raspodijeljenim skupovima podataka. Omogućava kreiranje usmjerenih grafova s proizvoljnim vrijednostima na bridovima i vrhovima. U sebi sadrži biblioteku popularnih algoritama za rad s grafovima, a jedan od takvih algoritama je i algoritam \emph{PageRank} koji je opisan u potpoglavlju \ref{algoritamPageRank}.
 
 \chapter{Prvi programi}
 U ovom poglavlju opisano je kako napisati osnovni program koristeći tehnologiju \emph{Apache Spark}. Također je opisano i od čega se takav program sastoji te koja je uloga pojedine komponente programa. Primjer koji se obrađuje je primjer \ref{lst:brojanjeRijeci}, a svodi se na jednostavan algoritam brojanja riječi.
@@ -291,7 +260,7 @@ JavaPairRDD<String, Integer> brojRijeci = rijeci
 \vspace{5mm}
 
 
-\section{Otporni raspodijeljeni skup podataka}
+\section{Otporni raspodijeljeni skup podataka} \label{RDD}
 \emph{Otporni raspodijeljeni skup podataka} (engl. \emph{resilient distributed dataset}, kratica RDD) je osnovna podatkovna struktura tehnologije Apache Spark. To je \emph{nepromjenjiva} \engl{immutable, read-only} kolekcija podataka. Iz toga proizlazi da se iz jednog skupa podataka može jedino napraviti drugi skup podataka, a ne može se promijeniti postojeći.
 
 U prethodnom primjeru to je vidljivo pri pozivu metode \texttt{flatMap}. Ta metoda transformira \texttt{ulaz} u  \texttt{rijeci}. Sličnu transformaciju radi i metoda \texttt{mapToPair}. Drugim riječima, \emph{transformacija} \engl{transformation} je svaka metoda koja iz jednog skupa podataka kreira novi skup. Uz transformacije, postoje i \emph{akcije} \engl{actions}. Akcije se razlikuju od transformacija po tome što ne vraćaju novi skup podataka nego prvenstveno služe za dohvat jednog ili više elemenata iz nekog skupa. Dodatno, imaju mogućnost zapisivanja podataka kao što je prikazano u primjeru \ref{lst:brojanjeRijeci} - metoda \texttt{saveAsTextFile}.
@@ -457,7 +426,7 @@ Iz tablice \ref{tbl:razinePerzistencije} očito je da postoje dvije osi usporedb
 
 \chapter{Napredno programiranje}
 U ovom poglavlju opisane su neke napredne tehnike za rad s tehnologijom \emph{Apache Spark}. Objašnjen je algoritam \emph{PageRank}, a dana je i implementacija istog u primjeru \ref{lst:pagerank}.
-\section{Primjer: Algoritam PageRank}
+\section{Primjer: Algoritam PageRank} \label{algoritamPageRank}
 Zanimljivo je pitanje kako je \emph{Google} toliko dobar u rezultatima koje korisnik dobije na svoj upit, točnije, kako ispravno sortira po relevantnosti stranice od važnije prema manje važnoj? Odgovor na to daje algoritam \emph{PageRank} koji je dobio ime po jednom od osnivača \emph{Googlea}, Larry Pageu. Ovo potpoglavlje analizira upravo algoritam \emph{PageRank}. U nastavku je iznesena pojednostavljena verzija algoritma, a za više informacija moguće je konzultirati \cite{pageRank}.
 
 \subsection{Upoznavanje s algoritmom}
@@ -753,13 +722,13 @@ public class AlgoritamPageRank {
 
 Analizirajmo kod naveden u primjeru \ref{lst:pagerank}. 
 
-Od linije \ref{line:initStart} do linije \ref{line:initEnd} inicijalizira se glavno računalo i ime aplikacije. Ovdje je glavno računalo postavljeno na \texttt{local} budući da se aplikacija odvija na lokalnom računalu, a ne na grozdu. Ime aplikacije postavljeno je na temelju algoritma kojeg aplikacija implementira.
+Od linije \ref{line:initStart} do linije \ref{line:initEnd} inicijalizira se glavno računalo i ime aplikacije. Ovdje je glavno računalo postavljeno na \texttt{local} budući da se aplikacija odvija na lokalnom računalu, a ne na grozdu. Ključna riječ koja se preda metodi \texttt{setMaster()} predstavlja URL glavnog računala u grozdu. Za lokalni rad, dovoljno je napisati \texttt{local}, ali mogući oblici su i \texttt{local[N]} te \texttt{local[*]}. Ovdje \texttt{N} predstavlja željeni broj dretvi, a \texttt{*} traži da se vrti onoliko dretvi koliko ima procesorskih jezgri. Ukoliko se izvršava rad na grozdu, potrebno je predati drukčiji argument\footnote{Ovisno o vrsti grozda, ide različit argument. Više informacija moguće je pronaći na \url{http://spark.apache.org/docs/latest/submitting-applications.html#master-urls}}. Ime aplikacije postavljeno je na temelju algoritma kojeg aplikacija implementira.
 
 Linija \ref{line:ucitavanje} obavlja inicijalizaciju \emph{otpornog raspodijeljenog skupa podataka} čitajući podatke iz datoteke čija je putanja zadana varijablom \texttt{ULAZNA\_DATOTEKA}.
 
 Od linije \ref{line:susjediInitStart} do linije \ref{line:susjediInitEnd} obavlja se pridruživanje susjeda svakoj stranici. Svaki se redak iz skupa \texttt{ulaz} podijeli na dva elementa - element prije i element poslije razmaka. Ta dva elementa predstavljaju uređeni par (\emph{ključ}, \emph{vrijednost}) gdje je stranica koja je prije razmaka \emph{ključ}, a stranica nakon razmaka \emph{vrijednost}. To znači da je stranica \emph{vrijednost} susjed od stranice \emph{ključ}. Budući da su dozvoljeni duplikati u ulaznom skupu podataka tj. mogu postojati dva identična retka koja govore kako stranica \emph{N} ima susjeda \emph{M}, to se mora uzeti u obzir. Za rangiranje stranice nije bitno koliko poveznica stranica \emph{N} sadrži na stranicu \emph{M}. U ovoj implementaciji, svejedno je radi li se o 1 ili 1000 poveznica jer su to sve iste poveznice. Da bi se osiguralo da ne postoji niti jedan duplikat, poziva se metoda \texttt{distinct()}.
 
-Pozivom metode \texttt{groupByKey()} obavlja se \emph{spajanje} uređenih parova s istim ključem, a njihove vrijednosti spremamo u listu. Primjerice, postoji li kolekcija uređenih parova (\emph{A}, \emph{B}), (\emph{A}, \emph{C}), (\emph{A}, \emph{D}) i ako se nad tom kolekcijom pozove se \texttt{groupByKey()} rezultat će biti novi skup podataka predstavljen uređenim parom (\emph{A}, \{\emph{B}, \emph{C}, \emph{D}\}). \emph{Vrijednost} tog uređenog para je iterabilna (implementira sučelje \texttt{Iterable}) i zbog toga je povratna vrijednost u obliku \texttt{JavaPairRDD<String, Iterable<String>{}>}. Rezultat je skup podataka \texttt{linkovi} predstavljen uređenim parovima gdje su \emph{ključevi} stranice, a \emph{vrijednosti} susjedi tih stranica. Konačno, kako se ne bi ovo moralo svaki puta ispočetka računati, rezultat se pohranjuje u memoriju pozivom metode \texttt{cache()}.
+Pozivom metode \texttt{groupByKey()} obavlja se \emph{spajanje} uređenih parova s istim ključem, a njihove vrijednosti spremamo u listu. Primjerice, postoji li kolekcija uređenih parova (\emph{A}, \emph{B}), (\emph{A}, \emph{C}), (\emph{A}, \emph{D}) i ako se nad tom kolekcijom pozove se \texttt{groupByKey()} rezultat će biti novi skup podataka predstavljen uređenim parom (\emph{A}, \{\emph{B}, \emph{C}, \emph{D}\}). \emph{Vrijednost} tog uređenog para je iterabilna (implementira sučelje \texttt{Iterable}) i zbog toga je povratna vrijednost u obliku \texttt{JavaPairRDD<String, Iterable<String>{}>}. Rezultat je skup podataka \texttt{linkovi} predstavljen uređenim parovima gdje su \emph{ključevi} stranice, a \emph{vrijednosti} susjedi tih stranica. Konačno, kako se ne bi ovo moralo svaki puta ispočetka računati, rezultat se pohranjuje u memoriju pozivom metode \texttt{cache()}. Poziv metode \texttt{cache()} ima isti učinak kao i da se pozove metoda \texttt{persist()} s argumentom \texttt{MEMORY\_ONLY}.
 
 Linija \ref{line:initRangovi} iz skupa podataka \texttt{linkovi} "provuče" svaku od \emph{vrijednosti} (čitava kolekcija je zapravo jedna \emph{vrijednost}) kroz funkciju koja tu čitavu kolekciju samo preslika u \emph{vrijednost} $1.0$. Sada je nastao novi skup uređenih parova koji za \emph{ključ} imaju stranicu, a za \emph{vrijednost} $1.0$. Ovim postupkom je zapravo postavljen rang svake stranice na početnu vrijednost.
 
@@ -791,22 +760,20 @@ U primjeru \ref{lst:pagerank} već je uveden pojam skupa podataka koji je predst
 \caption{Neke od transformacija nad jednim skupom podataka koji je predstavljen uređenim parovima. Primjer: \{(1, 2), (3, 4), (3, 6)\}.}
 \label{tbl:transformacijeJedanPairRDD}
 \centering
-\begin{tabular}{lp{3cm}p{4cm}p{1.5cm}} 
+\begin{tabular}{lp{10cm}} 
 \hline
-Transformacija & Opis & Primjer korištenja & Rezultat\\
+Transformacija & Opis\\
 \hline
 
-\texttt{reduceByKey(\emph{func})} & Kombinira vrijednosti s istim \emph{ključem}. & rdd.reduceByKey((x,y) -> x + y) & \{(1, 2), (3, 10)\}\\
+\texttt{reduceByKey(\emph{func})} & Kombinira vrijednosti s istim \emph{ključem}. Primjer korištenja je  \texttt{rdd.reduceByKey((x,y) -> x + y)}, a rezultat je onda \{(1, 2), (3, 10)\}.\\
 
-\texttt{groupByKey()} & Grupira vrijednosti s istim \emph{ključem}. & rdd.groupByKey() & \{(1, [2]), (3, [4, 6])\}\\
+\texttt{groupByKey()} & Grupira vrijednosti s istim \emph{ključem}.\newline Primjer korištenja je \texttt{rdd.groupByKey()}, a rezultat je  \{(1, [2]), (3, [4, 6])\}.\\
 
-\texttt{mapValues(\emph{func})} & Primjena funkcije nad svakom \emph{vrijednosti} u uređenom paru, \emph{ključ} ostaje nepromijenjen. & rdd.mapValues(\newline x -> x + 10) & \{(1, 12), (3, 14), (3, 16)\}\\
+\texttt{mapValues(\emph{func})} & Primjena funkcije nad svakom \emph{vrijednosti} u uređenom paru, \emph{ključ} ostaje nepromijenjen. Primjer korištenja je \texttt{rdd.mapValues(x -> x + 10)}, a rezultat izvođenja je \{(1, 12), (3, 14), (3, 16)\}.\\
 
+\texttt{keys()} & Vraća novi skup podataka koji se sastoji od svih \emph{ključeva}. Primjer korištenja je \texttt{rdd.keys()}, a rezultat je \{1, 3, 3\}.\\
 
-\texttt{keys()} & Vraća novi skup podataka koji se sastoji od svih \emph{ključeva}. & rdd.keys() & \{1, 3, 3\}\\
-
-
-\texttt{values()} & Vraća novi skup podataka koji se sastoji od svih \emph{vrijednosti}. & rdd.values() & \{2, 4, 6\}\\
+\texttt{values()} & Vraća novi skup podataka koji se sastoji od svih \emph{vrijednosti}. Primjer korištenja je \texttt{rdd.values()}, a rezultat je \{2, 4, 6\}.\\
 \hline
 \end{tabular}
 \end{table}
@@ -817,14 +784,14 @@ Transformacija & Opis & Primjer korištenja & Rezultat\\
 \caption{Neke od transformacija nad dva skupa podataka koji su predstavljeni uređenim parovima. Primjer: rdd = {(1, 2), (3, 4), (3, 6)}, drugi = {(3,9)}.}
 \label{tbl:transformacijeDvaPairRDD}
 \centering
-\begin{tabular}{lp{3cm}p{4cm}p{1.5cm}} 
+\begin{tabular}{lp{10cm}} 
 \hline
-Transformacija & Opis & Primjer korištenja & Rezultat\\
+Transformacija & Opis \\
 \hline
 
-\texttt{subtractByKey} & Briše parove koji imaju iste \emph{ključeve}. & rdd.subtractByKey(drugi) & \{(1, 2)\}\\
+\texttt{subtractByKey} & Briše parove koji imaju iste \emph{ključeve}. \newline Primjer korištenja je \texttt{rdd.subtractByKey(drugi)}, a odgovarajući rezultat je \{(1, 2)\}.\\
 
-\texttt{join} & Obavlja operaciju \emph{prirodnog spajanja} \engl{inner join} & rdd.join(drugi) & \{(3, (4, 9)), (3, (6, 9))\}\\
+\texttt{join} & Obavlja operaciju \emph{prirodnog spajanja} \engl{inner join}. Primjer korištenja je \texttt{rdd.join(drugi)}, a odgovarajući rezultat je \{(3, (4, 9)), (3, (6, 9))\}.\\
 \hline
 \end{tabular}
 \end{table}
@@ -833,7 +800,7 @@ Ono što je još često potrebno, a nije već spomenuto jest sortiranje podataka
 
 \section{Čitanje i spremanje podataka }
 U ranijim primjerima prikazano je kako ostvariti čitanje podataka iz tekstualne datoteke kao i kako zapisati rezultat u neku tekstualnu datoteku. Neki od podržanih oblika tekstualnih datoteka su JSON, CSV i TSV. Tehnologija \emph{Apache Spark} omogućuje i puno više. Između ostalog, moguće je čitati i pisati direktno u bazu podataka (Cassandra, HBase, Elasticsearch, JDBC), koristiti  strukturirane izvore uključujući JSON i Apache Hive, a isto tako moguće je čitati i podatke koji su spremljeni na raspodijeljenom sustavu datoteka poput NFS, HDFS ili Amazon S3.
-\newpage
+
 Datoteke u JSON obliku se učitaju poput tekstualne datoteke, a zatim se parsira prema formatu JSON. Za parsiranje ovog formata se u pravilu koriste gotove biblioteke, a popularna biblioteka za Javu naziva se \emph{Jackson}. Više informacija o tim bibliotekama može se pronaći na poveznici \footnote{\url{http://geokoder.com/java-json-libraries-comparison}}. 
 
 Više informacija o čitanju i spremanju podataka potražiti u poglavlju \emph{Loading and saving your data} \cite{learningSpark}.
@@ -860,6 +827,26 @@ Pretpostavimo da radimo na aplikaciji koja u bazi ima dvije tablice, tablicu koj
 3 & Jordanovac\\
 4 & Siget\\
 5 & Dubrava\\
+\hline
+\end{tabular}
+\end{table}
+
+U tablici \ref{tbl:naselja} nalaze se imena naselja s odgovarajućim identifikacijskim brojevima, a u tablici \ref{tbl:prijave} nalaze se prijave korisnika i identifikator odgovarajućeg naselja gdje je prijava zaprimljena.
+
+\begin{table}[htb]
+\caption{Tablica \texttt{prijave}.}
+\label{tbl:prijave}
+\centering
+\begin{tabular}{ll} 
+\hline
+\texttt{id\_korisnik} & \texttt{id\_naselje}\\
+\hline
+112312 & 1\\
+243242 & 2\\
+254331 & 2\\
+432115 & 1\\
+567893 & 4\\
+537893 & 4\\
 \hline
 \end{tabular}
 \end{table}
@@ -947,24 +934,6 @@ U primjeru \ref{lst:odasiljateljPrimjer} pokazano je korištenje odašiljatelja.
 
 Program čita iz datoteke \texttt{tblNaselja.txt} podatke o naseljima koji su zapisani u obliku \emph{id\_naselja, ime\_naselja}. Podatci o prijavama imaju oblik \emph{id\_prijave, id\_naselja} i čitaju se iz datoteke \texttt{tblPrijave.txt}. Podatci u tim datotekama jednaki su podatcima iz tablica \ref{tbl:naselja} i \ref{tbl:prijave}. Nakon što su podatci učitani, kreirani su skupovi podataka. Zatim se skup podataka koji predstavlja tablicu \ref{tbl:naselja} pretvorio u mapu gdje je \emph{ključ} identifikator naselja, a \emph{vrijednost} ime naselja. Takva mapa je \emph{odaslana} svuda po mreži. 
 
-\begin{table}[htb]
-\caption{Tablica \texttt{prijave}.}
-\label{tbl:prijave}
-\centering
-\begin{tabular}{ll} 
-\hline
-\texttt{id\_korisnik} & \texttt{id\_naselje}\\
-\hline
-112312 & 1\\
-243242 & 2\\
-254331 & 2\\
-432115 & 1\\
-567893 & 4\\
-537893 & 4\\
-\hline
-\end{tabular}
-\end{table}
-
 Nakon toga, za svaku prijavu, kreiran je novi uređeni par koji za \emph{ključ} ima identifikator prijave, a za vrijednost objekt \texttt{Tuple2} koji za prvu vrijednost ima identifikator nasilja, a za drugu vrijednost ime tog naselja. Razred \texttt{Tuple2} preuzet je iz programskog jezika Scala i predstavlja uređeni par (\emph{vrijednost\_1}, \emph{vrijednost\_2}). Shodno tome, prvoj vrijednosti se pristupa preko \texttt{element.\_1}, a drugoj vrijednost preko \texttt{element.\_2}.
 
 Na kraju su ispisani svi dobiveni podatci, a rezultat je prikazan u primjeru \ref{lst:rezultati}.
@@ -1024,7 +993,7 @@ public class Primjer6 {
 
 Primjer \ref{lst:akumulatoriPrimjer} učita novi skup podataka, inicijalizira akumulatore te za svaki redak, ovisno sadrži li redak riječ \emph{error} ili ne, poveća vrijednost odgovarajućeg akumulatora.
 
-U primjeru \ref{lst:akumulatoriPrimjer} korišteni su cjelobrojni akumulatori. Osim \emph{Integer} tipa podataka, postoje akumulatori i za \emph{Long}, \emph{Double} te \emph{Float} tip podataka. Ukoliko je potrebno, moguće je kreirati i akumulator za svoj vlastiti tip podataka. Za više informacija, konzultirati \cite{workingSets}.
+U primjeru \ref{lst:akumulatoriPrimjer} korišteni su cjelobrojni akumulatori. Osim \emph{Integer} tipa podataka, postoje akumulatori i za \emph{Long}, \emph{Double} te \emph{Float} tip podataka. Ukoliko je potrebno, moguće je kreirati i akumulator za svoj vlastiti tip podataka. Više informacija o akumulatorima moguće je pronaći u \cite{workingSets}.
 \chapter{Zaključak} 
 Danas već postoji više podataka u digitalnom obliku nego ikada prije. U budućnosti se pretpostavlja da će ih biti još i više. Tehnologija \emph{Apache Spark} nudi mogućnost obrade velikog skupa podataka. U radu je pokazano da ima bogato programsko sučelje za programski jezik Java i da se u svega nekoliko naredbi može dosta dobro obraditi te podatke. 
 
@@ -1040,7 +1009,7 @@ Kao nastavak ovog rada predlaže se istražiti kako instalirati i koristiti ovu 
   Marko Čupić,
   \emph{Programiranje u Javi},
   verzija 0.3.26
-  URL: TODO
+  URL: \url{http://java.zemris.fer.hr/nastava/opjj/book-2015-09-30.pdf}
 \bibitem{workingSets}
   ZAHARIA, Matei, et al. Spark: Cluster Computing with Working Sets. \emph{HotCloud 10}, 2010, 10: 10-10.
 \bibitem{pageRank}
@@ -1119,7 +1088,7 @@ U ovom radu opisano je kako koristiti tehnologiju \emph{Apache Spark}. Objašnje
 % TODO: Navedite naslov na engleskom jeziku.
 \engtitle{Data processing with technology Apache Spark}
 \begin{abstract}
-In this bachelor thesis it is described how to use technology \emph{Apache Spark}. It is explained of which main elements Spark consists of and what is a purpose of each element. Several examples are provided which illustrate how to utilize this technology through Java programming language. In order to better illustrate and explain the provided application programming interface, the \emph{PageRank} algorithm is discussed and implemented using Spark through Java. Shared variables are introduced and it is explained how to use them properly on cluster.
+In this bachelor thesis it is described how to use technology \emph{Apache Spark}. It is explained of which main elements Spark consists and what the purpose of each element is. Several examples are provided which illustrate how to utilize this technology through Java programming language. In order to better illustrate and explain provided application programming interface, the \emph{PageRank} algorithm is discussed and implemented using Spark through Java. Shared variables are introduced and it is explained how to use them properly on cluster.
 
 \keywords{Apache Spark, Resilient distributed dataset, transformations, actions, accumulators, broadcast variables}
 \end{abstract}
