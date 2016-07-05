@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {croatian}
+\beamer@sectionintoc {1}{Uvod}{3}{0}{1}
+\beamer@sectionintoc {2}{Osnovni gradivni elementi}{4}{0}{2}
+\beamer@sectionintoc {3}{Prvi programi}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{Postavljanje temelja}{5}{0}{3}
+\beamer@subsectionintoc {3}{2}{Otporni rasopdijeljeni skup podataka}{7}{0}{3}
+\beamer@sectionintoc {4}{Napredno programiranje}{12}{0}{4}
+\beamer@subsectionintoc {4}{1}{Algoritam PageRank}{12}{0}{4}
+\beamer@subsectionintoc {4}{2}{Skupovi podataka kao ure\IeC {\dj }eni parovi}{16}{0}{4}
+\beamer@subsectionintoc {4}{3}{Dijeljene varijable}{20}{0}{4}
