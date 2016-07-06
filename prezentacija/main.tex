@@ -16,6 +16,7 @@
 \makeatletter
 \renewcommand*{\ALG@name}{Algoritam}
 \makeatother
+\setbeamertemplate{footline}[frame number]
 \usepackage[utf8]{inputenc}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 % There are many different themes available for Beamer. A comprehensive
@@ -33,7 +34,7 @@
 %\usetheme{CambridgeUS}
 %\usetheme{Copenhagen}
 %\usetheme{Darmstadt}
-%\usetheme{default}
+\usetheme{default}
 %\usetheme{Frankfurt}
 %\usetheme{Goettingen}
 %\usetheme{Hannover}
@@ -49,7 +50,7 @@
 %\usetheme{Rochester}
 %\usetheme{Singapore}
 %\usetheme{Szeged}
-\usetheme{Warsaw}
+%\usetheme{Warsaw}
 
 \usepackage{listings}
 \usepackage[T1]{fontenc}
@@ -67,31 +68,12 @@
     {Ž}{{\v{Z}}}1
 }
 
-\title{Obrada podataka tehnologijom Apache Spark}
+\title{SVEUČILIŠTE U ZAGREBU \\ FAKULTET ELEKTROTEHNIKE I RAČUNARSTVA}
 
-% A subtitle is optional and this may be deleted
-\subtitle{ZAVRŠNI RAD br. 4573}
-
-\author{Martin Matak}
-% - Give the names in the same order as the appear in the paper.
-% - Use the \inst{?} command only if the authors have different
-%   affiliation.
-
-\institute[UNIZG, FER] % (optional, but mostly needed)
-{ 
-  Mentor: doc. dr. sc. Marko Čupić \\
-  Fakultet elektrotehnike i računarstva\\
-  Sveučilište u Zagrebu 
-}
-% - Use the \inst command only if there are several affiliations.
-% - Keep it simple, no one is interested in your street address.
-
+\author{ZAVRŠNI RAD br. 4573 \\ Obrada podataka tehnologijom Apache Spark}
+  
+\institute[Fakultet elektrotehnike i računarstva]{Martin Matak}% (optional, but mostly needed)
 \date{Zagreb, srpanj 2016.}
-% - Either use conference name or its abbreviation.
-% - Not really informative to the audience, more for people (including
-%   yourself) who are reading the slides online
-
-\subject{Obrada podataka tehnologijom Apache Spark}
 % This is only inserted into the PDF information catalog. Can be left
 % out. 
 
@@ -126,7 +108,7 @@
 % Section and subsections will appear in the presentation overview
 % and table of contents.
 \section{Uvod}
-\begin{frame}{Motivacija}
+\begin{frame}{Uvod}
 	\includegraphics[width=300pt, height=180pt]{60seconds.jpg}%
 \end{frame}
 
@@ -233,11 +215,40 @@
   \end{block}
  \end{frame}
   
+\section{U radu implementirano}
+\begin{frame}{U radu implementirano}
+\begin{itemize}
+  \item {
+ 	Svi primjeri napisani su u Javi
+ 	\pause
+  }
+  \item {
+ 	Algoritam brojanja riječi - bez i s korištenjem lambda izraza
+ 	\pause
+  }
+  \item {
+ 	Primjer korištenja transformacija i akcija
+ 	\pause
+  }
+  \item {
+ 	Algoritam PageRank
+ 	\pause
+  }
+  \item {
+ 	Korištenje akumulatora za brojanje grešaka u \emph{log} datotekama
+ 	\pause
+  }
+  \item {
+ 	Korištenje odašiljatelja za dohvaćanje imena naselja pomoću identifikatora
+ 	\pause
+  }
+\end{itemize}
+ \end{frame}
 % Placing a * after \section means it will not show in the
 % outline or table of contents.
-\section*{Sažetak}
+\section{Zaključak}
 
-\begin{frame}{Sažetak}
+\begin{frame}{Zaključak}
   \begin{itemize}
   \item
     Tehnologija za obradu velike količine podataka.
