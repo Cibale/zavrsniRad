@@ -67,12 +67,41 @@
     {Š}{{\v{S}}}1
     {Ž}{{\v{Z}}}1
 }
+\makeatletter
+\newcommand\titlegraphicii[1]{\def\inserttitlegraphicii{#1}}
+\titlegraphicii{}
+\setbeamertemplate{title page}
+{
+  \vbox{}
+   {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\hfill\inserttitlegraphicii\par}
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+        \usebeamerfont{title}\inserttitle\par%
+    \end{beamercolorbox}%
+    \vskip1em\par
+        \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}%\vskip0.5em
+  \end{centering}
+  %\vfill
+}
+\makeatother
+\title{ZAVRŠNI RAD br. 4573 \\ Obrada podataka tehnologijom Apache Spark}
 
-\title{SVEUČILIŠTE U ZAGREBU \\ FAKULTET ELEKTROTEHNIKE I RAČUNARSTVA}
-
-\author{ZAVRŠNI RAD br. 4573 \\ Obrada podataka tehnologijom Apache Spark}
+\author{Martin Matak}
   
-\institute[Fakultet elektrotehnike i računarstva]{Martin Matak}% (optional, but mostly needed)
+\institute[Fakultet elektrotehnike i računarstva]{SVEUČILIŠTE U ZAGREBU \\ FAKULTET ELEKTROTEHNIKE I RAČUNARSTVA}% (optional, but mostly needed)
 \date{Zagreb, srpanj 2016.}
 % This is only inserted into the PDF information catalog. Can be left
 % out. 
@@ -240,7 +269,6 @@
   }
   \item {
  	Korištenje odašiljatelja za dohvaćanje imena naselja pomoću identifikatora
- 	\pause
   }
 \end{itemize}
  \end{frame}

@@ -10,4 +10,4 @@
 \beamer@subsectionintoc {4}{2}{Skupovi podataka kao ure\IeC {\dj }eni parovi}{16}{0}{4}
 \beamer@subsectionintoc {4}{3}{Dijeljene varijable}{20}{0}{4}
 \beamer@sectionintoc {5}{U radu implementirano}{24}{0}{5}
-\beamer@sectionintoc {6}{Zaklju\IeC {\v c}ak}{31}{0}{6}
+\beamer@sectionintoc {6}{Zaklju\IeC {\v c}ak}{30}{0}{6}
